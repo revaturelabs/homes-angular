@@ -3,18 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingSPA", "HousingSPA\HousingSPA.csproj", "{B0C09B9E-F6EE-4836-8234-D2BAA3C3C090}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "homes-angular", ".", "{89C4040E-EBDC-44F5-B5D0-850114A9CB2A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51863"
+		Debug.AspNetCompiler.PhysicalPath = "..\homes-angular\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51863\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51863"
+		Release.AspNetCompiler.PhysicalPath = "..\homes-angular\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51863\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51863"
+		SlnRelativePath = "..\homes-angular\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0C09B9E-F6EE-4836-8234-D2BAA3C3C090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0C09B9E-F6EE-4836-8234-D2BAA3C3C090}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0C09B9E-F6EE-4836-8234-D2BAA3C3C090}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0C09B9E-F6EE-4836-8234-D2BAA3C3C090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C4040E-EBDC-44F5-B5D0-850114A9CB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C4040E-EBDC-44F5-B5D0-850114A9CB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
