@@ -54,9 +54,9 @@ i, span {
 }
 
 #sidebar {
-    min-width: 250px;
+    min-width: 200px;
     max-width: 250px;
-    background: #F48024;
+    background: #807B78;
     color: #fff;
     transition: all 0.3s;
 }
@@ -107,7 +107,7 @@ i, span {
 
     #sidebar .sidebar-header {
         padding: 20px;
-        background: #F48024;
+        background: #A29C98;
     }
 
         #sidebar .sidebar-header strong {
@@ -262,13 +262,18 @@ a.article, a.article:hover {
 }
 
 .navbar {
-    background-color: #f26925;
+    background-color: #fff;
     margin-bottom:0px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #fff;
+    color: #474c55;
 }
     .navbar-inverse .navbar-nav > li > a:hover {
-        color: #9d9d9d;
+        border-color: #9d9d9d;
     }
+
+.container > .navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+}
