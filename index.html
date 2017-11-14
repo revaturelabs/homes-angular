@@ -8,6 +8,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -74,7 +75,7 @@
         </nav>
 
         <!-- Page Content Holder -->
-        <div id="content">
+        <div ng-view>
 
            
 
@@ -90,7 +91,8 @@
     <script src="angular_scripts/route.js"></script>
     <script src="angular_scripts/controllers.js"></script>
     <script src="angular_scripts/directives.js"></script>
-
+    <!--Datatables Script-->
+    <script src="Scripts/datatables.js"></script>
     <!--JQuery Script-->
     <script src="Scripts/jquery-1.9.1.js"></script>
 </body>
