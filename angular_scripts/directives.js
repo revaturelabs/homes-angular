@@ -32,3 +32,10 @@ app.directive('content', function () {
     };
 });
 
+app.directive('profile', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'tenant-profile.html'
+    };
+});
+

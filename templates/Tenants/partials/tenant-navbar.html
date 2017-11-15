@@ -20,7 +20,7 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-user-o"></i> Profile</a></li>
+                        <li ng-class="{active:panel.isSelected(5)"><a ng-click="panel.selectTab(5)"><i class="fa fa-user-o"></i> Profile</a></li>
                         <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
                     </ul>
                 </li>
