@@ -18,6 +18,10 @@
     <link href="../../Content/font-awesome.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css' />
     <link href="../../assets/css/themify-icons.css" rel="stylesheet" />
+
+    <script src="../../assets/js/jquery-1.12.4.js"></script>
+    <script src="../../assets/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/js/dataTables.bootstrap.min.js"></script>
 </head>
 
 <body ng-app="app">
@@ -63,7 +67,6 @@
     <script src="../../angular_scripts/controllers.js"></script>
     <script src="../../angular_scripts/directives.js"></script>
     <!--   Core JS Files   -->
-    <script src="../../assets/js/jquery-1.10.2.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
     <!--  Checkbox, Radio & Switch Plugins -->
     <script src="../../assets/js/bootstrap-checkbox-radio.js"></script>
@@ -72,5 +75,10 @@
     <!--  Notifications Plugin    -->
     <script src="../../assets/js/bootstrap-notify.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>
