@@ -23,7 +23,7 @@
             instance: 'https://login.microsoftonline.com/',
             tenant: 'andresgllive764.onmicrosoft.com/',
             clientId: 'ec61b27c-7bc4-4523-9eac-0605a5559238',
-            popUp: false,
+            popUp: false
             //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
         },
         $httpProvider
