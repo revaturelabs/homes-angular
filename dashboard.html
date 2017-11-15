@@ -21,7 +21,7 @@
 
 <body ng-app="app">
     <div class="wrapper">
-        <div class="sidebar" data-background-color="white" data-active-color="danger">
+        <div class="sidebar" data-background-color="white" data-active-color="danger" ng-controller="homeCtrl">
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
@@ -32,7 +32,7 @@
                 <ul class="nav">
 
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="dashboard.html" ng-click="login()">
                             <i class="ti-panel"></i>
                             <p>Dashboard</p>
                         </a>
@@ -227,6 +227,10 @@
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-route.js"></script>
     <script src="Scripts/angular-mocks.js"></script>
+
+    <!--Adding Adal-->
+    <script src="Scripts/adal.js"></script>
+    <script src="Scripts/adal-angular.js"></script>
 
     <!--Custom Scripts-->
     <script src="angular_scripts/app.js"></script>
