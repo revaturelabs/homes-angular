@@ -7,23 +7,17 @@
             </a>
         </div>
         <ul class="nav">
-            <li ng-class="{active:panel.isSelected(1)}">
-                <a ng-click="panel.selectTab(1)">
+            <li >
+                <a ui-sref="Dashboard">
                     <i class="ti-panel"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
 
-            <li ng-class="{active:panel.isSelected(2)}">
-                <a ng-click="panel.selectTab(2)">
+            <li >
+                <a ui-sref="Housing">
                     <i class="fa fa-bathtub"></i>
-                    <p>Supplies</p>
-                </a>
-            </li>
-            <li ng-class="{active:panel.isSelected(3)}">
-                <a ng-click="panel.selectTab(3)">
-                    <i class="ti-user"></i>
-                    <p>Users</p>
+                    <p>Housing</p>
                 </a>
             </li>
         </ul>
