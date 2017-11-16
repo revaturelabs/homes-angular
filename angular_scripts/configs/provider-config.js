@@ -1,4 +1,4 @@
-﻿(function () {
+﻿'use strict';
     var App = angular.module('App', ['ui.router', 'dir'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -39,5 +39,3 @@
             });
         });
 
-
-})();

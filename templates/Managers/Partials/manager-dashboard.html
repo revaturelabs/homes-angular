@@ -7,12 +7,12 @@
 
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 <link href="../../../Content/table.css" rel="stylesheet" />
-
+<script src="../../../Scripts/addedScripts/manageUsers.js"></script>
 <script src="../../../Scripts/tablescript.js"></script>
 
 <div class="container" ng-controller="AppController">
     <div class="row">
-        <h2 class="text-center">Manage Users</h2>
+        <h2 class="text-center">Dashboard</h2>
     </div>
 
     <div class="row">
@@ -21,16 +21,14 @@
           
                 <ul class="nav nav-tabs">
                     <li class="active">
-                        <a ui-sref=".Tenants">Tenants</a>
+                        <a ui-sref=".dashSupplies">Supplies</a>
                     </li>
                     <li>
-                        <a ui-sref=".Managers">Managers</a>
+                        <a ui-sref=".Maintenance">Maintenance</a>
                     </li>
+
                     <li>
-                        <a ui-sref=".Recruiters">Recruiters</a>
-                    </li>
-                    <li>
-                        <a ui-sref=".Providers">Providers</a>
+                        <a ui-sref=".Housing">Housing</a>
                     </li>
  
                 </ul>

@@ -2,31 +2,23 @@
     var App = angular.module('Manager_app', ['ui.router', 'dir'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise('/Dashboard/Tenants');
+            $urlRouterProvider.otherwise('/Dashboard/dashSupplies');
             $stateProvider.
                 state('Dashboard', {
                     url: '/Dashboard',
                     templateUrl: 'Partials/manager-dashboard.html'
                 }).
-                state('Dashboard.Tenants', {
-                    url: '/Tenants',
-                    templateUrl: 'Partials/dashboard-tab-tenants.html',
-                    controller: 'DashTenantsController'
+                state('Dashboard.dashSupplies', {
+                    url: '/dashSupplies',
+                    templateUrl: 'Partials/dashboard-tab-supplies.html'
                 }).
-                state('Dashboard.Managers', {
-                    url: '/Managers',
-                    templateUrl: 'Partials/dashboard-tab-managers.html',
-                    controller: 'DashManagersController'
+                state('Dashboard.Maintenance', {
+                    url: '/Maintenance',
+                    templateUrl: 'Partials/dashboard-tab-maintenance.html'
                 }).
-                state('Dashboard.Recruiters', {
-                    url: '/Recruiters',
-                    templateUrl: 'Partials/dashboard-tab-recruiters.html',
-                    controller: 'DashRecruitersController'
-                }).
-                state('Dashboard.Providers', {
-                    url: '/Providers',
-                    templateUrl: 'Partials/dashboard-tab-providers.html',
-                    controller: 'DashProvidersController'
+                state('Dashboard.Housing', {
+                    url: '/Housing',
+                    templateUrl: 'Partials/dashboard-tab-housing.html'
                 }).
                 state('Supplies', {
                     url: '/Supplies',
@@ -37,7 +29,32 @@
                     url: '/Users',
                     templateUrl: 'Partials/manager-users.html',
                     controller: 'UsersController'
-                });
+                }).
+                state('Users.Tenants', {
+                    url: '/Tenants',
+                    templateUrl: 'Partials/users-tab-tenants.html',
+                    controller: 'DashTenantsController'
+                }).
+                state('Users.Managers', {
+                    url: '/Managers',
+                    templateUrl: 'Partials/users-tab-managers.html',
+                    controller: 'DashManagersController'
+                }).
+                state('Users.Recruiters', {
+                    url: '/Recruiters',
+                    templateUrl: 'Partials/users-tab-recruiters.html',
+                    controller: 'DashRecruitersController'
+                }).
+                state('Users.Providers', {
+                    url: '/Providers',
+                    templateUrl: 'Partials/users-tab-providers.html',
+                    controller: 'DashProvidersController'
+                }).
+                state('Users.Batches', {
+                url: '/Batches',
+                templateUrl: 'Partials/users-tab-batches.html',
+                controller: 'DashProvidersController'
+            });
                 
         })
         .controller('DashboardController', function ($scope) {
