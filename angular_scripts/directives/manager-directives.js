@@ -4,14 +4,14 @@
 app.directive('sidebar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/manager-sidebar.html'
+        templateUrl: 'templates/Managers/Partials/manager-sidebar.html'
     };
 });
 
 app.directive('navbar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/manager-navbar.html'
+        templateUrl: 'templates/Managers/Partials/manager-navbar.html'
     };
 });
 
