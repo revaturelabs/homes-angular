@@ -1,5 +1,5 @@
 'use strict';
-angular.module('supplies')
+angular.module('app')
 .factory('suppliesFactory', ['$http', function ($http) {
     return {
         getItems : function(){

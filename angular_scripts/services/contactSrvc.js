@@ -1,5 +1,5 @@
 'use strict';
-angular.module('contact')
+angular.module('app')
 .factory('contactFactory', ['$http', function ($http) {
     return {
         putItem : function(item){

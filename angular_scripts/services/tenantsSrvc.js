@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('tenant')
+angular.module('app')
     .factory('todoListSvc', ['$http', function ($http) {
         return {
             getTenants: function () {

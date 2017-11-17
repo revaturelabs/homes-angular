@@ -1,5 +1,5 @@
 'use strict';
-angular.module('housing')
+angular.module('app')
 .factory('todoListSvc', ['$http', function ($http) {
     return {
         getItems : function(){
