@@ -14,11 +14,11 @@ angular.module('app')
 
                 })
             },
-            postAddress: function (id) {
-                return $http.post('/api/Address/', id);
+            postAddress: function (item) {
+                return $http.post('/api/Address/', item;
             },
             putAddress: function (item) {
-                return $http.put('/api/Address/', id);
+                return $http.put('/api/Address/', item);
             },
             deleteAddress: function (id) {
                 return $http({

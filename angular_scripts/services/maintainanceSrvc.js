@@ -10,12 +10,12 @@ angular.module('app')
             return $http.get('/api/MaintainenceRequests' + id);
         },
 
-        postMaintainance : function(id){
-            return $http.post('/api/MaintainenceRequests/', id);
+        postMaintainance : function(item){
+            return $http.post('/api/MaintainenceRequests/', item);
         },
 
-        putMaintainance: function (id) {
-            return $http.put('/api/MaintainenceRequests/', id);
+        putMaintainance: function (item) {
+            return $http.put('/api/MaintainenceRequests/', item);
         },
 
         deleteMaintainance : function(id){
