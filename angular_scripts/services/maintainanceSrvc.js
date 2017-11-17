@@ -1,5 +1,5 @@
 'use strict';
-angular.module('maintainance')
+angular.module('app')
 .factory('maintainanceFactory', ['$http', function ($http) {
     return {
         getItems : function(){
