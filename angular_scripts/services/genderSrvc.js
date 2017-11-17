@@ -1,4 +1,19 @@
-﻿'use strict';
+﻿angular.module('StartApp.managerApp')
+    .factory('genderFactory', ['$http', function ($http) {
+
+        var urlBase = 'https://localhost:44364/api/genders';
+        var genderFactory = {};
+
+        genderFactory.getGenders = function () {
+            return $http.get(urlBase);
+        };
+
+        return genderFactory;
+    }]);
+
+
+
+/*'use strict';
 angular.module('app')
     .factory('todoListSvc', ['$http', function ($http) {
         return {
@@ -21,4 +36,4 @@ angular.module('app')
                 });
             }
         };
-    }]);
+    }]);*/
