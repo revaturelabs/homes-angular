@@ -1,18 +1,27 @@
 'use strict';
 angular.module('app')
-.factory('maintainanceFactory', ['$http', function ($http) {
+.factory('maintainanceSrvc', ['$http', function ($http) {
     return {
-        getItems : function(){
+        getMaintainance : function(){
             return $http.get('/api/MaintainenceRequests');
         },
-        postItem : function(item){
-            return $http.post('/api/MaintainenceRequests/',item);
+
+        getMaintainance: function (id) {
+            return $http.get('/api/MaintainenceRequests' + id);
         },
-       
-        deleteItem : function(id){
+
+        postMaintainance : function(id){
+            return $http.post('/api/MaintainenceRequests/', id);
+        },
+
+        putMaintainance: function (item) {
+            return $http.put('/api/MaintainenceRequests/', item);
+        },
+
+        deleteMaintainance : function(id){
             return $http({
                 method: 'DELETE',
-                url: '/api/TodoList/' + id
+                url: '/api/MaintainenceRequests/' + id
             });
         }
     };
