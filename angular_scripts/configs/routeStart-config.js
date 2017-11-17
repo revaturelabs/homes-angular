@@ -6,12 +6,12 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
         $stateProvider.
             state('Login', {
                 url: '/Login',
-                templateUrl: 'login.html',
+                templateUrl: 'templates/login.html',
                 controller: 'LoginController'
             }).
             state('Managers', {
                 url: '/Managers',
-                templateUrl: 'templates/Managers/Index2.html',
+                templateUrl: 'templates/Managers/Index.html',
                 controller: 'ManagerController'
             }).
             state('Providers', {
