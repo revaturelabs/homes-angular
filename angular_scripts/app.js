@@ -1,1 +1,1 @@
-﻿var app = angular.module('app', ['dir', 'controllers', 'routes']);
+﻿var app = angular.module('app', ['routes']);
