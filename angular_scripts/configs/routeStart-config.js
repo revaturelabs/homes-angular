@@ -6,7 +6,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
         $stateProvider.
             state('Login', {
                 url: '/Login',
-                templateUrl: 'dashboard.html',
+                templateUrl: 'login.html',
                 controller: 'LoginController'
             }).
             state('Managers', {
