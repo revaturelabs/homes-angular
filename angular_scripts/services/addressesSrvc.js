@@ -18,7 +18,7 @@ angular.module('app')
                 return $http.post('/api/Address/', id);
             },
             putAddress: function (item) {
-                return $http.put('/api/Address/', id);
+                return $http.put('/api/Address/', item);
             },
             deleteAddress: function (id) {
                 return $http({
