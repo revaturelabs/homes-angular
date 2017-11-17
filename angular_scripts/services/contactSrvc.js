@@ -14,8 +14,8 @@ angular.module('app')
             return $http.get('/api/Contacts/');
         },
 
-        postContact: function (id) {
-            return $http.post('/api/Contacts/', id);
+        postContact: function (item) {
+            return $http.post('/api/Contacts/', item);
         },
 
         deleteItem : function(id){

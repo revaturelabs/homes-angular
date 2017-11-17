@@ -10,8 +10,8 @@ angular.module('app')
             return $http.get('/api/MaintainenceRequests' + id);
         },
 
-        postMaintainance : function(id){
-            return $http.post('/api/MaintainenceRequests/', id);
+        postMaintainance : function(item){
+            return $http.post('/api/MaintainenceRequests/', item);
         },
 
         putMaintainance: function (item) {
