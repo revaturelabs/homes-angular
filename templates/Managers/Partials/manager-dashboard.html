@@ -1,0 +1,28 @@
+﻿<div class="container" ng-controller="AppController">
+    <div class="row">
+        <h2 class="text-center">Dashboard</h2>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+          
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a ui-sref=".dashSupplies">Supplies</a>
+                    </li>
+                    <li>
+                        <a ui-sref=".Maintenance">Maintenance</a>
+                    </li>
+
+                    <li>
+                        <a ui-sref=".Housing">Housing</a>
+                    </li>
+ 
+                </ul>
+            <br>
+            <div ui-view autoscroll="false"></div>
+
+        </div>
+    </div>
+</div>
