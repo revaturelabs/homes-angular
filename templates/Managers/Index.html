@@ -8,7 +8,7 @@
     <title>Revature Housing</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-    <!-- Bootstrap core CSS     -->
+    <!-- Bootstrap core CSS -->
     <link href="../../Content/bootstrap.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="../../assets/css/paper-dashboard.css" rel="stylesheet" />
@@ -16,24 +16,28 @@
     <link href="../../Content/font-awesome.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css' />
     <link href="../../assets/css/themify-icons.css" rel="stylesheet" />
-
-    <script src="../../Scripts/jquery-1.9.1.js"></script>
-    <script src="../../assets/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/js/dataTables.bootstrap.min.js"></script>
+    <!--Angular Scripts-->
+    <script src="../../Scripts/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../../angular_scripts/directives/manager-directives.js"></script>
+    <script src="../../angular_scripts/configs/manager-config.js"></script>
+    <script src="../../assets/js/demo.js"></script>
+    <script src="../../assets/js/paper-dashboard.js"></script>
 </head>
 
-<body ng-app="app">
+<body ng-app="Manager_app">
     <div class="wrapper">
 
         <sidebar></sidebar>
 
         <div class="main-panel">
+
             <navbar></navbar>
 
             <div class="content">
-                <content></content>
+                <div ui-view autoscroll="false"></div>
             </div>
-           
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
@@ -54,29 +58,5 @@
             </footer>
         </div>
     </div>
-    <!--Adding Angular Scripts-->
-    <script src="../../Scripts/angular.js"></script>
-    <script src="../../Scripts/angular-route.js"></script>
-    <script src="../../Scripts/angular-mocks.js"></script>
-
-    <!--Custom Scripts-->
-    <script src="../../angular_scripts/app.js"></script>
-    <script src="../../angular_scripts/route.js"></script>
-    <script src="../../angular_scripts/controllers.js"></script>
-    <script src="../../angular_scripts/manager-directives.js"></script>
-    <!--   Core JS Files   -->
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="../../assets/js/bootstrap-checkbox-radio.js"></script>
-    <script src="../../assets/js/demo.js"></script>
-    <script src="../../assets/js/paper-dashboard.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../../assets/js/bootstrap-notify.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
 </body>
 </html>

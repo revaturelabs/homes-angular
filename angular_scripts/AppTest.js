@@ -12,7 +12,7 @@
                     controller: 'ManagersController'
                 }).
                 when('/Recruiters', {
-                    templateUrl: 'templates/Tenants/TenantsIndex.html',
+                    templateUrl: '',
                     controller: 'RecruitersController'
                 }).
                 when('/Providers', {
