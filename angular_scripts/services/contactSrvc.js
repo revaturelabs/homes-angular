@@ -6,8 +6,16 @@ angular.module('app')
             return $http.put('/api/Contacts/', item);
         },
 
-        getItems: function () {
-            return $http.get('/api/HousingUnits');
+        getItem: function (id) {
+            return $http.get('/api/Contacts/' + id);
+        },
+
+        getContacts: function () {
+            return $http.get('/api/Contacts/');
+        },
+
+        postContact: function (id) {
+            return $http.post('/api/Contacts/', id);
         },
 
         deleteItem : function(id){
