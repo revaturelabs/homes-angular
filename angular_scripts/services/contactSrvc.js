@@ -2,13 +2,18 @@
 angular.module('app')
 .factory('contactFactory', ['$http', function ($http) {
     return {
-        putItem : function(item){
+        putContact : function(item){
             return $http.put('/api/Contacts/', item);
         },
+
+        getItems: function () {
+            return $http.get('/api/HousingUnits');
+        },
+
         deleteItem : function(id){
             return $http({
                 method: 'DELETE',
-                url: '/api/TodoList/' + id
+                url: '/api/Contacts/' + id
             });
         }
     };

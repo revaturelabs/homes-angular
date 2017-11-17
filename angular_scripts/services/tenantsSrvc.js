@@ -14,10 +14,10 @@ angular.module('app')
             putTenant: function (item) {
                 return $http.put('/api/Tenants/', item);
             },
-            deleteItem: function (id) {
+            deleteTenant: function (id) {
                 return $http({
                     method: 'DELETE',
-                    url: '/api/TodoList/' + id
+                    url: '/api/Tenants/' + id
                 });
             }
         };
