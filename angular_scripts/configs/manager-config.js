@@ -69,8 +69,22 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
         .controller('DashTenantsController', function ($scope) {
 
         })
-        .controller('DashManagersController', function ($scope) {
-            $scope.demo = "This is the Dashboard Managers View"
+        .controller('DashManagersController', function ($scope, genderFactory) {
+            $scope.status;
+            $scope.genders;
+
+            getGenders();
+
+            function getGenders() {
+                genderFactory.getGenders()
+                    .then(function (response) {
+                        $scope.genders = response.data;
+                    }, function (error) {
+                        $scope.status = 'Unable to load Genders: ' + error.message;
+                    });
+            }
+
+
 
         })
         .controller('DashRecruitersController', function ($scope) {
