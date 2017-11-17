@@ -11,7 +11,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
             }).
             state('Managers', {
                 url: '/Managers',
-                templateUrl: 'templates/Managers/Index2.html',
+                templateUrl: 'templates/Managers/Index.html',
                 controller: 'ManagerController'
             }).
             state('Providers', {
