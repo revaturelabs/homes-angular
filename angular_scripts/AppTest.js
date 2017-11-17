@@ -22,24 +22,7 @@
                 otherwise({
                     redirectTo: '/Tenants'
                 });
-        })
-        .controller('ManagersController', function ($scope, $rootScope) {
-            CallAddButton();
-            
-            function CallAddButton() {
-                $rootScope.$emit("CallAddButton","Add Manager");
-                
-            };
-           
-        })
-        .controller('TenantsController', function ($scope,$rootScope) {
-            CallAddButton();
-
-            function CallAddButton() {
-                $rootScope.$emit("CallAddButton", "Add Tenant");
-
-            };
-        })
+        })     
         .controller('AppController', function ($scope, $rootScope) {
             function CallAddButton(name) {
                 $scope.demo = name;
