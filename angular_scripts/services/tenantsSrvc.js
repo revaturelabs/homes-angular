@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('tenant')
+angular.module('app')
     .factory('todoListSvc', ['$http', function ($http) {
         return {
             getTenants: function () {
@@ -14,10 +14,10 @@ angular.module('tenant')
             putTenant: function (item) {
                 return $http.put('/api/Tenants/', item);
             },
-            deleteItem: function (id) {
+            deleteTenant: function (id) {
                 return $http({
                     method: 'DELETE',
-                    url: '/api/TodoList/' + id
+                    url: '/api/Tenants/' + id
                 });
             }
         };

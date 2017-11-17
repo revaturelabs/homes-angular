@@ -1,37 +1,34 @@
-﻿<div class="container" ng-controller="AppController">
-    <div class="row">
-        <h2 class="text-center">Manage Users</h2>
+﻿<center><h2>Manage Users</h2></center>
+
+<div class="card">
+    <div class="header">
+        
     </div>
+    <div class="content" ng-controller="AppController">
+        <div class="row">
+            <div class="col-md-12">
 
-    <div class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a ui-sref=".Tenants">Tenants</a>
+                    </li>
+                    <li>
+                        <a ui-sref=".Managers">Managers</a>
+                    </li>
+                    <li>
+                        <a ui-sref=".Recruiters">Recruiters</a>
+                    </li>
+                    <li>
+                        <a ui-sref=".Providers">Providers</a>
+                    </li>
+                    <li>
+                        <a ui-sref=".Batches">Batches</a>
+                    </li>
 
-        <div class="col-md-12">
-
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a ui-sref=".Tenants">Tenants</a>
-                </li>
-                <li>
-                    <a ui-sref=".Managers">Managers</a>
-                </li>
-                <li>
-                    <a ui-sref=".Recruiters">Recruiters</a>
-                </li>
-                <li>
-                    <a ui-sref=".Providers">Providers</a>
-                </li>
-                <li>
-                    <a ui-sref=".Batches">Batches</a>
-                </li>
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0 pull-right">
-                <!-- Trigger Add User Modal -->
-                <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#add">{{demo}}</button>
-            </form>
-            <br>
-            <div ui-view autoscroll="false"></div>
-
+                </ul>
+                <br>
+                <div ui-view autoscroll="false"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -135,4 +132,12 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!--<script src="/cdn-cgi/scripts/84a23a00/cloudflare-static/email-decode.min.js"></script>-->
+
+<script>
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+
+        $("[data-toggle=tooltip]").tooltip();
+
+    });
+</script>
