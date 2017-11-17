@@ -9,9 +9,22 @@ angular.module('app')
                 return $http({
                     method: 'GET',
                     url: server + '/someUrl',
-                    header: {authorization: "Bearer " + token  }
+                    //header: {authorization: "Bearer " + token  
+                    //}
 
                 })
+            },
+            postAddress: function (id) {
+                return $http.post('/api/Address/', id);
+            },
+            putAddress: function (item) {
+                return $http.put('/api/Address/', id);
+            },
+            deleteAddress: function (id) {
+                return $http({
+                    method: 'DELETE',
+                    url: '/api/Address/' + id
+                });
             }
         };
     }]);
