@@ -1,4 +1,4 @@
-﻿app.controller('homeCtrl', ['$scope', 'adalAuthenticationService', '$location', function ($scope, adalService, $location) {
+﻿app.controller('homeCtrl', <'$scope', 'adalAuthenticationService', '$location', function ($scope, adalService, $location) {
     $scope.login = function () {
         adalService.login();
     };

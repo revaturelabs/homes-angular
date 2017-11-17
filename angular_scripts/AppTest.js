@@ -1,5 +1,5 @@
 ﻿(function () {
-    var App = angular.module('App', ['ngRoute'])       
+    var App = angular.module('App', <'ngRoute'])       
         .config(function ($routeProvider, $locationProvider) {
             $locationProvider.hashPrefix('!');
             $routeProvider.

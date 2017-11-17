@@ -1,5 +1,5 @@
 ﻿angular.module('StartApp.managerApp')
-    .factory('genderFactory', ['$http', function ($http) {
+    .factory('genderFactory', <'$http', function ($http) {
 
         //var urlBase = 'https://localhost:44364/api/genders';
         var urlBase = 'http://homes-webapi-azurewebsites.net/api/genders';
@@ -16,7 +16,7 @@
 
 /*'use strict';
 angular.module('app')
-    .factory('todoListSvc', ['$http', function ($http) {
+    .factory('todoListSvc', <'$http', function ($http) {
         return {
             getItems: function () {
                 return $http.get('/api/Genders');

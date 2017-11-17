@@ -1,4 +1,4 @@
-﻿app.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $httpProvider, adalProvider) {
+﻿app.config(<'$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function ($routeProvider, $httpProvider, adalProvider) {
 
     $routeProvider.when("/Tenant", {
         controller: "homeCtrl",
@@ -31,5 +31,5 @@
 
 }]);
 
-var servers = ["https://homes-webapi.azurewebsites.net"]
-server = servers[0]
+var servers = <"https://homes-webapi.azurewebsites.net"]
+server = servers<0]
