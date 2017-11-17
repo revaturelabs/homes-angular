@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" sizes="96x96" href="../../Images/housing.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/housing.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Revature Housing</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -16,64 +15,43 @@
     <link href="../../Content/font-awesome.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css' />
     <link href="../../assets/css/themify-icons.css" rel="stylesheet" />
-
-</head>
-
-<body ng-app="App">
-    <div class="wrapper">
-
-        <sidebar></sidebar>
-
-        <div class="main-panel">
-            <navbar></navbar>
-
-            <div class="content">
-                <content></content>
-            </div>
-           
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Revature Housing
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav>
-                    <div class="copyright pull-right">
-                        &copy;
-                        <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by 1709 .Net Batch
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-    <!--Adding Angular Scripts-->
+    <!--Angular Scripts-->
     <script src="../../Scripts/angular.js"></script>
-    <script src="../../Scripts/angular-route.js"></script>
-    <script src="../../Scripts/angular-mocks.js"></script>
-
-    <!--Custom Scripts-->
-    <script src="../../angular_scripts/app.js"></script>
-    <script src="../../angular_scripts/route.js"></script>
-    <script src="../../angular_scripts/controllers.js"></script>
-    <script src="../../angular_scripts/tenant-directives.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="../../angular_scripts/directives/tenant-directives.js"></script>
+    <script src="../../angular_scripts/configs/tenant-config.js"></script>
     <!--   Core JS Files   -->
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <!--  Checkbox, Radio & Switch Plugins -->
-    <script src="../../assets/js/bootstrap-checkbox-radio.js"></script>
     <script src="../../assets/js/demo.js"></script>
     <script src="../../assets/js/paper-dashboard.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../../assets/js/bootstrap-notify.js"></script>
+</head>
 
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
+<body ng-app="tenantApp">
+    <div class="wrapper">
+        <sidebar></sidebar>
+            <div class="main-panel">
+                <navbar></navbar>
+                <div class="content">
+                    <div ui-view autoscroll="false"></div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="pull-left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Revature Housing
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                        <div class="copyright pull-right">
+                            &copy;
+                            <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by 1709 .Net Batch
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
 </body>
 </html>
