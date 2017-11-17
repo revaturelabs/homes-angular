@@ -1,5 +1,5 @@
 ﻿'use strict';
-    var App = angular.module('managerApp', ['ui.router', 'dir'])
+var App = angular.module('managerApp', ['ui.router', 'dir'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('/Dashboard/dashSupplies');
@@ -64,8 +64,22 @@
         .controller('DashTenantsController', function ($scope) {
 
         })
-        .controller('DashManagersController', function ($scope) {
-            $scope.demo = "This is the Dashboard Managers View"
+        .controller('DashManagersController', function ($scope, genderFactory) {
+            $scope.status;
+            $scope.genders;
+
+            getGenders();
+
+            function getGenders() {
+                genderFactory.getGenders()
+                    .then(function (response) {
+                        $scope.genders = response.data;
+                    }, function (error) {
+                        $scope.status = 'Unable to load Genders: ' + error.message;
+                    });
+            }
+
+
 
         })
         .controller('DashRecruitersController', function ($scope) {
