@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.factory('maintainanceFactory', ['$http', function ($http) {
+.factory('maintainanceSrvc', ['$http', function ($http) {
     return {
         getMaintainance : function(){
             return $http.get('/api/MaintainenceRequests');

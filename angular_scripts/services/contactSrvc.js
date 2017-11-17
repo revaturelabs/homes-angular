@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.factory('contactFactory', ['$http', function ($http) {
+.factory('contactSrvc', ['$http', function ($http) {
     return {
         putContact : function(item){
             return $http.put('/api/Contacts/', item);
