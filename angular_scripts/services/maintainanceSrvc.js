@@ -14,8 +14,8 @@ angular.module('app')
             return $http.post('/api/MaintainenceRequests/', id);
         },
 
-        putMaintainance: function (id) {
-            return $http.put('/api/MaintainenceRequests/', id);
+        putMaintainance: function (item) {
+            return $http.put('/api/MaintainenceRequests/', item);
         },
 
         deleteMaintainance : function(id){
