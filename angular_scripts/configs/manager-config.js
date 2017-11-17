@@ -1,5 +1,5 @@
 ﻿'use strict';
-    var App = angular.module('Manager_app', ['ui.router', 'dir'])
+    var App = angular.module('managerApp', ['ui.router', 'dir'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $urlRouterProvider.otherwise('/Dashboard/dashSupplies');
