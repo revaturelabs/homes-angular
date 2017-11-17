@@ -1,60 +1,65 @@
 ﻿'use strict';
-var App = angular.module('managerApp', ['ui.router', 'dir'])
+var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise('/Dashboard/dashSupplies');
+            $urlRouterProvider.otherwise('/Managers/Dashboard/dashSupplies');
             $stateProvider.
-                state('Dashboard', {
+                state('Managers.Dashboard', {
                     url: '/Dashboard',
-                    templateUrl: 'Partials/manager-dashboard.html'
+                    templateUrl: 'templates/Managers/Partials/manager-dashboard.html'
                 }).
-                state('Dashboard.dashSupplies', {
+                state('Managers.Dashboard.dashSupplies', {
                     url: '/dashSupplies',
-                    templateUrl: 'Partials/dashboard-tab-supplies.html'
+                    templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html'
                 }).
-                state('Dashboard.Maintenance', {
+                state('Managers.Dashboard.Maintenance', {
                     url: '/Maintenance',
-                    templateUrl: 'Partials/dashboard-tab-maintenance.html'
+                    templateUrl: 'templates/Managers/Partials/dashboard-tab-maintenance.html'
                 }).
-                state('Dashboard.Housing', {
+                state('Managers.Dashboard.Housing', {
                     url: '/Housing',
-                    templateUrl: 'Partials/dashboard-tab-housing.html'
+                    templateUrl: 'templates/Managers/Partials/dashboard-tab-housing.html'
                 }).
-                state('Supplies', {
+                state('Managers.Supplies', {
                     url: '/Supplies',
-                    templateUrl: 'Partials/manager-supplies.html',
+                    templateUrl: 'templates/Managers/Partials/manager-supplies.html',
                     controller: 'SuppliesController'
                 }).
-                state('Users', {
+                state('Managers.Users', {
                     url: '/Users',
-                    templateUrl: 'Partials/manager-users.html',
+                    templateUrl: 'templates/Managers/Partials/manager-users.html',
                     controller: 'UsersController'
                 }).
-                state('Users.Tenants', {
+                state('Managers.Users.Tenants', {
                     url: '/Tenants',
-                    templateUrl: 'Partials/users-tab-tenants.html',
+                    templateUrl: 'templates/Managers/Partials/users-tab-tenants.html',
                     controller: 'DashTenantsController'
                 }).
-                state('Users.Managers', {
+                state('Managers.Users.Managers', {
                     url: '/Managers',
-                    templateUrl: 'Partials/users-tab-managers.html',
+                    templateUrl: 'templates/Managers/Partials/users-tab-managers.html',
                     controller: 'DashManagersController'
                 }).
-                state('Users.Recruiters', {
+                state('Managers.Users.Recruiters', {
                     url: '/Recruiters',
-                    templateUrl: 'Partials/users-tab-recruiters.html',
+                    templateUrl: 'templates/Managers/Partials/users-tab-recruiters.html',
                     controller: 'DashRecruitersController'
                 }).
-                state('Users.Providers', {
+                state('Managers.Users.Providers', {
                     url: '/Providers',
-                    templateUrl: 'Partials/users-tab-providers.html',
+                    templateUrl: 'templates/Managers/Partials/users-tab-providers.html',
                     controller: 'DashProvidersController'
                 }).
-                state('Users.Batches', {
-                url: '/Batches',
-                templateUrl: 'Partials/users-tab-batches.html',
-                controller: 'DashProvidersController'
-            });
+                state('Managers.Users.Batches', {
+                    url: '/Batches',
+                    templateUrl: 'templates/Managers/Partials/users-tab-batches.html',
+                    controller: 'DashProvidersController'
+                }).
+                state('Managers.Profile', {
+                    url: '/Profile'
+                   // templateUrl: 'templates/Managers/Partials/users-tab-providers.html',
+                  //  controller: 'DashProvidersController'
+                });
                 
         })
         .controller('DashboardController', function ($scope) {
