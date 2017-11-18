@@ -1,19 +1,49 @@
-/*!
-    
- =========================================================
- * Paper Dashboard - v1.1.2
- =========================================================
- 
- * Product Page: http://www.creative-tim.com/product/paper-dashboard
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE.md)
- 
- =========================================================
- 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- 
- */
-/*      light colors - used for select dropdown         */
+h5{
+    margin-top: 0px;
+}
+
+/* STRUCTURE */
+
+.wrappers {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    margin-top: 65px;
+}
+
+#formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
 .ct-blue {
   stroke: #7A9E9F !important; }
 
@@ -795,7 +825,6 @@ hr {
 
 .form-control {
   background-color: #fffcf5;
-  border: medium none;
   border-radius: 4px;
   color: #66615b;
   font-size: 14px;
@@ -1469,7 +1498,7 @@ textarea.form-control {
   box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
   background-color: #FFFFFF;
   color: #252422;
-  margin-bottom: 20px;
+  margin-top:70px;
   position: relative;
   z-index: 1; }
   .card .image {
@@ -2762,3 +2791,139 @@ textarea.form-control {
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch; } }
+
+.display-flex {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.display-inline-grid {
+    display: inline-grid;
+}
+
+.webkit-box {
+    display: -webkit-box;
+}
+
+.border-left {
+    border-left: 1px solid #000;
+}
+
+h3 {
+    color: #2a2c36 !important;
+    margin: 0rem;
+}
+
+.text-bold {
+    font-weight: 600;
+    color: #2a2c36;
+}
+
+.padding-left-1 {
+    padding-left: 1rem;
+}
+
+.padding-right-1 {
+    padding-right: 1rem;
+}
+
+.padding-top-1 {
+    padding-top: 1rem;
+}
+
+.padding-bottom-1 {
+    padding-bottom: 1rem;
+}
+
+.padding-1 {
+    padding: 1rem;
+}
+
+.padding-2 {
+    padding: 2rem;
+}
+
+.padding-top-2 {
+    padding-top: 2rem;
+}
+
+.padding-bottom-2 {
+    padding-bottom: 2rem;
+}
+
+.no-paddings {
+    padding: 0rem !important;
+}
+
+.margin-top-2 {
+    margin-top: 2rem;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0rem;
+}
+
+.p-l-0 {
+    padding-left: 0rem;
+}
+
+.box-shadow {
+    box-shadow: 4px 4px 10px #ddd;
+}
+
+.background-white {
+    background: #FFF;
+}
+
+.main-card .white-card {
+    background-color: #fff;
+    border: 1px solid #d1d4d7;
+}
+
+.main-card .status .status-id {
+    padding: 2rem 0.6rem;
+}
+
+.main-card .status .status-text {
+    padding-left: 2rem;
+}
+
+    .main-card .status .status-text h4 {
+        font-weight: 800;
+        color: #FFFFFF;
+    }
+
+.main-card .status p {
+    font-weight: 700;
+    color: #FFF;
+}
+
+.main-card .status h2 {
+    font-weight: 700;
+    margin: 0rem;
+    line-height: 2.7rem;
+}
+
+.status.en-proceso {
+    background: #4dbd74;
+}
+
+    .status.en-proceso .status-text {
+        background: #41ac66;
+    }
+
+    .status.en-proceso h2 {
+        color: #3e975d;
+    }
+
+.status.prealertado {
+    background: #ff9100;
+}
+
+    .status.prealertado .status-text {
+        background: #ff6d00;
+    }
+
+    .status.prealertado h2 {
+        color: #e65100;
+    }
