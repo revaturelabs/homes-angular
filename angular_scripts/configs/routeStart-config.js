@@ -1,6 +1,6 @@
 ﻿'use strict';
 var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
-    .config( function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Login');
         $stateProvider.
@@ -11,7 +11,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
             }).
             state('Managers', {
                 url: '/Managers',
-                templateUrl: 'templates/Managers/Index2.html',
+                templateUrl: 'templates/Managers/Index.html',
                 controller: 'ManagerController'
             }).
             state('Providers', {
@@ -24,6 +24,8 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
                 templateUrl: 'Tenants/Index.html'
                 //  controller: 'HousingController'
             });
+        // use the HTML5 History API
+        $locationProvider.html5Mode(true);
     })
     .controller('LoginController', function ($scope, $state) {
         $scope.changeView = function () {

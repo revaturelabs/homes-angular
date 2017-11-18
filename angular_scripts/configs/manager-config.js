@@ -1,6 +1,6 @@
 ﻿'use strict';
 var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
-        .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
             $urlRouterProvider.otherwise('/Managers/Dashboard/dashSupplies');
             $stateProvider.
@@ -60,7 +60,8 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
                    // templateUrl: 'templates/Managers/Partials/users-tab-providers.html',
                   //  controller: 'DashProvidersController'
                 });
-                
+            // use the HTML5 History API
+            $locationProvider.html5Mode(true);
         })
         .controller('DashboardController', function ($scope) {
 

@@ -31,5 +31,5 @@
 
 }]);
 
-var servers = ["https://homes-webapi.azurewebsites.net"]
-server = servers[0]
+var servers = <"https://homes-webapi.azurewebsites.net"]
+server = servers<0]
