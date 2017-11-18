@@ -101,14 +101,5 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
     })
     .controller('UsersController', function ($scope) {
         $scope.demo = "This is the Users View"
-    })
-    .controller('AppController', function ($scope, $rootScope) {
-        function CallAddButton(name) {
-            $scope.demo = name;
-        };
-
-        $rootScope.$on("CallAddButton", function (event, name) {
-            CallAddButton(name);
-        });
     });
 
