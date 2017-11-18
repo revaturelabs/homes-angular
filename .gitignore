@@ -13,16 +13,16 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+<Dd]ebug/
+<Dd]ebugPublic/
+<Rr]elease/
+<Rr]eleases/
 x64/
 x86/
 bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
+<Bb]in/
+<Oo]bj/
+<Ll]og/
 *.zip
 
 # Visual Studio 2015 cache/options directory
@@ -31,16 +31,16 @@ bld/
 #wwwroot/
 
 # MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
+<Tt]est<Rr]esult*/
+<Bb]uild<Ll]og.*
 
 # NUNIT
 *.VisualState.xml
 TestResult.xml
 
 # Build Results of an ATL Project
-[Dd]ebugPS/
-[Rr]eleasePS/
+<Dd]ebugPS/
+<Rr]eleasePS/
 dlldata.c
 
 # .NET Core
@@ -102,7 +102,7 @@ $tf/
 
 # ReSharper is a .NET coding add-in
 _ReSharper*/
-*.[Rr]e[Ss]harper
+*.<Rr]e<Ss]harper
 *.DotSettings.user
 
 # JustCode is a .NET coding add-in
@@ -131,7 +131,7 @@ AutoTest.Net/
 .sass-cache/
 
 # Installshield output folder
-[Ee]xpress/
+<Ee]xpress/
 
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
@@ -147,7 +147,7 @@ DocProject/Help/html
 publish/
 
 # Publish Web Output
-*.[Pp]ublish.xml
+*.<Pp]ublish.xml
 *.azurePubxml
 # TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
@@ -187,9 +187,9 @@ _pkginfo.txt
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
-*.[Cc]ache
+*.<Cc]ache
 # but keep track of directories ending in .cache
-!*.[Cc]ache/
+!*.<Cc]ache/
 
 # Others
 ClientBin/
