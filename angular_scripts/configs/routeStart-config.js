@@ -1,5 +1,5 @@
 ﻿'use strict';
-var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
+var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp','StartApp.providerApp'])
     .config( function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Login');
@@ -16,7 +16,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
             }).
             state('Providers', {
                 url: '/Providers',
-                templateUrl: 'Providers/Index.html'
+                templateUrl: 'templates/Providers/Index.html'
               //  controller: 'HousingController'
             }).
             state('Tenants', {
@@ -29,7 +29,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
     })
     .controller('LoginController', function ($scope, $state) {
         $scope.changeView = function () {
-            $state.go('Managers.Dashboard.suppliesRequests');
+            $state.go('Providers.Dashboard');
         };
     })
   
