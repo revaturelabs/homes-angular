@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.factory('suppliesSrvc', <'$http', function ($http) {
+.factory('suppliesSrvc', ['$http', function ($http) {
     return {
         getItems : function(){
             return $http.get('/api/Supplies');

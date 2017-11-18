@@ -1,1 +1,1 @@
-﻿var app = angular.module('app', <'ngRoute', 'AdalAngular']);
+﻿var app = angular.module('app', ['ngRoute', 'AdalAngular']);

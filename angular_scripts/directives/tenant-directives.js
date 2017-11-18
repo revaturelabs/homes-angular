@@ -1,4 +1,4 @@
-﻿var app = angular.module('dir', <]);
+﻿var app = angular.module('dir', []);
 
 //Tenants Directives
 app.directive('sidebar', function () {

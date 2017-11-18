@@ -1,5 +1,5 @@
 ﻿'use strict';
-var App = angular.module('StartApp', <'ui.router', 'StartApp.managerApp'])
+var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Login');

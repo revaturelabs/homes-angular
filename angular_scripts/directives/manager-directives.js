@@ -1,4 +1,4 @@
-﻿var app = angular.module('dir', <]);
+﻿var app = angular.module('dir', []);
 
 //Manager Directives
 app.directive('managerSidebar', function () {

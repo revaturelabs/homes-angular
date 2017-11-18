@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('app')
-    .factory('addressesSrvc', <'$http', '$scope', function ($http, $scope) {
+    .factory('addressesSrvc', ['$http', '$scope', function ($http, $scope) {
         return {
             getAddresses: function () {
                 return $http.get(server + '/api/Address/');

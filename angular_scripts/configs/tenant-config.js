@@ -1,2 +1,2 @@
 ﻿'use strict';
-var App = angular.module('tenantApp', <'ui.router', 'dir'])
+var App = angular.module('tenantApp', ['ui.router', 'dir'])

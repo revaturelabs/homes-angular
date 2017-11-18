@@ -1,6 +1,6 @@
 'use strict';
 angular.module('app')
-.factory('todoListSvc', <'$http', function ($http) {
+.factory('todoListSvc', ['$http', function ($http) {
     return {
         getItems : function(){
             return $http.get('/api/HousingUnits');
