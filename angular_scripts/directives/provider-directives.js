@@ -4,14 +4,14 @@
 app.directive('sidebar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/provider-sidebar.html'        
+        templateUrl: 'templates/Providers/Partials/provider-sidebar.html'        
     };
 });
 
 app.directive('navbar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/provider-navbar.html'
+        templateUrl: 'templates/Providers/Partials/provider-navbar.html'
     };
 });
 
@@ -19,7 +19,7 @@ app.directive('navbar', function () {
 app.directive('profile', function () {
     return {
         restrict: 'E',
-        templateUrl: 'provider-profile.html'
+        templateUrl: 'templates/Providers/Partials/provider-profile.html'
     };
 });
 
