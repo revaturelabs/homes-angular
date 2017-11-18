@@ -29,7 +29,7 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp'])
     })
     .controller('LoginController', function ($scope, $state) {
         $scope.changeView = function () {
-            $state.go('Managers.Dashboard.dashSupplies');
+            $state.go('Managers.Dashboard.suppliesRequests');
         };
     })
   

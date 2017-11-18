@@ -1,6 +1,6 @@
 ﻿'use strict';
     var App = angular.module('providerApp', ['ui.router', 'dir'])
-        .config(function ($stateProvider, $urlRouterProvider) {
+        .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
             $urlRouterProvider.otherwise('/Dashboard');
             $stateProvider.
@@ -14,7 +14,8 @@
                     templateUrl: 'Partials/provider-housing.html',
                     controller: 'HousingController'
                 });
-
+            // use the HTML5 History API
+            $locationProvider.html5Mode(true);
         })
         .controller('DashboardController', function ($scope) {
 

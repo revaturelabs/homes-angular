@@ -1,25 +1,25 @@
 ﻿var app = angular.module('dir', []);
 
 //Manager Directives
-app.directive('sidebar', function () {
+app.directive('providerSidebar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/provider-sidebar.html'        
+        templateUrl: 'templates/Providers/Partials/provider-sidebar.html'        
     };
 });
 
-app.directive('navbar', function () {
+app.directive('providerNavbar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/provider-navbar.html'
+        templateUrl: 'templates/Providers/Partials/provider-navbar.html'
     };
 });
 
 
-app.directive('profile', function () {
+app.directive('providerProfile', function () {
     return {
         restrict: 'E',
-        templateUrl: 'provider-profile.html'
+        templateUrl: 'templates/Providers/Partials/Provider-profile.html'
     };
 });
 

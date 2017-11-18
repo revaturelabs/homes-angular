@@ -2,14 +2,14 @@
 var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise('/Managers/Dashboard/dashSupplies');
+        $urlRouterProvider.otherwise('/Managers/Dashboard/suppliesRequests');
         $stateProvider.
             state('Managers.Dashboard', {
                 url: '/Dashboard',
                 templateUrl: 'templates/Managers/Partials/manager-dashboard.html'
             }).
-            state('Managers.Dashboard.dashSupplies', {
-                url: '/dashSupplies',
+            state('Managers.Dashboard.suppliesRequests', {
+                url: '/suppliesRequests',
                 templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html'
             }).
             state('Managers.Dashboard.Maintenance', {
@@ -62,7 +62,6 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'dir'])
             });
         // use the HTML5 History API
         $locationProvider.html5Mode(true);
-
     })
     .controller('DashboardController', function ($scope) {
 
