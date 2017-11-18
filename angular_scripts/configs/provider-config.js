@@ -1,17 +1,16 @@
 ﻿'use strict';
-    var App = angular.module('providerApp', ['ui.router', 'dir'])
+var App = angular.module('StartApp.providerApp', ['ui.router', 'providerDir'])
         .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-            $urlRouterProvider.otherwise('/Dashboard');
+            $urlRouterProvider.otherwise('/Providers/Dashboard');
             $stateProvider.
-                state('Dashboard', {
+                state('Providers.Dashboard', {
                     url: '/Dashboard',
-                    templateUrl: 'Partials/provider-dashboard.html'
+                    templateUrl: 'templates/Partials/provider-dashboard.html'
                 }).
-
-                state('Housing', {
+                state('Providers.Housing', {
                     url:'/Housing',
-                    templateUrl: 'Partials/provider-housing.html',
+                    templateUrl: 'templates/Partials/provider-housing.html',
                     controller: 'HousingController'
                 });
             // use the HTML5 History API

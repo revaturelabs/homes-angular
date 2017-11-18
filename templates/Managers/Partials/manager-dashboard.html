@@ -5,19 +5,17 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-
                 <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a ui-sref=".dashSupplies">Supplies</a>
+                    <li ui-sref-active="active">
+                        <a ui-sref=".suppliesRequests">Supplies</a>
                     </li>
-                    <li>
+                    <li ui-sref-active="active">
                         <a ui-sref=".Maintenance">Maintenance</a>
                     </li>
 
-                    <li>
+                    <li ui-sref-active="active">
                         <a ui-sref=".Housing">Housing</a>
                     </li>
-
                 </ul>
                 <br>
                 <div ui-view autoscroll="false"></div>
