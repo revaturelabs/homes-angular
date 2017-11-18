@@ -1,24 +1,24 @@
-﻿var app = angular.module('dir', []);
+﻿var app = angular.module('tenantDir', []);
 
 //Tenants Directives
 app.directive('tenantSidebar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'templates/Tenants/Partials/tenant-sidebar.html's
+        templateUrl: 'templates/Tenants/Partials/tenant-sidebar.html'
     };
 });
 
 app.directive('tenantNavbar', function () {
     return {
         restrict: 'E',
-        templateUrl: 'partials/tenant-navbar.html'
+        templateUrl: 'templates/Tenants/Partials/tenant-navbar.html'
     };
 });
 
 app.directive('tenantProfile', function () {
     return {
         restrict: 'E',
-        templateUrl: 'tenant-profile.html'
+        templateUrl: 'templates/Tenants/Partials/tenant-profile.html'
     };
 });
 

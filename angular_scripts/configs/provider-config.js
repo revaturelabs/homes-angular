@@ -1,5 +1,5 @@
 ﻿'use strict';
-    var App = angular.module('providerApp', ['ui.router', 'dir'])
+    var App = angular.module('providerApp', ['ui.router', 'providerDir'])
         .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
             $urlRouterProvider.otherwise('/Dashboard');
