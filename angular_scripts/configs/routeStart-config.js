@@ -1,6 +1,6 @@
 ﻿'use strict';
-var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp', 'StartApp.providerApp', 'StartApp.tenantApp'])
-    .config( function ($stateProvider, $urlRouterProvider, $locationProvider) {
+var App = angular.module('StartApp', ['ui.router','StartApp.managerApp', 'StartApp.providerApp', 'StartApp.tenantApp'])
+    .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
 
         $urlRouterProvider.otherwise('/Login');
         $stateProvider.
@@ -12,7 +12,8 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp', 'Start
             state('Managers', {
                 url: '/Managers',
                 templateUrl: 'templates/Managers/Index.html',
-                controller: 'ManagerController'
+                controller: 'ManagerController',
+               
             }).
             state('Providers', {
                 url: '/Providers',
@@ -21,18 +22,19 @@ var App = angular.module('StartApp', ['ui.router', 'StartApp.managerApp', 'Start
             }).
             state('Tenants', {
                 url: '/Tenants',
-                templateUrl: 'Tenants/Index.html'
+                templateUrl: 'templates/Tenants/Index.html'
                 //  controller: 'HousingController'
             });
         // use the HTML5 History API
         $locationProvider.html5Mode(true);
+      
     })
-    .controller('LoginController', function ($scope, $state) {
+    .controller('LoginController',function ($scope, $state) {
         $scope.changeView = function () {
-            $state.go('Providers.Dashboard');
+            $state.go('Managers.Dashboard.suppliesRequests');
         };
+
     })
-  
     .controller('ManagerController', function ($scope, $log, $window) {
 
 
