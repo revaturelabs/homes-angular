@@ -38,6 +38,10 @@ h5{
     border-radius: 0 0 10px 10px;
 }
 
+.modal-backdrop {
+    z-index: 0 !important;
+}
+
 .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
