@@ -22,9 +22,7 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
             }).
             state('Managers', {
                 url: '/Managers',
-                templateUrl: 'templates/Managers/Index.html',
-                controller: 'ManagerController'
-               
+                templateUrl: 'templates/Managers/Index.html'
             }).
             state('Providers', {
                 url: '/Providers',
