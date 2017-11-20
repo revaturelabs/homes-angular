@@ -13,8 +13,6 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
             $httpProvider
         );
 
-
-
         $urlRouterProvider.otherwise('/Login');
         $stateProvider.
             state('Login', {

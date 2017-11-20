@@ -1,5 +1,5 @@
 ﻿'use strict';
-angular.module('StartApp.managerApp')
+angular.module('StartApp.providerApp')
     .controller("managerCtrl", function ($http, $scope) {
 
 
@@ -7,4 +7,4 @@ angular.module('StartApp.managerApp')
 
 
 
-});
+    });
