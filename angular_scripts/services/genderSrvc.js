@@ -4,12 +4,16 @@
         //var urlBase = 'https://localhost:44364/api/genders';
         var urlBase = 'http://homes-webapi-azurewebsites.net/api/genders';
         var genderFactory = {};
-
+        var item = "test1";
         genderFactory.getGenders = function () {
             return $http.get(urlBase);
         };
-
+        genderFactory.postGenders = function () {
+            var item = "test1";
+            return $http.post(urlBase, item);
+        }
         return genderFactory;
+
     }]);
 
 
