@@ -6,7 +6,8 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
         $stateProvider.
             state('Managers.Dashboard', {
                 url: '/Dashboard',
-                templateUrl: 'templates/Managers/Partials/manager-dashboard.html'
+                templateUrl: 'templates/Managers/Partials/manager-dashboard.html',
+                controller: 'managerCtrl'
             }).
             state('Managers.Dashboard.suppliesRequests', {
                 url: '/suppliesRequests',
