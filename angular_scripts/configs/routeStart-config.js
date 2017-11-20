@@ -55,7 +55,7 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
                     $state.go('Managers.Dashboard.suppliesRequests');
                 }
                 else {
-                    $state.go('Tenants');
+                    $state.go('Tenants.Dashboard');
                 }
                 //if (useristenant) {
                 //    $state.go('Tenants');
