@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <base href="/">
+    <title>Revature Housing</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/housing.png">
+    <!--  Fonts and icons     -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/themify-icons.css" rel="stylesheet" />
+    <!--Bootstrap CSS-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!--  Paper Dashboard core CSS    -->
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
+    <!--AngularJS Files   -->   
+    <script src="Scripts/angular.min.js"></script>
+    <!--Angular UI-Router for app routing-->
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <!--Angular Configuration Files-->
+
+    <script src="Scripts/adal.js"></script>
+    <script src="Scripts/adal-angular.js"></script>
+
+
+    <script src="angular_scripts/configs/manager-config.js"></script>
+    <script src="angular_scripts/configs/provider-config.js"></script>
+    <script src="angular_scripts/configs/tenant-config.js"></script>
+    <script src="angular_scripts/configs/routeStart-config.js"></script>
+    <!--Angular Directives-->
+    <script src="angular_scripts/directives/manager-directives.js"></script>
+    <script src="angular_scripts/directives/provider-directives.js"></script>
+    <script src="angular_scripts/directives/tenant-directives.js"></script>
+    <!--Angular Services-->
+    <script src="angular_scripts/services/genderSrvc.js"></script>
+
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>    
+    <script src="assets/js/paper-dashboard.js"></script> 
+    
+</head>
+
+<body ng-app="StartApp">
+      <div ui-view autoscroll="false"></div>
+</body>
+</html>
