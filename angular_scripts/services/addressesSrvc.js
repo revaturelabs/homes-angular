@@ -8,14 +8,14 @@ angular.module('app')
             getAddress: function (id) {
                 return $http({
                     method: 'GET',
-                    url: server + '/someUrl',
+                    url: server + '/someUrl'
                     //header: {authorization: "Bearer " + token  
                     //}
 
-                })
+                });
             },
             postAddress: function (item) {
-                return $http.post('/api/Address/', item;
+                return $http.post('/api/Address/', item);
             },
             putAddress: function (item) {
                 return $http.put('/api/Address/', item);

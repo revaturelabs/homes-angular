@@ -22,7 +22,7 @@
         {
             instance: 'https://login.microsoftonline.com/',
             tenant: 'andresgllive764.onmicrosoft.com/',
-            clientId: 'ec61b27c-7bc4-4523-9eac-0605a5559238',
+            clientId: 'f80f50bd-d1ac-4545-95fb-ce884f682fda',
             popUp: false
             //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
         },
@@ -31,5 +31,5 @@
 
 }]);
 
-var servers = ["https://homes-webapi.azurewebsites.net"]
-server = servers[0]
+var servers = ["https://homes-webapi.azurewebsites.net"];
+server = servers[0];

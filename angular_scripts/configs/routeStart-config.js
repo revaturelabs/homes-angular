@@ -1,6 +1,19 @@
 ﻿'use strict';
-var App = angular.module('StartApp', ['ui.router','StartApp.managerApp', 'StartApp.providerApp', 'StartApp.tenantApp'])
-    .config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
+var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.managerApp', 'StartApp.providerApp', 'StartApp.tenantApp'])
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'adalAuthenticationServiceProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider,$locationProvider, adalProvider, $httpProvider) {
+
+        adalProvider.init(
+            {
+                instance: 'https://login.microsoftonline.com/',
+                tenant: 'andresgllive764.onmicrosoft.com/',
+                clientId: 'f80f50bd-d1ac-4545-95fb-ce884f682fda',
+                popUp: false
+                //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
+            },
+            $httpProvider
+        );
+
+
 
         $urlRouterProvider.otherwise('/Login');
         $stateProvider.
@@ -12,7 +25,7 @@ var App = angular.module('StartApp', ['ui.router','StartApp.managerApp', 'StartA
             state('Managers', {
                 url: '/Managers',
                 templateUrl: 'templates/Managers/Index.html',
-                controller: 'ManagerController',
+                controller: 'ManagerController'
                
             }).
             state('Providers', {
@@ -28,13 +41,37 @@ var App = angular.module('StartApp', ['ui.router','StartApp.managerApp', 'StartA
         // use the HTML5 History API
         $locationProvider.html5Mode(true);
       
-    })
-    .controller('LoginController',function ($scope, $state) {
+    }])
+    .controller('LoginController', ['$scope', '$state', 'adalAuthenticationService', '$location', function($scope, $state, adalService, $location) {
         $scope.changeView = function () {
             $state.go('Managers.Dashboard.suppliesRequests');
         };
+        $scope.reroute = function () {
+            if ($scope.userInfo.isAuthenticated === false) {
+                console.log("saying hi");
+            }
+            else {
+                if ($scope.userInfo.profile.name === "Manager") {
+                    $state.go('Managers');
+                }
+                else {
+                    $state.go('Tenants');
+                }
+                //if (useristenant) {
+                //    $state.go('Tenants');
+                //}
+                //if (userisprovider) {
+                //    $state.go('Providers');
+                //}
+                console.log($scope.userInfo);
+            }
+        };
+        $scope.adallogin = function () {
+            console.log("hello");
+            adalService.login();
+        };
 
-    })
+    }])
     .controller('ManagerController', function ($scope, $log, $window) {
 
 
@@ -139,10 +176,10 @@ var App = angular.module('StartApp', ['ui.router','StartApp.managerApp', 'StartA
 
     })
     .controller('HousingController', function ($scope) {
-        $scope.demo = "This is the Housing View"
+        $scope.demo = "This is the Housing View";
     })
     .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View"
+        $scope.demo = "This is the Users View";
     })
     .controller('AppController', function ($scope, $rootScope) {
         function CallAddButton(name) {
