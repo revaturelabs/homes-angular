@@ -62,44 +62,6 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
             });
         // use the HTML5 History API
         $locationProvider.html5Mode(true);
-    })
-    .controller('DashboardController', function ($scope) {
-
-    })
-
-    .controller('DashTenantsController', function ($scope) {
-
-    })
-
-    .controller('DashManagersController', function ($scope, genderFactory) {
-        $scope.status;
-        $scope.genders;
-
-        getGenders();
-
-        function getGenders() {
-            genderFactory.getGenders()
-                .then(function (response) {
-                    $scope.genders = response.data;
-                }, function (error) {
-                    $scope.status = 'Unable to load Genders: ' + error.message;
-                });
-        }
-
-
-    })
-    .controller('DashRecruitersController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Recruiters View"
-    })
-    .controller('DashProvidersController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Providers View"
-    })
-    .controller('SuppliesController', function ($scope) {
-        $scope.demo = "This is the Supplies View"
-    })
-    .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View"
     });
+ 
 
