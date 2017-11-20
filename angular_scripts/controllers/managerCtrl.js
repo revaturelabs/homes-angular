@@ -75,7 +75,7 @@ angular.module('StartApp.managerApp')
         //    ***** Function that send the id of gender that wants to get *****
         //  function getGenders(id) {
         //    genderFactory.getGenders(id)
-        //        .then(function (response) {
+        //        .then( function (response) {
         //            $scope.genders = response.data;
         //        }, function (error) {
         //            $scope.status = 'Unable to load Genders: ' + error.message;
