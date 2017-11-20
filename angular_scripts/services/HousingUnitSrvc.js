@@ -1,7 +1,8 @@
-﻿angular.module('StartApp.managerApp')
+﻿//Completed - Untested 
+angular.module('StartApp.managerApp')
     .factory('housingUnitFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/HousingUnits';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits';
         var housingUnitFactory = {};
         housingUnitFactory.getHousingUnits = function () {
             return $http.get(urlBase);
@@ -24,9 +25,31 @@
         housingUnitFactory.getHousingUnitWithTenants = function (id) {
             return $http.get(urlBase + "/WithTenants/" + id);
         };
-        housingUnitFactory.postHousingUnit = function (item) {
-            return $http.post(urlBase, item);
+        housingUnitFactory.postHousingUnit = function (item){
+           $http({
+                method: 'POST',
+                dataType: 'json',
+                url: urlBase,
+                data: {item},
+                headers: { "Content-Type": "application/json" }
+            }).then(function (response) {
+                return response;
+            });
         };
+        housingUnitFactory.putHousingUnit = function (id, item) {
+            $http({
+                method: 'PUT',
+                dataType: 'json',
+                url: urlBase + '/' + item.housingUnitId,
+                data: {item},
+                headers: { "Content-Type": "application/json" }
+            }).then(function (response) {
+                return response;
+            });
+        };       
+        housingUnitFactory.deleteHousingUnits = function (id) {
+            return $http.delete(urlBase + '/' + id);  
+
         return housingUnitFactory;
 
     }]);
