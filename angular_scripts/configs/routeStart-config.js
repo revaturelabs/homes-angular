@@ -41,9 +41,6 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
       
     }])
     .controller('LoginController', ['$scope', '$state', 'adalAuthenticationService', '$location', function($scope, $state, adalService, $location) {
-        //$scope.changeView = function () {
-        //    $state.go('Managers.Dashboard.suppliesRequests');
-        //};
         $scope.reroute = function () {
             if ($scope.userInfo.isAuthenticated === false) {
                 console.log("saying hi");
@@ -178,14 +175,5 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
     })
     .controller('UsersController', function ($scope) {
         $scope.demo = "This is the Users View";
-    })
-    .controller('AppController', function ($scope, $rootScope) {
-        function CallAddButton(name) {
-            $scope.demo = name;
-        };
-
-        $rootScope.$on("CallAddButton", function (event, name) {
-            CallAddButton(name);
-        });
     });
 
