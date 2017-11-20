@@ -1,10 +1,71 @@
-﻿'use strict';
+﻿//COMPLETED - Need to review.
+
+'use strict';
 angular.module('StartApp.managerApp')
     .controller("managerCtrl", function ($http, $scope) {
 
 
     })
-    .controller('DashManagersController', function ($scope, genderFactory) {
+    
+    .controller('DashManagersController', function ($scope, managementsFactory) {
+
+        $scope.status;
+        $scope.managers;
+        $scope.postManager;
+        $scope.putManager;
+        $scope.deleteManager;
+
+        getManagers();
+
+        function getManagers() {
+            managementsFactory.getManagers()
+                .then(function (response) {
+                    $scope.managers = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Managers: ' + error.message;
+                });
+
+        };
+
+        $scope.getManagersById = function getManagersById(id) {
+            managementsFactory.getManagersById(id)
+                .then(function (response) {
+                    $scope.managersById = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Manager by Id: ' + error.message;
+                });
+
+        };
+
+        $scope.postManager = function postManager(managers) {
+            managementsFactory.postManager(managers)
+                .then(function (response) {
+                    $scope.managers = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to Post Manager: ' + error.message;
+                });
+        };
+
+        $scope.putManager = function putManager(manager) {
+            managementsFactory.putManager(manager)
+                .then(function (response) {
+                    $scope.manager = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to Put Manager: ' + error.message;
+                });
+        };
+
+        $scope.deleteManager = function deleteManager(id) {
+            managementsFactory.deleteManager(id)
+                .then(function (response) {
+                    $scope.manager = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to Delete Manager: ' + error.message;
+                });
+        };
+
+
+    })
       //  $scope.status;
       //  $scope.genders;
         
@@ -14,7 +75,7 @@ angular.module('StartApp.managerApp')
         //    ***** Function that send the id of gender that wants to get *****
         //  function getGenders(id) {
         //    genderFactory.getGenders(id)
-        //        .then(function (response) {
+        //        .then( function (response) {
         //            $scope.genders = response.data;
         //        }, function (error) {
         //            $scope.status = 'Unable to load Genders: ' + error.message;
@@ -41,7 +102,8 @@ angular.module('StartApp.managerApp')
       //  }
 
 
-    })
+    //})
+
     .controller('DashboardController', function ($scope) {
 
     })
