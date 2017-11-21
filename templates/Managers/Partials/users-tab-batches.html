@@ -1,4 +1,4 @@
-﻿<center><h3>Batches</h3></center>
+﻿<center><h3>Batch Management</h3></center>
 <div class="col-md-8 col-md-offset-2">
     <br>
     <div class="panel panel-default">
@@ -46,7 +46,6 @@
     </form>
 </div>
 
-
 <!--Submit Modal-->
 <div class="modal fade" id="assign" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
@@ -66,7 +65,7 @@
                 <div class="form-group">
 
 
-                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" data-dismiss="modal" data-toggle="modal" data-target="#select">Select Existing Batch</button>
+                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" data-dismiss="modal" data-toggle="modal" data-target="#select" ng-click="getBatches()">Select Existing Batch</button>
 
                 </div>
             </div>
@@ -79,26 +78,27 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <br /><br />
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title custom_align" id="Heading">New Batch Info</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Batch Name">
+                    <input class="form-control " type="text" placeholder="Batch Name" ng-model="batchName">
                 </div>
                 <div class="form-group">
 
-                    <input class="form-control " type="text" placeholder="Start Date: yyyy/mm/dd">
+                    <input class="form-control " type="text" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate">
                 </div>
                 <div class="form-group">
 
 
-                    <input class="form-control " type="text" placeholder="End Date: yyyy/mm/dd">
+                    <input class="form-control " type="text" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
 
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Create</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="postBatch()"><span class="glyphicon glyphicon-ok-sign"></span>Create</button>
             </div>
         </div>
     </div>
@@ -108,27 +108,22 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <br /><br />
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title custom_align" id="Heading">Select Batch</h4>
             </div>
             <div class="modal-body">
-                <div class="dropdown">
-                    <button class="btn btn-warning dropdown-toggle form-control" type="button" data-toggle="dropdown">
-                        Select Batch
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">.NET</a></li>
-                        <li><a href="#">JAVA</a></li>
-                        <li><a href="#">Wateka</a></li>
-                    </ul>
-                </div>
-
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
-                </div>
+                <select size="1" class="alert-warning form-control">
+                    <option value="this" selected="selected"></option>
+                    <option ng-repeat="b in batches" value="{{b.name}}">{{b.name}}</option>
+                </select>
             </div>
-
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
+            </div>
         </div>
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
 </div>
+
