@@ -7,20 +7,20 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
             state('Tenants.Dashboard', {
                 url: '/TenantDashboard',
                 templateUrl: 'templates/Tenants/Partials/tenant-dashboard.html',
-                controller: 'TenantDashboardController'
+                controller: 'TenantsDashboardController'
             }).
             state('Tenants.Maintenance', {
-                url: '/TenantMaintenance',
+                url: '/TenantsMaintenance',
                 templateUrl: 'templates/Tenants/Partials/tenant-maintenance.html',
                 controller: 'TenantMaintenanceController'
             }).
             state('Tenants.Supplies', {
-            url: '/TenantSupplies',
+            url: '/TenantsSupplies',
             templateUrl: 'templates/Tenants/Partials/tenant-supplies.html',
             controller: 'TenantSuppliesController'
             }).
             state('Tenants.Profile', {
-                url: '/TenantProfile',
+                url: '/TenantsProfile',
                 templateUrl: 'templates/Tenants/Partials/tenant-profile.html',
                 controller: 'TenantProfileController'
             });

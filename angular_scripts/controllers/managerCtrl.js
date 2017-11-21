@@ -42,7 +42,8 @@ angular.module('StartApp.managerApp')
     .controller('DashHousingController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"
-    }).controller('DashBatchesController', function ($scope, batchesFactory) {
+    })
+    .controller('DashBatchesController', function ($scope, batchesFactory) {
 
         $scope.demo = "This is the Dashboard Providers View"
 
