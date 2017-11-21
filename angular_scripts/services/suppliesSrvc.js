@@ -1,7 +1,7 @@
 
 //COMPLETED - NEED REVIEW
 angular.module('StartApp.managerApp')
-    .factory('SuppliesFactory', ['$http', function ($http) {
+    .factory('suppliesFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/Supplies';
 
@@ -38,6 +38,7 @@ angular.module('StartApp.managerApp')
                 return response;
             });
         };
+
         suppliesFactory.deleteSupply = function (id) {
             return $http.delete(urlBase + "/" + id)
         };

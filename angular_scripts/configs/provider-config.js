@@ -16,18 +16,11 @@ var App = angular.module('StartApp.providerApp', ['ui.router', 'providerDir'])
             // use the HTML5 History API
             $locationProvider.html5Mode(true);
         })
-        .controller('DashboardController', function ($scope) {
+        .controller('ProvidersDashboardController', function ($scope) {
 
-        })
-
-        .controller('DashTenantsController', function ($scope) {
-
-        })      
-        .controller('HousingController', function ($scope) {
+        })    
+        .controller('ProviderHousingController', function ($scope) {
             $scope.demo = "This is the Housing View"
-        })
-        .controller('UsersController', function ($scope) {
-            $scope.demo = "This is the Users View"
         })
         .controller('AppController', function ($scope, $rootScope) {
             function CallAddButton(name) {
