@@ -1,17 +1,17 @@
 ﻿'use strict';
-var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
+var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir', 'angularUtils.directives.dirPagination'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Managers/Dashboard/suppliesRequests');
         $stateProvider.
             state('Managers.Dashboard', {
                 url: '/Dashboard',
-                templateUrl: 'templates/Managers/Partials/manager-dashboard.html',
-                controller: 'managerCtrl'
+                templateUrl: 'templates/Managers/Partials/manager-dashboard.html'
             }).
             state('Managers.Dashboard.suppliesRequests', {
                 url: '/suppliesRequests',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html',
+                controller:'listdata'
             }).
             state('Managers.Dashboard.Maintenance', {
                 url: '/Maintenance',
