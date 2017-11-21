@@ -1,14 +1,24 @@
 
 //COMPLETED - NEED REVIEW
 angular.module('StartApp.managerApp')
-    .factory('SuppliesFactory', ['$http', function ($http) {
+    .factory('suppliesFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/Supplies';
 
         var suppliesFactory = {};
 
         suppliesFactory.getSupplies = function () {
-            return $http.get(urlBase);
+            //console.log('Bearer ' + sessionStorage['adal.access.token.key' + cid]);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         suppliesFactory.getSupply = function (id) {
@@ -38,6 +48,7 @@ angular.module('StartApp.managerApp')
                 return response;
             });
         };
+
         suppliesFactory.deleteSupply = function (id) {
             return $http.delete(urlBase + "/" + id)
         };

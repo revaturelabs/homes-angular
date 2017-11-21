@@ -48,8 +48,8 @@ angular.module('StartApp.managerApp')
             });
         };       
         housingUnitFactory.deleteHousingUnits = function (id) {
-            return $http.delete(urlBase + '/' + id);  
-
+            return $http.delete(urlBase + '/' + id);
+        };
         return housingUnitFactory;
 
     }]);

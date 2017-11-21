@@ -15,7 +15,7 @@ angular.module('StartApp.managerApp')
 
     })
 
-    .controller('DashManagersController', function ($scope, providerFactory) {
+    .controller('ProvidersDashController', function ($scope, providerFactory) {
 
         $scope.status;
         $scope.addrress;
@@ -90,8 +90,8 @@ angular.module('StartApp.managerApp')
 
         $scope.demo = "This is the Dashboard Providers View"
     })
-    .controller('SuppliesController', function ($scope) {
-        $scope.demo = "This is the Supplies View"
+    .controller('ProviderSuppliesController', function ($scope) {
+        $scope.demo = "This is the Provider Supplies View"
     })
     .controller('UsersController', function ($scope) {
         $scope.demo = "This is the Users View"
