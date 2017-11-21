@@ -6,16 +6,54 @@ angular.module('StartApp.managerApp')
      var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
 
+     //maintenanceRequestsFactory.getMaintenanceRequests = function () {
+     //    return $http.get(urlBase);
+     //};
      maintenanceRequestsFactory.getMaintenanceRequests = function () {
-         return $http.get(urlBase);
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+
      };
 
+     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
+     //    return $http.get(urlBase + '/' + id);
+     //};
      maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
-         return $http.get(urlBase + '/' + id);
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+
      };
 
+     //maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
+     //    return $http.get(urlBase + '/ByTenant/' + id);
+     //};
      maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
-         return $http.get(urlBase + '/ByTenant/' + id);
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByTenant/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         }).then(function (response) {
+             return response;
+         });
+
      };
 
      maintenanceRequestsFactory.putMaintenanceRequest = function (item) {
@@ -46,9 +84,17 @@ angular.module('StartApp.managerApp')
             });
      };
 
-     maintenanceRequestsFactory.deleteMaintainanceRequest = function (id) {
-         return $http.delete(urlBase + '/' + id);
-     };  
+     //maintenanceRequestsFactory.deleteMaintainanceRequest = function (id) {
+     //    return $http.delete(urlBase + '/' + id);
+     //};  
+     maintenanceRequestsFactory.deleteMaintenanceRequest = function (id) {
+         $http({
+             method: 'DELETE',
+             dataType: 'json',
+             url: urlBase + '/' + id,
+             headers: { "Content-Type": "application/json" }
+         })
+     };
 
      return maintenanceRequestsFactory;
       

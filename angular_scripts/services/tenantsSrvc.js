@@ -123,10 +123,13 @@ angular.module('StartApp.managerApp')
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
+                data: { tenant },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
+            }).then(function (response) {
+                return response;
             });
 
         };
@@ -146,10 +149,13 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + "/" + tenant.tenantId,
+                data: { tenant },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
+            }).then(function (response) {
+                return response;
             });
 
         };
