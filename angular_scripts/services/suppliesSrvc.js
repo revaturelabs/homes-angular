@@ -25,13 +25,16 @@ angular.module('StartApp.managerApp')
             return $http.get(urlBase + "/" + id);
         };
 
-        suppliesFactory.postSupply = function (supply) {
+        suppliesFactory.postSupply = function (supplyName) {
             $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { supply },
-                headers: { "Content-Type": "application/json" }
+                data: { "supplyName": supplyName },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -42,15 +45,26 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + "/" + supply.supplyId,
-                data: { tenant },
-                headers: { "Content-Type": "application/json" }
+                data: { supply },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
             }).then(function (response) {
                 return response;
             });
         };
 
         suppliesFactory.deleteSupply = function (id) {
-            return $http.delete(urlBase + "/" + id)
+            $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + "/" + id,         
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
+            }).then(function (response) {
+                return response;
+            });
         };
 
         return suppliesFactory;
