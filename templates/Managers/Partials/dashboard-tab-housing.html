@@ -33,12 +33,7 @@
                         <span class="fa fa-sort" ng-init="sortKey=='phoneNumber'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
-                <th ng-click="sort('status')">
-                    <center>
-                        Status
-                        <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
-                    </center>
-                </th>
+            
             </tr>
 
 
@@ -112,14 +107,7 @@
     <!-- /.modal-dialog -->
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('#datatable').dataTable();
 
-        $("[data-toggle=tooltip]").tooltip();
-
-    });
-</script>
 
 
 
