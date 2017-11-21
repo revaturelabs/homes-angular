@@ -24,25 +24,52 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         }
     })
-    .controller('DashMaintenanceController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Providers View"
-    })
+    .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
+        $scope.populate = function () {
+            //console.log(maintenanceSrvc);
+            maintenanceRequestsSrvc.getMaintenanceRequests().then(
+                function (success) {
+                    console.log('success', success);
+                    $scope.maintenanceRequests = success.data;
+                },
+                function (error) {
+                    console.log('error', error);
+                }
+            );
+        };
+        $scope.demo = "This is the Dashboard Providers View";
+    }])
     .controller('DashHousingController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"
-    }).controller('DashBatchesController', function ($scope) {
+    })
+    .controller('DashBatchesController', function ($scope, batchesFactory) {
 
         $scope.demo = "This is the Dashboard Providers View"
+
+        getBatches();
+
+        function getBatches() {
+            batchesFactory.getBatches()
+                .then(function (response) {
+                    $scope.batches = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+
+        };
+
+        
+
     })
-    .controller('SuppliesController', function ($scope, SuppliesFactory) {
+    .controller('SuppliesController', function ($scope, suppliesFactory) {
 
-        $scope.demo = "This is the Supplies View"
-
+        $scope.demo = "This is the Supplies View My G";
+       
         getSupplies();
-
+        
         function getSupplies() {
-            SuppliesFactory.getSupplies()
+            suppliesFactory.getSupplies()
                 .then(function (response) {
                     $scope.supplies = response.data;
                 }, function (error) {
@@ -126,15 +153,22 @@ angular.module('StartApp.managerApp')
         $scope.demo = "This is the Dashboard Providers View"
     })
     .controller('UsersBatchesController', function ($scope, batchesFactory) {
+        //batch info
         $scope.batchName;
         $scope.startDate;
         $scope.endDate;
+        //contact info
+        //$scope.contactFirstName;
+        //$scope.contactLastName;
+        //$scope.email;
+        //$scope.phone;
+        //call batch services
         var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
         $scope.status;
         $scope.batches;
         
         $scope.getBatches = function getBatches() {
-            batchesFactory.getBatches()
+            batchesFactory.getBatches(batch)
                 .then(function (response) {
                     $scope.batches = response.data;
                 }, function (error) {
@@ -150,6 +184,25 @@ angular.module('StartApp.managerApp')
                 });
             console.log($scope.batchName);
         }
+        //call contact services
+        //$scope.getContacts = function getContact() {
+        //    contactFactory.getContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to load Batches: ' + error.message;
+        //        });
+        //}
+        //$scope.postContacts = function postContact(contact) {
+        //    contactFactory.postContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to insert Batch: ' + error.message;
+        //        });
+        //    console.log($scope.batchName);
+        //}
+
     });
 
 

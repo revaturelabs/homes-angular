@@ -10,12 +10,7 @@
 
 'use strict';
 angular.module('StartApp.managerApp')
-    .controller("provierCtrl", function ($http, $scope) {
-
-
-    })
-
-    .controller('DashManagersController', function ($scope, providerFactory) {
+    .controller('ProvidersDashboardController', function ($scope, providerFactory) {
 
         $scope.status;
         $scope.addrress;
@@ -74,25 +69,6 @@ angular.module('StartApp.managerApp')
 
     })
 
-    .controller('DashboardController', function ($scope) {
+    .controller('ProvidersHousingController', function ($scope) {
 
-    })
-
-    .controller('DashTenantsController', function ($scope) {
-
-    })
-
-    .controller('DashRecruitersController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Recruiters View"
-    })
-    .controller('DashProvidersController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Providers View"
-    })
-    .controller('SuppliesController', function ($scope) {
-        $scope.demo = "This is the Supplies View"
-    })
-    .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View"
     });
