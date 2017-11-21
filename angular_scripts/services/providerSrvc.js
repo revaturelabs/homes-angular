@@ -52,7 +52,7 @@ angular.module('StartApp.managerApp')
             return providerFactory;
 
         }
-    }]);
+    ]);
 
 //'use strict';
 //angular.module('app')
