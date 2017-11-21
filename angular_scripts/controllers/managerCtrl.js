@@ -120,9 +120,23 @@ angular.module('StartApp.managerApp')
 
         $scope.demo = "This is the Dashboard Providers View"
     })
-    .controller('SuppliesController', function ($scope) {
+    .controller('SuppliesController', function ($scope, SuppliesFactory) {
+
         $scope.demo = "This is the Supplies View"
+
+        getSupplies();
+
+        function getSupplies() {
+            SuppliesFactory.getSupplies()
+                .then(function (response) {
+                    $scope.supplies = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Supplies: ' + error.message;
+                });
+
+        };
     })
     .controller('UsersController', function ($scope) {
         $scope.demo = "This is the Users View"
+     
     });
