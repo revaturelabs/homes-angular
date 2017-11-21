@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="b in batches">
+            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td><center><h3>{{b.name}}</h3></center></td>                
             </tr>
         </tbody>
