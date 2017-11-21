@@ -14,9 +14,9 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
                 controller: 'MaintenanceController'
             }).
             state('Tenants.Supplies', {
-            url: '/Supplies',
+            url: '/TenantSupplies',
             templateUrl: 'templates/Tenants/Partials/tenant-supplies.html',
-            controller: 'SuppliesController'
+            controller: 'TenantSuppliesController'
             }).
             state('Tenants.Profile', {
                 url: '/Profile',
@@ -32,7 +32,7 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
     .controller('MaintenanceController', function ($scope) {
         $scope.demo = "Inside Maintenance"
     })
-    .controller('SuppliesController', function ($scope) {
+    .controller('TenantSuppliesController', function ($scope) {
         $scope.demo = "Inside Supplies"
     })
     .controller('ProfileController', function ($scope) {

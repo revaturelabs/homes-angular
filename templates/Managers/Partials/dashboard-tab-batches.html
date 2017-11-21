@@ -1,3 +1,90 @@
-﻿<div ng-repeat="b in batches">
-    <h2>{{b.name}}</h2>
+﻿<center><h3>Batches</h3></center>
+<br />
+<div class="bs-component">
+    <form class="form-inline">
+        <div class="form-group" style="float:right; margin-bottom:15px;">
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+    </form>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th ng-click="sort('BatchName')">
+                    <center>
+                        Batch Name
+                        <span class="fa fa-sort" ng-init="sortKey=='BatchName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>            
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="b in batches">
+                <td><center><h3>{{b.name}}</h3></center></td>                
+            </tr>
+        </tbody>
+    </table>
+    <dir-pagination-controls max-size="15"
+                             direction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
 </div>
+
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-control " type="text" placeholder="Tiger Nixon">
+                </div>
+                <div class="form-group">
+
+                    <input class="form-control " type="text" placeholder="System Architect">
+                </div>
+                <div class="form-group">
+
+
+                    <input class="form-control " type="text" placeholder="Edinburgh">
+
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title custom_align"> Delete this entry</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+

@@ -42,18 +42,33 @@ angular.module('StartApp.managerApp')
     .controller('DashHousingController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"
-    }).controller('DashBatchesController', function ($scope) {
+    }).controller('DashBatchesController', function ($scope, batchesFactory) {
 
         $scope.demo = "This is the Dashboard Providers View"
+
+        getBatches();
+
+        function getBatches() {
+            batchesFactory.getBatches()
+                .then(function (response) {
+                    $scope.batches = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+
+        };
+
+        
+
     })
-    .controller('SuppliesController', function ($scope, SuppliesFactory) {
+    .controller('SuppliesController', function ($scope, suppliesFactory) {
 
-        $scope.demo = "This is the Supplies View"
-
+        $scope.demo = "This is the Supplies View My G";
+       
         getSupplies();
-
+        
         function getSupplies() {
-            SuppliesFactory.getSupplies()
+            suppliesFactory.getSupplies()
                 .then(function (response) {
                     $scope.supplies = response.data;
                 }, function (error) {
@@ -137,15 +152,16 @@ angular.module('StartApp.managerApp')
         $scope.demo = "This is the Dashboard Providers View"
     })
     .controller('UsersBatchesController', function ($scope, batchesFactory) {
-        $scope.batchName;
-        $scope.startDate;
-        $scope.endDate;
+        //$scope.batchName;
+        //$scope.startDate;
+        //$scope.endDate;
+        $scope.name = "Alexie";
         var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
         $scope.status;
         $scope.batches;
         
         $scope.getBatches = function getBatches() {
-            batchesFactory.getBatches()
+            batchesFactory.getBatches(batch)
                 .then(function (response) {
                     $scope.batches = response.data;
                 }, function (error) {
