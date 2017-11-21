@@ -24,13 +24,13 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         }
     })
-    .controller('DashMaintenanceController', ['maintainanceSrvc', '$scope', function (maintainanceSrvc, $scope) {
+    .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
         $scope.populate = function () {
-            //console.log(maintainanceSrvc);
-            maintainanceSrvc.getMaintainances().then(
+            //console.log(maintenanceSrvc);
+            maintenanceRequestsSrvc.getMaintenanceRequests().then(
                 function (success) {
                     console.log('success', success);
-                    $scope.maintainanceRequests = success.data;
+                    $scope.maintenanceRequests = success.data;
                 },
                 function (error) {
                     console.log('error', error);
