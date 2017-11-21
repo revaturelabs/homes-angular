@@ -6,22 +6,72 @@ angular.module('StartApp.managerApp')
         var providerFactory = {};
 
         providerFactory.getProvider = function (id) {
-            return $http.get(urlBase + "/" + id)
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
         providerFactory.getProviders = function () {
-            return $http.get(urlBase);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
         providerFactory.getProviderWithContact = function (id) {
-            return $http.get(urlBase + "/WithContact/" + id)
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/WithContact/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
         providerFactory.getProvidersWithContacts = function () {
-            return $http.get(urlBase + "/WithContact");
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/WithContact",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
         providerFactory.getProviderWithUnits = function (id) {
-            return $http.get(urlBase + "/WithUnits/" + id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/WithUnits/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
         providerFactory.getProvidersWithUnits = function () {
-            return $http.get(urlBase + "/WithUnits");
+            //return $http.get(urlBase + "/WithUnits");
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/WithUnits",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
 
         providerFactory.postProvider = function (item) {
@@ -30,7 +80,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { item },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -41,13 +94,25 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase + '/' + item.providerId,
                 data: { item },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
         };
         providerFactory.deleteProviders = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            //return $http.delete(urlBase + '/' + id);
+            return $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + "/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         }
             return providerFactory;
 
