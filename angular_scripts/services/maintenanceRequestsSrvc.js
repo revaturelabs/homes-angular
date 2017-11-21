@@ -1,24 +1,24 @@
 //COMPLETED - NEED A REVIEW
 
 angular.module('StartApp.managerApp')
-    .factory('maintainanceFactory', ['$http', function ($http) {
+    .factory('maintenanceRequestsSrvc', ['$http', function ($http) {
 
      var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
 
-     maintenanceRequestsFactory.getMaintainance = function () {
+     maintenanceRequestsFactory.getMaintenanceRequests = function () {
          return $http.get(urlBase);
      };
 
-     maintenanceRequestsFactory.getMaintainance = function (id) {
+     maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
          return $http.get(urlBase + '/' + id);
      };
 
-     maintenanceRequestsFactory.getMaintainanceByTenant = function (id) {
+     maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
          return $http.get(urlBase + '/ByTenant/' + id);
      };
 
-     maintenanceRequestsFactory.putMaintainance = function (item) {
+     maintenanceRequestsFactory.putMaintenanceRequest = function (item) {
          $http({
              method: 'PUT',
              dataType: 'json',
@@ -31,7 +31,7 @@ angular.module('StartApp.managerApp')
 
      };
 
-     maintenanceRequestsFactory.postMaintainance = function (item) {
+     maintenanceRequestsFactory.postMaintenanceRequest = function (item) {
          $http({
                 method: 'POST',
                 dataType: 'json',
@@ -43,7 +43,7 @@ angular.module('StartApp.managerApp')
             });
      };
 
-     maintenanceRequestsFactory.deleteMaintainance = function (id) {
+     maintenanceRequestsFactory.deleteMaintainanceRequest = function (id) {
          return $http.delete(urlBase + '/' + id);
      };  
 
