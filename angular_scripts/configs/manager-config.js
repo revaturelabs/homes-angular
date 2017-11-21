@@ -7,19 +7,27 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
             state('Managers.Dashboard', {
                 url: '/Dashboard',
                 templateUrl: 'templates/Managers/Partials/manager-dashboard.html',
-                controller: 'managerCtrl'
+                controller: 'DashboardController'
             }).
             state('Managers.Dashboard.suppliesRequests', {
                 url: '/suppliesRequests',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html',
+                controller: 'DashSuppliesController'
             }).
             state('Managers.Dashboard.Maintenance', {
                 url: '/Maintenance',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-maintenance.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-maintenance.html',
+                controller: 'DashMaintenanceController'
             }).
             state('Managers.Dashboard.Housing', {
                 url: '/Housing',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-housing.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-housing.html',
+                controller: 'DashHousingController'
+            }).
+            state('Managers.Dashboard.Batches', {
+                url: '/AllBatches',
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-batches.html',
+                controller: 'DashBatchesController'
             }).
             state('Managers.Supplies', {
                 url: '/Supplies',
@@ -34,27 +42,27 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
             state('Managers.Users.Tenants', {
                 url: '/Tenants',
                 templateUrl: 'templates/Managers/Partials/users-tab-tenants.html',
-                controller: 'DashTenantsController'
+                controller: 'UsersTenantsController'
             }).
             state('Managers.Users.Managers', {
                 url: '/Managers',
                 templateUrl: 'templates/Managers/Partials/users-tab-managers.html',
-                controller: 'DashManagersController'
+                controller: 'UsersManagersController'
             }).
             state('Managers.Users.Recruiters', {
                 url: '/Recruiters',
                 templateUrl: 'templates/Managers/Partials/users-tab-recruiters.html',
-                controller: 'DashRecruitersController'
+                controller: 'UsersRecruitersController'
             }).
             state('Managers.Users.Providers', {
                 url: '/Providers',
                 templateUrl: 'templates/Managers/Partials/users-tab-providers.html',
-                controller: 'DashProvidersController'
+                controller: 'UsersProvidersController'
             }).
             state('Managers.Users.Batches', {
                 url: '/Batches',
                 templateUrl: 'templates/Managers/Partials/users-tab-batches.html',
-                controller: 'DashProvidersController'
+                controller: 'UsersProvidersController'
             }).
             state('Managers.Profile', {
                 url: '/Profile'

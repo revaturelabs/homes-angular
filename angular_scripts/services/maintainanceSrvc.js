@@ -1,28 +1,52 @@
-'use strict';
-angular.module('app')
-.factory('maintainanceSrvc', ['$http', function ($http) {
-    return {
-        getMaintainance : function(){
-            return $http.get('/api/MaintainenceRequests');
-        },
+//COMPLETED - NEED A REVIEW
 
-        getMaintainance: function (id) {
-            return $http.get('/api/MaintainenceRequests' + id);
-        },
+angular.module('StartApp.managerApp')
+    .factory('maintainanceFactory', ['$http', function ($http) {
 
-        postMaintainance : function(item){
-            return $http.post('/api/MaintainenceRequests/', item);
-        },
+     var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
+     var maintenanceRequestsFactory = {};
 
-        putMaintainance: function (item) {
-            return $http.put('/api/MaintainenceRequests/', item);
-        },
+     maintenanceRequestsFactory.getMaintainance = function () {
+         return $http.get(urlBase);
+     };
 
-        deleteMaintainance : function(id){
-            return $http({
-                method: 'DELETE',
-                url: '/api/MaintainenceRequests/' + id
+     maintenanceRequestsFactory.getMaintainance = function (id) {
+         return $http.get(urlBase + '/' + id);
+     };
+
+     maintenanceRequestsFactory.getMaintainanceByTenant = function (id) {
+         return $http.get(urlBase + '/ByTenant/' + id);
+     };
+
+     maintenanceRequestsFactory.putMaintainance = function (item) {
+         $http({
+             method: 'PUT',
+             dataType: 'json',
+             url: urlBase + '/' + item.maintenanceRequestId,
+             data: { item },
+             headers: { "Content-Type": "application/json" }
+         }).then(function (response) {
+             return response;
+         });
+
+     };
+
+     maintenanceRequestsFactory.postMaintainance = function (item) {
+         $http({
+                method: 'POST',
+                dataType: 'json',
+                url: urlBase,
+                data: { item },
+                headers: { "Content-Type": "application/json" }
+            }).then(function (response) {
+                return response;
             });
-        }
-    };
+     };
+
+     maintenanceRequestsFactory.deleteMaintainance = function (id) {
+         return $http.delete(urlBase + '/' + id);
+     };  
+
+     return maintenanceRequestsFactory;
+      
 }]);

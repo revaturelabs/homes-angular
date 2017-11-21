@@ -2,6 +2,12 @@ h5{
     margin-top: 0px;
 }
 
+table tr th {
+    background: #337ab7;
+    color: white;
+    text-align: left;
+    vertical-align: center;
+}
 /* STRUCTURE */
 
 .wrappers {
