@@ -116,8 +116,23 @@ angular.module('StartApp.managerApp')
 
         $scope.demo = "This is the Dashboard Recruiters View"
     })
-    .controller('DashBatchesController', function ($scope) {
+    .controller('DashBatchesController', function ($scope, batchesFactory) {
         $scope.demo = "This is the Dashboard Batches View"
+
+                $scope.status;
+                $scope.batches;
+
+                getBatches();
+
+                function getBatches() {
+                    batchesFactory.getBatches()
+                        .then(function (response) {
+                            $scope.batches = response.data;
+                        }, function (error) {
+                            $scope.status = 'Unable to load Batches: ' + error.message;
+                        });
+
+                };
     })
     .controller('DashProvidersController', function ($scope) {
 
