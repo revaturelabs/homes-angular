@@ -90,7 +90,7 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
     })
     .controller('DashRecruitersController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Recruiters View"
+        $scope.demo = "This is the Dashboard Recruiters View";
     })
     .controller('DashProvidersController', function ($scope) {
 
