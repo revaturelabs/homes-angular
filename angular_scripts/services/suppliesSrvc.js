@@ -1,42 +1,21 @@
-//'use strict';
-//angular.module('app')
-//.factory('suppliesSrvc', ['$http', function ($http) {
-//    return {
-//        getItems : function(){
-//            return $http.get('/api/Supplies');
-//        },
-//        getItems: function (id) {
-//            return $http.get('/api/Supplies/'+id);
-//        },
-//        putItem: function (item) {
-//            return $http.put('api/Supplies/', item);
-//        },
-//        postAddress: function (id) {
-//            return $http.post('api/Supplies/', id);
-//        },
-        
-//        deleteItem : function(id){
-//            return $http({
-//                method: 'DELETE',
-//                url: '/api/Supplies/' + id
-//            });
-//        }
-//    };
-//}]);
 
 //COMPLETED - NEED REVIEW
 angular.module('StartApp.managerApp')
     .factory('SuppliesFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/Supplies';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/Supplies';
+
         var suppliesFactory = {};
+
         suppliesFactory.getSupplies = function () {
             return $http.get(urlBase);
         };
+
         suppliesFactory.getSupply = function (id) {
             return $http.get(urlBase + "/" + id);
         };
-        suppliesFactory.PostSupply = function (supply) {
+
+        suppliesFactory.postSupply = function (supply) {
             $http({
                 method: 'POST',
                 dataType: 'json',
@@ -47,7 +26,8 @@ angular.module('StartApp.managerApp')
                 return response;
             });
         };
-        suppliesFactory.PutSupply = function (supply) {
+
+        suppliesFactory.putSupply = function (supply) {
             $http({
                 method: 'PUT',
                 dataType: 'json',
@@ -58,7 +38,7 @@ angular.module('StartApp.managerApp')
                 return response;
             });
         };
-        suppliesFactory.DeleteSupply = function (id) {
+        suppliesFactory.deleteSupply = function (id) {
             return $http.delete(urlBase + "/" + id)
         };
 

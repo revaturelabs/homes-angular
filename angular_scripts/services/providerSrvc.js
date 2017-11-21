@@ -22,7 +22,8 @@ angular.module('StartApp.managerApp')
         };
         providerFactory.getProvidersWithUnits = function () {
             return $http.get(urlBase + "/WithUnits");
-        };  
+        };
+
         providerFactory.postProvider = function (item) {
             $http({
                 method: 'POST',
@@ -47,10 +48,11 @@ angular.module('StartApp.managerApp')
         };
         providerFactory.deleteProviders = function (id) {
             return $http.delete(urlBase + '/' + id);
-
+        }
             return providerFactory;
 
-        }]);
+        
+    }]);
 
 //'use strict';
 //angular.module('app')
@@ -88,4 +90,4 @@ angular.module('StartApp.managerApp')
 //            }
 
 //        };
-//    }]);
+//   }]);

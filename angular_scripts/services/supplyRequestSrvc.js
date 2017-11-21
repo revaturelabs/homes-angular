@@ -30,7 +30,7 @@
 angular.module('StartApp.managerApp')
     .factory('tenantFactory', ['$http', function ($http) {
 
-        var urlBase = 'https://homes-webapi.azurewebsites.netapi/SupplyRequests';
+        var urlBase = 'https://homes-webapi.azurewebsites.netapi/api/SupplyRequests';
         var tenantFactory = {};
 
         tenantFactory.getSupplies = function () {
