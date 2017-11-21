@@ -38,6 +38,18 @@ angular.module('StartApp.managerApp')
 
      };
 
+     maintenanceRequestsFactory.getMaintenanceRequestsByHousingUnits = function () {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByHouseUnit/',
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+     };
+
      //maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
      //    return $http.get(urlBase + '/ByTenant/' + id);
      //};

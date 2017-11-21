@@ -99,28 +99,28 @@ angular.module('StartApp.managerApp')
             });
         };
         housingUnitFactory.postHousingUnit = function (item){
-           $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: {item},
+                data: { item },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            })
+            });
         };
         housingUnitFactory.putHousingUnit = function (id, item) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + item.housingUnitId,
-                data: {item},
+                data: { item },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            })
+            });
         };       
         housingUnitFactory.deleteHousingUnits = function (id) {
             //return $http.delete(urlBase + '/' + id);
