@@ -63,8 +63,8 @@ angular.module('StartApp.managerApp')
              url: urlBase + '/' + item.maintenanceRequestId,
              data: { item },
              headers: {
-                 "Content-Type": "application/json"//,
-                 //"Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                 "Content-Type": "application/json",
+                 "Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
              }
          }).then(function (response) {
              return response;
@@ -78,7 +78,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { item },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -92,8 +95,11 @@ angular.module('StartApp.managerApp')
              method: 'DELETE',
              dataType: 'json',
              url: urlBase + '/' + id,
-             headers: { "Content-Type": "application/json" }
-         })
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
      };
 
      return maintenanceRequestsFactory;
