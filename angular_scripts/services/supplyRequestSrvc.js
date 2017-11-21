@@ -34,12 +34,30 @@ angular.module('StartApp.managerApp')
         var tenantFactory = {};
 
         tenantFactory.getSupplies = function () {
-            return $http.get(urlBase + '/WithSupplies');
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
         tenantFactory.getSupplyById = function (id) {
-            return $http.get(urlBase + '/WithSupplies/' + id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
@@ -49,7 +67,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { supply },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -62,14 +83,26 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase + '/' + supply.supplyRequestId,
                 data: { supply },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
         };
 
         tenantFactory.deleteSupply = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            return $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         return tenantFactory;

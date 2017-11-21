@@ -69,7 +69,7 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'DELETE',
                 dataType: 'json',
-                url: urlBase,
+                url: urlBase + '/' + id,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
