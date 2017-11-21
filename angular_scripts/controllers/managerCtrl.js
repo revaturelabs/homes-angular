@@ -2,12 +2,14 @@
 
 'use strict';
 angular.module('StartApp.managerApp')
-    .controller("managerCtrl", function ($http, $scope) {
+    .controller("DashboardController", function ($http, $scope) {
 
 
     })
+    .controller('DashSuppliesController', function ($scope) {
 
-    .controller('listdata', function ($scope, $http) {
+        $scope.demo = "This is the Dashboard Providers View"
+
         $scope.users = [{ "id": 1, "first_name": "Heather", "last_name": "Bell", "hobby": "Eating" },
         { "id": 2, "first_name": "Andrea", "last_name": "Dean", "hobby": "Gaming" },
         { "id": 3, "first_name": "Peter", "last_name": "Barnes", "hobby": "Reading Books" },
@@ -22,8 +24,41 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         }
     })
-    
-    .controller('DashManagersController', function ($scope, managementsFactory) {
+    .controller('DashMaintenanceController', function ($scope) {
+
+        $scope.demo = "This is the Dashboard Providers View"
+    })
+    .controller('DashHousingController', function ($scope) {
+
+        $scope.demo = "This is the Dashboard Providers View"
+    }).controller('DashBatchesController', function ($scope) {
+
+        $scope.demo = "This is the Dashboard Providers View"
+    })
+    .controller('SuppliesController', function ($scope, SuppliesFactory) {
+
+        $scope.demo = "This is the Supplies View"
+
+        getSupplies();
+
+        function getSupplies() {
+            SuppliesFactory.getSupplies()
+                .then(function (response) {
+                    $scope.supplies = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Supplies: ' + error.message;
+                });
+
+        };
+    })
+    .controller('UsersController', function ($scope) {
+        $scope.demo = "This is the Users View"
+
+    })
+    .controller('UsersTenantsController', function ($scope) {
+
+    })
+    .controller('UsersManagersController', function ($scope, managementsFactory) {
 
         $scope.status;
         $scope.managers;
@@ -82,95 +117,58 @@ angular.module('StartApp.managerApp')
 
 
     })
-      //  $scope.status;
-      //  $scope.genders;
-        
-      //  postGender();
-      //  getGenders();
-      //     **** FUNCTION TO BE CALL INSIDE THE CONTROLLER ****
-        //    ***** Function that send the id of gender that wants to get *****
-        //  function getGenders(id) {
-        //    genderFactory.getGenders(id)
-        //        .then( function (response) {
-        //            $scope.genders = response.data;
-        //        }, function (error) {
-        //            $scope.status = 'Unable to load Genders: ' + error.message;
-        //        });
-        //}
-     //     **** FUNCTION TO BE CALL OUTSIDE CONTROLLER INSIDE HTML
-        //    ***** Sames as above but function make a call to receive all genders *****
-      //$scope.getGender =  function getGender() {
-      //      genderFactory.getGender()
-      //          .then(function (response) {
-      //              $scope.genders = response.data;
-      //          }, function (error) {
-      //              $scope.status = 'Unable to load Genders: ' + error.message;
-      //          });
-      //  }
-      //    ***** Function that send the new gender to post in the database *****
-      //$scope.postGender =  function postGender(gender) {
-      //      genderFactory.postGender(gender)
-      //          .then(function (response) {
-      //              $scope.genders = response.data;
-      //          }, function (error) {
-      //              $scope.status = 'Unable to insert Genders: ' + error.message;
-      //          });
-      //  }
-
-
-    //})
-
-    .controller('DashboardController', function ($scope) {
-
-    })
-
-    .controller('DashTenantsController', function ($scope) {
-
-    })
-
-    .controller('DashRecruitersController', function ($scope) {
+    .controller('UsersRecruitersController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Recruiters View"
     })
-    .controller('DashBatchesController', function ($scope, batchesFactory) {
-        $scope.demo = "This is the Dashboard Batches View"
-
-                $scope.status;
-                $scope.batches;
-
-                getBatches();
-
-                function getBatches() {
-                    batchesFactory.getBatches()
-                        .then(function (response) {
-                            $scope.batches = response.data;
-                        }, function (error) {
-                            $scope.status = 'Unable to load Batches: ' + error.message;
-                        });
-
-                };
-    })
-    .controller('DashProvidersController', function ($scope) {
+    .controller('UsersProvidersController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"
     })
-    .controller('SuppliesController', function ($scope, SuppliesFactory) {
-
-        $scope.demo = "This is the Supplies View"
-
-        getSupplies();
-
-        function getSupplies() {
-            SuppliesFactory.getSupplies()
-                .then(function (response) {
-                    $scope.supplies = response.data;
-                }, function (error) {
-                    $scope.status = 'Unable to load Supplies: ' + error.message;
-                });
-
-        };
-    })
-    .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View"
-     
+    .controller('UsersBatchesController', function ($scope) {
+        $scope.demo = "This is the Dashboard Batches View"
     });
+
+
+    //  $scope.status;
+    //  $scope.genders;
+
+    //  postGender();
+    //  getGenders();
+    //     **** FUNCTION TO BE CALL INSIDE THE CONTROLLER ****
+    //    ***** Function that send the id of gender that wants to get *****
+    //  function getGenders(id) {
+    //    genderFactory.getGenders(id)
+    //        .then( function (response) {
+    //            $scope.genders = response.data;
+    //        }, function (error) {
+    //            $scope.status = 'Unable to load Genders: ' + error.message;
+    //        });
+    //}
+    //     **** FUNCTION TO BE CALL OUTSIDE CONTROLLER INSIDE HTML
+    //    ***** Sames as above but function make a call to receive all genders *****
+    //$scope.getGender =  function getGender() {
+    //      genderFactory.getGender()
+    //          .then(function (response) {
+    //              $scope.genders = response.data;
+    //          }, function (error) {
+    //              $scope.status = 'Unable to load Genders: ' + error.message;
+    //          });
+    //  }
+    //    ***** Function that send the new gender to post in the database *****
+    //$scope.postGender =  function postGender(gender) {
+    //      genderFactory.postGender(gender)
+    //          .then(function (response) {
+    //              $scope.genders = response.data;
+    //          }, function (error) {
+    //              $scope.status = 'Unable to insert Genders: ' + error.message;
+    //          });
+    //  }
+
+
+    //})
+      
+   
+    
+    
+   

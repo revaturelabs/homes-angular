@@ -48,7 +48,7 @@ angular.module('StartApp.managerApp')
         };
         providerFactory.deleteProviders = function (id) {
             return $http.delete(urlBase + '/' + id);
-
+        }
             return providerFactory;
 
         }
@@ -90,4 +90,4 @@ angular.module('StartApp.managerApp')
 //            }
 
 //        };
-//    }]);
+//   }]);
