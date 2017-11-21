@@ -9,10 +9,10 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th ng-click="sort('BatchName')">
+                <th ng-click="sort('name')">
                     <center>
                         Batch Name
-                        <span class="fa fa-sort" ng-init="sortKey=='BatchName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        <span class="fa fa-sort" ng-init="sortKey=='name'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>            
             </tr>
@@ -20,7 +20,7 @@
         </thead>
 
         <tbody>
-            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="b in batches">
+            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td><center><h3>{{b.name}}</h3></center></td>                
             </tr>
         </tbody>

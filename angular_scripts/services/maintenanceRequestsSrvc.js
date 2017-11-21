@@ -38,6 +38,18 @@ angular.module('StartApp.managerApp')
 
      };
 
+     maintenanceRequestsFactory.getMaintenanceRequestsByHousingUnits = function () {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByHouseUnit/',
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+     };
+
      //maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
      //    return $http.get(urlBase + '/ByTenant/' + id);
      //};
@@ -63,11 +75,9 @@ angular.module('StartApp.managerApp')
              url: urlBase + '/' + item.maintenanceRequestId,
              data: { item },
              headers: {
-                 "Content-Type": "application/json"//,
-                 //"Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                 "Content-Type": "application/json",
+                 "Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
              }
-         }).then(function (response) {
-             return response;
          });
 
      };
@@ -78,9 +88,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { item },
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response;
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             });
      };
 
@@ -92,8 +103,11 @@ angular.module('StartApp.managerApp')
              method: 'DELETE',
              dataType: 'json',
              url: urlBase + '/' + id,
-             headers: { "Content-Type": "application/json" }
-         })
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
      };
 
      return maintenanceRequestsFactory;

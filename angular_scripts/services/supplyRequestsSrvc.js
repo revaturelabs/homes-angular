@@ -28,12 +28,12 @@
 //    }]);
 
 angular.module('StartApp.managerApp')
-    .factory('tenantFactory', ['$http', function ($http) {
+    .factory('supplyRequestsSrvc', ['$http', function ($http) {
 
-        var urlBase = 'https://homes-webapi.azurewebsites.netapi/api/SupplyRequests';
-        var tenantFactory = {};
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/SupplyRequests';
+        var supplyRequestsFactory = {};
 
-        tenantFactory.getSupplies = function () {
+        supplyRequestsFactory.getSupplies = function () {
             return $http({
                 method: 'GET',
                 dataType: 'json',
@@ -46,8 +46,21 @@ angular.module('StartApp.managerApp')
 
         };
 
+        supplyRequestsFactory.getSuppliesByHousingUnit = function () {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/ByHouseUnit/',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
 
-        tenantFactory.getSupplyById = function (id) {
+        };
+
+
+        supplyRequestsFactory.getSupplyById = function (id) {
             return $http({
                 method: 'GET',
                 dataType: 'json',
@@ -61,7 +74,7 @@ angular.module('StartApp.managerApp')
         };
 
 
-        tenantFactory.postSupply = function (supply) {
+        supplyRequestsFactory.postSupply = function (supply) {
             $http({
                 method: 'POST',
                 dataType: 'json',
@@ -77,7 +90,7 @@ angular.module('StartApp.managerApp')
         };
 
 
-        tenantFactory.putSupply = function (supply) {
+        supplyRequestsFactory.putSupply = function (supply) {
             $http({
                 method: 'PUT',
                 dataType: 'json',
@@ -92,7 +105,7 @@ angular.module('StartApp.managerApp')
             });
         };
 
-        tenantFactory.deleteSupply = function (id) {
+        supplyRequestsFactory.deleteSupply = function (id) {
             return $http({
                 method: 'DELETE',
                 dataType: 'json',
@@ -105,6 +118,6 @@ angular.module('StartApp.managerApp')
 
         };
 
-        return tenantFactory;
+        return supplyRequestsFactory;
 
     }]);

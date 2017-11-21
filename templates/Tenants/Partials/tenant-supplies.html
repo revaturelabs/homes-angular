@@ -5,17 +5,42 @@
                 <h4 class="title">Supplies</h4>
             </div>
             <div class="content">
-                <form>
-                    <fieldset>
-                        <h1>Supplie Request</h1>
-                        Name: <input type="text"><br>
-                        Email: <input type="text"><br>
-                        Date of birth: <input type="text">
-                    </fieldset>
-                </form>
+          
+                   <div class="bs-component">
+                       <table class="table table-striped table-bordered">
+                           <thead>
+                               <tr>
+                                   <th>
+
+                                       <center>
+                                           Choose Suppies
+
+                                       </center>
+                                   </th>
+                                   <th >
+
+                                       <center>
+                                           Supply Name
+                                           
+                                       </center>
+                                   </th>
+                                
+                               </tr>
 
 
-
+                           </thead>
+                           <tbody>
+                               <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" >
+                                   <td class="checkbox"><center class="checkbox"><input class="checkbox" /></center></td>
+                                   <td></td>
+                               </tr>
+                           </tbody>
+                       </table>
+                       <dir-pagination-controls max-size="15"
+                                                direction-links="true"
+                                                boundary-links="true">
+                       </dir-pagination-controls>
+                   </div>
             </div>
         </div>
     </div>

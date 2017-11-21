@@ -29,23 +29,15 @@
                 </th>
                 <th ng-click="sort('active')">
                     <center>
-                        Active?
+                        Status
                         <span class="fa fa-sort" ng-init="sortKey=='active'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
             </tr>
-
-
         </thead>
         <tbody>
-            <!--<tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
-            /tr><-->
-            <tr ng-repeat="req in maintenanceRequests">
-                <td>{{req.maintenanceRequestId}}</td>
+            <tr dir-paginate="req in maintenanceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+              <td>{{req.maintenanceRequestId}}</td>
                 <td>{{req.tenantId}}</td>
                 <td>{{req.message}}</td>
                 <td>{{req.active}}</td>
