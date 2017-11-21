@@ -8,7 +8,17 @@ angular.module('StartApp.managerApp')
         var suppliesFactory = {};
 
         suppliesFactory.getSupplies = function () {
-            return $http.get(urlBase);
+            //console.log('Bearer ' + sessionStorage['adal.access.token.key' + cid]);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         suppliesFactory.getSupply = function (id) {

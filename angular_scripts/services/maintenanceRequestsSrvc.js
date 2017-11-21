@@ -24,7 +24,10 @@ angular.module('StartApp.managerApp')
              dataType: 'json',
              url: urlBase + '/' + item.maintenanceRequestId,
              data: { item },
-             headers: { "Content-Type": "application/json" }
+             headers: {
+                 "Content-Type": "application/json"//,
+                 //"Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
          }).then(function (response) {
              return response;
          });
