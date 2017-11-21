@@ -5,13 +5,14 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
         $urlRouterProvider.otherwise('/Tenants/Dashboard');
         $stateProvider.
             state('Tenants.Dashboard', {
-                url: '/Dashboard',
-                templateUrl: 'templates/Tenants/Partials/tenant-dashboard.html'
+                url: '/TenantDashboard',
+                templateUrl: 'templates/Tenants/Partials/tenant-dashboard.html',
+                controller: 'TenantDashboardController'
             }).
             state('Tenants.Maintenance', {
-                url: '/Maintenance',
+                url: '/TenantMaintenance',
                 templateUrl: 'templates/Tenants/Partials/tenant-maintenance.html',
-                controller: 'MaintenanceController'
+                controller: 'TenantMaintenanceController'
             }).
             state('Tenants.Supplies', {
             url: '/TenantSupplies',
@@ -19,22 +20,10 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
             controller: 'TenantSuppliesController'
             }).
             state('Tenants.Profile', {
-                url: '/Profile',
+                url: '/TenantProfile',
                 templateUrl: 'templates/Tenants/Partials/tenant-profile.html',
-                controller: 'ProfileController'
+                controller: 'TenantProfileController'
             });
         // use the HTML5 History API
         $locationProvider.html5Mode(true);
-    })
-    .controller('DashboardController', function ($scope) {
-
-    })
-    .controller('MaintenanceController', function ($scope) {
-        $scope.demo = "Inside Maintenance"
-    })
-    .controller('TenantSuppliesController', function ($scope) {
-        $scope.demo = "Inside Supplies"
-    })
-    .controller('ProfileController', function ($scope) {
-        $scope.demo = "Inside Profile"
     });
