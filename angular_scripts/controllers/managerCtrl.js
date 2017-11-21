@@ -152,10 +152,16 @@ angular.module('StartApp.managerApp')
         $scope.demo = "This is the Dashboard Providers View"
     })
     .controller('UsersBatchesController', function ($scope, batchesFactory) {
-        //$scope.batchName;
-        //$scope.startDate;
-        //$scope.endDate;
-        $scope.name = "Alexie";
+        //batch info
+        $scope.batchName;
+        $scope.startDate;
+        $scope.endDate;
+        //contact info
+        //$scope.contactFirstName;
+        //$scope.contactLastName;
+        //$scope.email;
+        //$scope.phone;
+        //call batch services
         var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
         $scope.status;
         $scope.batches;
@@ -177,6 +183,25 @@ angular.module('StartApp.managerApp')
                 });
             console.log($scope.batchName);
         }
+        //call contact services
+        //$scope.getContacts = function getContact() {
+        //    contactFactory.getContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to load Batches: ' + error.message;
+        //        });
+        //}
+        //$scope.postContacts = function postContact(contact) {
+        //    contactFactory.postContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to insert Batch: ' + error.message;
+        //        });
+        //    console.log($scope.batchName);
+        //}
+
     });
 
 
