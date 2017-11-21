@@ -22,8 +22,7 @@ angular.module('StartApp.managerApp')
         };
         providerFactory.getProvidersWithUnits = function () {
             return $http.get(urlBase + "/WithUnits");
-        };
-  
+        };  
         providerFactory.postProvider = function (item) {
             $http({
                 method: 'POST',
