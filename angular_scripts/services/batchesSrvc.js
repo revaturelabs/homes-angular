@@ -14,7 +14,7 @@
                 dataType: 'json',
                 url: urlBase,
                 data: batch,
-                headers: { "Content-Type": "application/json" }
+                headers: { "Content-Type": "application/json"}
             }).then(function (response) {
                 return response;
             });
