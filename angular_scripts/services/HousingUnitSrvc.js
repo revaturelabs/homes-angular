@@ -11,7 +11,7 @@ angular.module('StartApp.managerApp')
             return $http.get(urlBase + "/WithAddresses");
         };
         housingUnitFactory.getHousingUnitWithAddresses = function (id) {
-            return $http.get(urlBase + "/WithAddresses/" + id)
+            return $http.get(urlBase + "/WithAddresses/" + id);
         };
         housingUnitFactory.getHousingUnitsWithProviders = function () {
             return $http.get(urlBase + "/WithProviders");
@@ -25,12 +25,12 @@ angular.module('StartApp.managerApp')
         housingUnitFactory.getHousingUnitWithTenants = function (id) {
             return $http.get(urlBase + "/WithTenants/" + id);
         };
-        housingUnitFactory.postHousingUnit = function (item){
-           $http({
+        housingUnitFactory.postHousingUnit = function (item) {
+            $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: {item},
+                data: { item },
                 headers: { "Content-Type": "application/json" }
             }).then(function (response) {
                 return response;
@@ -41,15 +41,17 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + item.housingUnitId,
-                data: {item},
+                data: { item },
                 headers: { "Content-Type": "application/json" }
             }).then(function (response) {
                 return response;
             });
-        };       
+        };
         housingUnitFactory.deleteHousingUnits = function (id) {
-            return $http.delete(urlBase + '/' + id);  
+            return $http.delete(urlBase + '/' + id);
 
+
+
+        };
         return housingUnitFactory;
-
     }]);

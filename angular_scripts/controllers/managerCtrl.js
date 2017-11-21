@@ -6,39 +6,35 @@ angular.module('StartApp.managerApp')
 
 
     })
-    .controller('DashSuppliesController', function ($scope) {
+    .controller('listdata', function ($scope, $http) {
+        $scope.users = [{ "first_name": 1, "address": "Heather", "email": "Bell", "supplies": "Eating" }]; //declare an empty array
 
-        $scope.demo = "This is the Dashboard Providers View"
+        $scope.sort = function (keyname) {
+            $scope.sortKey = keyname;   //set the sortKey to the param passed
+            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        };
+    })
+    .controller('DashSuppliesController', function ($scope, $http) {
 
-        $scope.users = [{ "id": 1, "first_name": "Heather", "last_name": "Bell", "hobby": "Eating" },
-        { "id": 2, "first_name": "Andrea", "last_name": "Dean", "hobby": "Gaming" },
-        { "id": 3, "first_name": "Peter", "last_name": "Barnes", "hobby": "Reading Books" },
-        { "id": 4, "first_name": "Harry", "last_name": "Bell", "hobby": "Youtubing" },
-        { "id": 5, "first_name": "Deborah", "last_name": "Burns", "hobby": "Fishing" },
-        { "id": 6, "first_name": "Larry", "last_name": "Kim", "hobby": "Skipping" },
-        { "id": 7, "first_name": "Jason", "last_name": "Wallace", "hobby": "Football" },
-        { "id": 25, "first_name": "Russell", "last_name": "Patterson", "hobby": "Singing" }]; //declare an empty array
+        $scope.users = [{ "first_name": 1, "address": "Heather", "email": "Bell", "supplies": "Eating" }]; //declare an empty array
        
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        }
+        };
     })
     .controller('DashMaintenanceController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View"
+        $scope.demo = "This is the Dashboard Providers View";
     })
     .controller('DashHousingController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View"
+        $scope.demo = "This is the Dashboard Providers View";
     }).controller('DashBatchesController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View"
+        $scope.demo = "This is the Dashboard Providers View";
     })
     .controller('SuppliesController', function ($scope, SuppliesFactory) {
-
-        $scope.demo = "This is the Supplies View"
-
         getSupplies();
 
         function getSupplies() {
@@ -49,10 +45,10 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to load Supplies: ' + error.message;
                 });
 
-        };
+        }
     })
     .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View"
+        $scope.demo = "This is the Users View";
 
     })
     .controller('UsersTenantsController', function ($scope) {
@@ -76,7 +72,7 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to load Managers: ' + error.message;
                 });
 
-        };
+        }
 
         $scope.getManagersById = function getManagersById(id) {
             managementsFactory.getManagersById(id)
@@ -119,14 +115,14 @@ angular.module('StartApp.managerApp')
     })
     .controller('UsersRecruitersController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Recruiters View"
+        $scope.demo = "This is the Dashboard Recruiters View";
     })
     .controller('UsersProvidersController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View"
+        $scope.demo = "This is the Dashboard Providers View";
     })
     .controller('UsersBatchesController', function ($scope) {
-        $scope.demo = "This is the Dashboard Batches View"
+        $scope.demo = "This is the Dashboard Batches View";
     });
 
 

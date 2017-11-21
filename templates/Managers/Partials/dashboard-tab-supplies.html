@@ -25,6 +25,7 @@
             <input type="text" ng-model="search" class="form-control" placeholder="Search">
         </div>
     </form>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -48,26 +49,21 @@
                 </th>
                 <th>
                     <center>
-                        Supplies List
+                       Requested Supplies
                     </center>
                 </th>
             </tr>
-
-
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
+            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:25">
                 <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.supplies}}</td>
             </tr>
         </tbody>
     </table>
-    <dir-pagination-controls max-size="15"
-                             direction-links="true"
-                             boundary-links="true">
-    </dir-pagination-controls>
+    <dir-pagination-controls max-size="9000" direction-links="true" boundary-links="true"></dir-pagination-controls>
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
