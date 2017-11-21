@@ -1,14 +1,14 @@
 ﻿'use strict';
 angular.module('StartApp.tenantApp')
-    .controller("TenantDashboardController", function ($http, $scope) {
+    .controller("TenantsDashboardController", function ($http, $scope) {
 
     })
-    .controller("TenantMaintenanceController", function ($http, $scope) {
+    .controller("TenantsMaintenanceController", function ($http, $scope) {
 
     })
-    .controller("TenantSuppliesController", function ($http, $scope) {
+    .controller("TenantsSuppliesController", function ($http, $scope) {
 
     })
-    .controller("TenantProfileController", function ($http, $scope) {
+    .controller("TenantsProfileController", function ($http, $scope) {
 
     });

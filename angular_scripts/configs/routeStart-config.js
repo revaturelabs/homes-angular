@@ -121,7 +121,7 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
             //$location.path('');
         };
     }])
-    .controller('ManagerController', function ($scope, $log, $window) {
+    .controller('StartManagerController', function ($scope, $log, $window) {
 
 
 
@@ -220,14 +220,10 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
         //    })
         //};
     })
-
-    .controller('DashTenantsController', function ($scope) {
-
-    })
-    .controller('HousingController', function ($scope) {
+    .controller('StartHousingController', function ($scope) {
         $scope.demo = "This is the Housing View";
     })
-    .controller('UsersController', function ($scope) {
+    .controller('StartUsersController', function ($scope) {
         $scope.demo = "This is the Users View";
     });
 

@@ -6,12 +6,13 @@ var App = angular.module('StartApp.providerApp', ['ui.router', 'providerDir'])
             $stateProvider.
                 state('Providers.Dashboard', {
                     url: '/Dashboard',
-                    templateUrl: 'templates/Providers/Partials/provider-dashboard.html'
+                    templateUrl: 'templates/Providers/Partials/provider-dashboard.html',
+                    controller: 'ProvidersDashboardController'
                 }).
                 state('Providers.Housing', {
                     url:'/Housing',
                     templateUrl: 'templates/Providers/Partials/provider-housing.html',
-                    controller: 'HousingController'
+                    controller: 'ProvidersHousingController'
                 });
             // use the HTML5 History API
             $locationProvider.html5Mode(true);
