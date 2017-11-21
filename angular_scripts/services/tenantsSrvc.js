@@ -128,8 +128,6 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
             });
 
         };
@@ -154,8 +152,6 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
             });
 
         };
