@@ -46,6 +46,7 @@ table tr th {
 
 .modal-backdrop {
     z-index: 0 !important;
+    margin:auto;
 }
 
 .fadeIn.first {
