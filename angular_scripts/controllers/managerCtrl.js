@@ -24,10 +24,21 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         }
     })
-    .controller('DashMaintenanceController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Providers View"
-    })
+    .controller('DashMaintenanceController', ['maintainanceSrvc', '$scope', function (maintainanceSrvc, $scope) {
+        $scope.populate = function () {
+            //console.log(maintainanceSrvc);
+            maintainanceSrvc.getMaintainances().then(
+                function (success) {
+                    console.log('success', success);
+                    $scope.maintainanceRequests = success.data;
+                },
+                function (error) {
+                    console.log('error', error);
+                }
+            );
+        };
+        $scope.demo = "This is the Dashboard Providers View";
+    }])
     .controller('DashHousingController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"

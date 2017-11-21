@@ -1,6 +1,6 @@
 ﻿<center><h3>Maintenance Requests</h3></center>
 <br />
-<div class="bs-component">
+<div class="bs-component" ng-init="populate()">
     <form class="form-inline">
         <div class="form-group" style="float:right; margin-bottom:15px;">
             <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -38,11 +38,17 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+            <!--<tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td>{{user.id}}</td>
                 <td>{{user.first_name}}</td>
                 <td>{{user.last_name}}</td>
                 <td>{{user.hobby}}</td>
+            /tr><-->
+            <tr ng-repeat="req in maintainanceRequests">
+                <td>{{req.active}}</td>
+                <td>{{req.maintenanceRequestId}}</td>
+                <td>{{req.message}}</td>
+                <td>{{req.tenantId}}</td>
             </tr>
         </tbody>
     </table>

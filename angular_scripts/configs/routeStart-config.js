@@ -50,6 +50,7 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
         //    $state.go('Managers.Dashboard.suppliesRequests');
         //};
         $scope.reroute = function () {
+            console.log("Login controller");
             if ($scope.userInfo.isAuthenticated === false) {
                 console.log("saying hi");
             }
@@ -103,13 +104,18 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
     }])
     .controller('LogoutController', ['$scope', '$state', 'adalAuthenticationService', '$location', function ($scope, $state, adalService, $location) {
         $scope.reroute = function () {
-            console.log("trying to logout from the other controller");
+            console.log("Logout controller");
             
             if ($scope.userInfo.isAuthenticated) {
-                adalService.logOut().then(function (success) { }, function (error) { });
+                adalService.logOut().then(function (success) {
+                    //$state.go('Login');
+                    $location.path('/');
+                }, function (error) { });
+                
+                //$state.go('Login');
             }
             else {
-                $state.go('Login');
+                $location.path('/');
             }
             //$state.go('Login');
             //$location.path('');

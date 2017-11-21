@@ -1,12 +1,12 @@
 //COMPLETED - NEED A REVIEW
 
 angular.module('StartApp.managerApp')
-    .factory('maintainanceFactory', ['$http', function ($http) {
+    .factory('maintainanceSrvc', ['$http', function ($http) {
 
      var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
 
-     maintenanceRequestsFactory.getMaintainance = function () {
+     maintenanceRequestsFactory.getMaintainances = function () {
          return $http.get(urlBase);
      };
 
