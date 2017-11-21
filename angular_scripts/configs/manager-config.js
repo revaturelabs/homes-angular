@@ -62,7 +62,7 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
             state('Managers.Users.Batches', {
                 url: '/Batches',
                 templateUrl: 'templates/Managers/Partials/users-tab-batches.html',
-                controller: 'UsersProvidersController'
+                controller: 'UsersBatchesController'
             }).
             state('Managers.Profile', {
                 url: '/Profile'
