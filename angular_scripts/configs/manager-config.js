@@ -11,15 +11,23 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
             }).
             state('Managers.Dashboard.suppliesRequests', {
                 url: '/suppliesRequests',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-supplies.html',
+                controller: 'DashSuppliesController'
             }).
             state('Managers.Dashboard.Maintenance', {
                 url: '/Maintenance',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-maintenance.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-maintenance.html',
+                controller: 'DashMaintenanceController'
             }).
             state('Managers.Dashboard.Housing', {
                 url: '/Housing',
-                templateUrl: 'templates/Managers/Partials/dashboard-tab-housing.html'
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-housing.html',
+                controller: 'DashHousingController'
+            }).
+            state('Managers.Dashboard.Batches', {
+                url: '/Batches',
+                templateUrl: 'templates/Managers/Partials/dashboard-tab-batches.html',
+                controller: 'DashBatchesController'
             }).
             state('Managers.Supplies', {
                 url: '/Supplies',

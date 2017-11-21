@@ -116,6 +116,9 @@ angular.module('StartApp.managerApp')
 
         $scope.demo = "This is the Dashboard Recruiters View"
     })
+    .controller('DashBatchesController', function ($scope) {
+        $scope.demo = "This is the Dashboard Batches View"
+    })
     .controller('DashProvidersController', function ($scope) {
 
         $scope.demo = "This is the Dashboard Providers View"
