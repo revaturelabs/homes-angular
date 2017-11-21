@@ -1,28 +1,23 @@
-'use strict';
-angular.module('app')
-.factory('contactSrvc', ['$http', function ($http) {
-    return {
-        putContact : function(item){
-            return $http.put('/api/Contacts/', item);
-        },
+angular.module('StartApp.managerApp')
+    .factory('contactFactory', ['$http', function ($http) {
 
-        getItem: function (id) {
-            return $http.get('/api/Contacts/' + id);
-        },
+        var urlBase = 'http://homes-webapi.azurewebsites.net/api/contacts';
+        var contactFactory = {};
 
-        getContacts: function () {
-            return $http.get('/api/Contacts/');
-        },
-
-        postContact: function (item) {
-            return $http.post('/api/Contacts/', item);
-        },
-
-        deleteItem : function(id){
-            return $http({
-                method: 'DELETE',
-                url: '/api/Contacts/' + id
+        contactFactory.getContacts = function () {
+            return $http.get(urlBase);
+        };
+        contactFactory.postContacts = function (contact) {
+            $http({
+                method: 'POST',
+                dataType: 'json',
+                url: urlBase,
+                data: batch,
+                headers: { "Content-Type": "application/json" }
+            }).then(function (response) {
+                return response;
             });
-        }
-    };
-}]);
+        };
+
+        return contactFactory;
+    }]);
