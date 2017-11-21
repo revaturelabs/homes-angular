@@ -77,6 +77,15 @@ angular.module('StartApp.managerApp')
                 });
 
         };
+
+        $scope.postSupply = function (supplyName) {
+            suppliesFactory.postSupply(supplyName)
+                .then(function (response) {
+                    $scope.supplies = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to add Supply: ' + error.message;
+                });
+        };
     })
     .controller('UsersController', function ($scope) {
         $scope.demo = "This is the Users View"
