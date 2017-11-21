@@ -28,7 +28,7 @@ angular.module('StartApp.managerApp')
         function getAddresses() {
             providerFactory.getAddresses()
                 .then(function (response) {
-                    $scope.managers = response.data;
+                    $scope.addrress = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to load Addresses: ' + error.message;
                 });
