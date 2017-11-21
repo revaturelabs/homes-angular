@@ -1,4 +1,4 @@
-﻿<center><h3>Tenants</h3></center>
+﻿<center><h3>Batches</h3></center>
 <br />
 <div class="bs-component">
     <form class="form-inline">
@@ -9,54 +9,19 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th ng-click="sort('fullName')">
+                <th ng-click="sort('BatchName')">
                     <center>
-                        Full Name
-                        <span class="fa fa-sort" ng-init="sortKey=='fullName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        Batch Name
+                        <span class="fa fa-sort" ng-init="sortKey=='BatchName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
-                </th>
-                <th ng-click="sort('address')">
-                    <center>
-                         Address
-                        <span class="fa fa-sort" ng-init="sortKey=='address'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
-                    </center>
-                </th>
-                <th ng-click="sort('email')">
-                    <center>
-                        Email
-                        <span class="fa fa-sort" ng-init="sortKey=='email'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
-                    </center>
-                </th>
-                <th ng-click="sort('phoneNumber')">
-                    <center>
-                        Phone Number
-                        <span class="fa fa-sort" ng-init="sortKey=='phoneNumber'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
-                    </center>
-                </th>
-                <th>
-                    <center>
-                        Edit
-                        
-                    </center>
-                </th>
-                <th>
-                    <center>
-                        Delete
-
-                    </center>
-                </th>
+                </th>            
             </tr>
 
-
         </thead>
+
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
-                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-dark btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                <td><p data-placement="top" title="Delete"><button class="btn btn-dark btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="b in batches">
+                <td><center><h3>{{b.name}}</h3></center></td>                
             </tr>
         </tbody>
     </table>
@@ -120,3 +85,6 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+
