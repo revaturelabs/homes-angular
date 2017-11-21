@@ -12,7 +12,16 @@ angular.module('StartApp.managerApp')
 
 
         tenantFactory.getTenantCarById = function (id) {
-            return $http.get(urlBase + id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
@@ -22,7 +31,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { tenantCar },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -35,14 +47,26 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase + '/' + tenantCar.tenantId,
                 data: { tenantCar },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
         };
 
         tenantFactory.deleteTenantCar = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            return $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         return tenantFactory;

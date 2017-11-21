@@ -39,12 +39,30 @@ angular.module('StartApp.managerApp')
         var providerFactory = {};
 
         providerFactory.getAddresses = function () {
-            return $http.get(urlBase);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
         providerFactory.getAddressById = function (id) {
-            return $http.get(urlBase + '/' + id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
@@ -54,7 +72,10 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase,
                 data: { address },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
@@ -67,14 +88,26 @@ angular.module('StartApp.managerApp')
                 dataType: 'json',
                 url: urlBase + '/' + address.addressId,
                 data: { address },
-                headers: { "Content-Type": "application/json" }
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             }).then(function (response) {
                 return response;
             });
         };
 
         providerFactory.deleteAddress = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            return $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         return providerFactory;
