@@ -84,9 +84,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
         providerFactory.putProvider = function (id, item) {
             $http({
@@ -98,9 +96,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
         providerFactory.deleteProviders = function (id) {
             //return $http.delete(urlBase + '/' + id);
