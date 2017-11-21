@@ -1,4 +1,5 @@
 ﻿<center><h3>Batch Management</h3></center>
+
 <div class="col-md-8 col-md-offset-2">
     <br>
     <div class="panel panel-default">
@@ -84,16 +85,15 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Batch Name" ng-model="batchName">
+                    <input name="batchName" class="form-control " type="text" placeholder="Batch Name" ng-model="batchName">
+                </div>
+                <div class="form-group">
+                    <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
                 </div>
                 <div class="form-group">
 
-                    <input class="form-control " type="text" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate">
-                </div>
-                <div class="form-group">
 
-
-                    <input class="form-control " type="text" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
+                    <input name="endDate" class="form-control " type="date" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
 
                 </div>
             </div>

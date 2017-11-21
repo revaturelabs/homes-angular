@@ -6,49 +6,89 @@ angular.module('StartApp.managerApp')
 
 
     })
-    .controller('listdata', function ($scope, $http) {
-        $scope.users = [{ "first_name": 1, "address": "Heather", "email": "Bell", "supplies": "Eating" }]; //declare an empty array
+    .controller('DashSuppliesController', function ($scope) {
 
-        $scope.sort = function (keyname) {
-            $scope.sortKey = keyname;   //set the sortKey to the param passed
-            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        };
-    })
-    .controller('DashSuppliesController', function ($scope, $http) {
+        $scope.demo = "This is the Dashboard Providers View"
 
-        $scope.users = [{ "first_name": 1, "address": "Heather", "email": "Bell", "supplies": "Eating" }]; //declare an empty array
+        $scope.users = [{ "id": 1, "first_name": "Heather", "last_name": "Bell", "hobby": "Eating" },
+        { "id": 2, "first_name": "Andrea", "last_name": "Dean", "hobby": "Gaming" },
+        { "id": 3, "first_name": "Peter", "last_name": "Barnes", "hobby": "Reading Books" },
+        { "id": 4, "first_name": "Harry", "last_name": "Bell", "hobby": "Youtubing" },
+        { "id": 5, "first_name": "Deborah", "last_name": "Burns", "hobby": "Fishing" },
+        { "id": 6, "first_name": "Larry", "last_name": "Kim", "hobby": "Skipping" },
+        { "id": 7, "first_name": "Jason", "last_name": "Wallace", "hobby": "Football" },
+        { "id": 25, "first_name": "Russell", "last_name": "Patterson", "hobby": "Singing" }]; //declare an empty array
        
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        }
+    })
+    .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
+        $scope.populate = function () {
+            //console.log(maintenanceSrvc);
+            maintenanceRequestsSrvc.getMaintenanceRequests().then(
+                function (success) {
+                    console.log('success', success);
+                    $scope.maintenanceRequests = success.data;
+                },
+                function (error) {
+                    console.log('error', error);
+                }
+            );
         };
-    })
-    .controller('DashMaintenanceController', function ($scope) {
-
         $scope.demo = "This is the Dashboard Providers View";
-    })
+    }])
     .controller('DashHousingController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View";
-    }).controller('DashBatchesController', function ($scope) {
-
-        $scope.demo = "This is the Dashboard Providers View";
+        $scope.demo = "This is the Dashboard Providers View"
     })
-    .controller('SuppliesController', function ($scope, SuppliesFactory) {
-        getSupplies();
+    .controller('DashBatchesController', function ($scope, batchesFactory) {
 
+        $scope.demo = "This is the Dashboard Providers View"
+
+        getBatches();
+
+        function getBatches() {
+            batchesFactory.getBatches()
+                .then(function (response) {
+                    $scope.batches = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+
+        };
+
+        
+
+    })
+    .controller('SuppliesController', function ($scope, suppliesFactory) {
+
+        $scope.demo = "This is the Supplies View My G";
+       
+        getSupplies();
+        
         function getSupplies() {
-            SuppliesFactory.getSupplies()
+            suppliesFactory.getSupplies()
                 .then(function (response) {
                     $scope.supplies = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to load Supplies: ' + error.message;
                 });
 
-        }
+        };
+
+        $scope.postSupply = function (supplyName) {
+            suppliesFactory.postSupply(supplyName)
+                .then(function (response) {
+                    $scope.supplies = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to add Supply: ' + error.message;
+                });
+        };
     })
     .controller('UsersController', function ($scope) {
-        $scope.demo = "This is the Users View";
+        $scope.demo = "This is the Users View"
 
     })
     .controller('UsersTenantsController', function ($scope) {
@@ -72,7 +112,7 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to load Managers: ' + error.message;
                 });
 
-        }
+        };
 
         $scope.getManagersById = function getManagersById(id) {
             managementsFactory.getManagersById(id)
@@ -115,15 +155,66 @@ angular.module('StartApp.managerApp')
     })
     .controller('UsersRecruitersController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Recruiters View";
+        $scope.demo = "This is the Dashboard Recruiters View"
     })
     .controller('UsersProvidersController', function ($scope) {
 
-        $scope.demo = "This is the Dashboard Providers View";
+        $scope.demo = "This is the Dashboard Providers View"
     })
-    .controller('UsersBatchesController', function ($scope) {
-        $scope.demo = "This is the Dashboard Batches View";
-    });
+    .controller('UsersBatchesController', ["$scope", "batchesFactory", function ($scope, batchesFactory) {
+        //batch info
+        $scope.batchName;
+        $scope.startDate;
+        $scope.endDate;
+        //contact info
+        //$scope.contactFirstName;
+        //$scope.contactLastName;
+        //$scope.email;
+        //$scope.phone;
+        //call batch services
+        $scope.status;
+        $scope.batches;
+        
+        $scope.getBatches = function getBatches() {
+            batchesFactory.getBatches(batch)
+                .then(function (response) {
+                    $scope.batches = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+        }
+        $scope.postBatch = function postBatch() {
+            var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
+            console.log("Batch: " + batch);
+            batchesFactory.postBatch(batch)
+                .then(function (response) {
+                    console.log("Name: "+batch.Name);
+                    $scope.batches = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to insert Batch: ' + error.message;
+                });
+            console.log($scope.batchName);
+        }
+        //call contact services
+        //$scope.getContacts = function getContact() {
+        //    contactFactory.getContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to load Batches: ' + error.message;
+        //        });
+        //}
+        //$scope.postContacts = function postContact(contact) {
+        //    contactFactory.postContacts(contact)
+        //        .then(function (response) {
+        //            $scope.contacts = response.data;
+        //        }, function (error) {
+        //            $scope.status = 'Unable to insert Batch: ' + error.message;
+        //        });
+        //    console.log($scope.batchName);
+        //}
+
+    }]);
 
 
     //  $scope.status;

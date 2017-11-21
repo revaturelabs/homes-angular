@@ -1,7 +1,7 @@
 ﻿angular.module('StartApp.managerApp')
     .factory('batchesFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/batches';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/batches';
         var batchesFactory = {};
 
         batchesFactory.getBatches = function () {
@@ -14,7 +14,7 @@
                 dataType: 'json',
                 url: urlBase,
                 data: batch,
-                headers: { "Content-Type": "application/json" }
+                headers: { "Content-Type": "application/json"}
             }).then(function (response) {
                 return response;
             });

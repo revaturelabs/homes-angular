@@ -1,53 +1,17 @@
-//COMPLETED - Need to review.
-
-
-//'use strict';
-//angular.module('app')
-//    .factory('suppliesRequestSrvc', ['$http', function ($http) {
-//        return {
-//            getItems: function () {
-//                return $http.get('/api/SuppliesRequest');
-//            },
-//            getItems: function (id) {
-//                return $http.get('/api/Supplies/' + id);
-//            },
-//            putItem: function (item) {
-//                return $http.put('api/Supplies/', item);
-//            },
-//            postAddress: function (id) {
-//                return $http.post('api/Supplies/', id);
-//            },
-
-//            deleteItem: function (id) {
-//                return $http({
-//                    method: 'DELETE',
-//                    url: '/api/Supplies/' + id
-//                });
-//            }
-//        };
-//    }]);
+﻿//COMPLETED - Need Review
 
 angular.module('StartApp.managerApp')
     .factory('tenantFactory', ['$http', function ($http) {
 
-        var urlBase = 'https://homes-webapi.azurewebsites.netapi/api/SupplyRequests';
+        var urlBase = 'https://homes-webapi.azurewebsites.netapi/api/TenantCarRelationships';
         var tenantFactory = {};
 
-        tenantFactory.getSupplies = function () {
-            return $http({
-                method: 'GET',
-                dataType: 'json',
-                url: urlBase,
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
-                }
-            });
-
-        };
+        //tenantFactory.getSupplies = function () {
+        //    return $http.get(urlBase);
+        //};
 
 
-        tenantFactory.getSupplyById = function (id) {
+        tenantFactory.getTenantCarById = function (id) {
             return $http({
                 method: 'GET',
                 dataType: 'json',
@@ -61,12 +25,12 @@ angular.module('StartApp.managerApp')
         };
 
 
-        tenantFactory.postSupply = function (supply) {
+        tenantFactory.postTenantCar = function (tenantCar) {
             $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { supply },
+                data: { tenantCar },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -77,12 +41,12 @@ angular.module('StartApp.managerApp')
         };
 
 
-        tenantFactory.putSupply = function (supply) {
+        tenantFactory.putTenantCar = function (tenantCar) {
             $http({
                 method: 'PUT',
                 dataType: 'json',
-                url: urlBase + '/' + supply.supplyRequestId,
-                data: { supply },
+                url: urlBase + '/' + tenantCar.tenantId,
+                data: { tenantCar },
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -92,7 +56,7 @@ angular.module('StartApp.managerApp')
             });
         };
 
-        tenantFactory.deleteSupply = function (id) {
+        tenantFactory.deleteTenantCar = function (id) {
             return $http({
                 method: 'DELETE',
                 dataType: 'json',
