@@ -77,9 +77,9 @@ angular.module('StartApp.managerApp')
                 });
 
         };
-
-        $scope.postSupply = function (supplyName) {
-            suppliesFactory.postSupply(supplyName)
+        
+        $scope.postSupply = function () {
+            suppliesFactory.postSupply($scope.newSupply)
                 .then(function (response) {
                     $scope.supplies = response.data;
                 }, function (error) {
