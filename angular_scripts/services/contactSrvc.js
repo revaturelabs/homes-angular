@@ -12,7 +12,7 @@ angular.module('StartApp.managerApp')
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: batch,
+                data: contact,
                 headers: { "Content-Type": "application/json" }
             }).then(function (response) {
                 return response;
