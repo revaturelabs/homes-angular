@@ -6,11 +6,28 @@
         var batchesFactory = {};
 
         batchesFactory.getBatches = function () {
-            return $http.get(urlBase);
+
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
 
         batchesFactory.getBatchById = function (id) {
-            return $http.get(urlBase + '/' +id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
 
         batchesFactory.postBatch = function (batch) {

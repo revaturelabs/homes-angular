@@ -49,12 +49,12 @@
         <tbody>
             <tr dir-paginate="b in batches|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td><center>{{b.name}}</center></td> 
-                <td><center>{{b.startDate}}</center></td> 
-                <td><center>{{b.endDate}}</center></td> 
+                <td><center>{{b.startDate | date:"MM/dd/yyyy"}}</center></td> 
+                <td><center>{{b.endDate | date:"MM/dd/yyyy"}}</center></td> 
                 <td>
                     <center>
                         <button class="btn btn-primary btn-fill btn-xs" data-title="Edit" data-toggle="modal" ng-click="getBatchById(b)" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                        <button class="btn btn-danger btn-fill btn-xs" ng-click="confirmClick() && deleteBatch(b.batchId)" deletebatch-click><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                        <button class="btn btn-danger btn-fill btn-xs" ng-click="getBatchById(b)" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                     </center>
                 </td>
                 
@@ -96,7 +96,7 @@
     </div>
 </div>
 
-
+<!--Edit Batches Modal-->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -132,6 +132,33 @@
       
     </div>
    
+</div>
+
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title custom_align" id="Heading">Delete</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger"><center><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this batch?</center></div>
+                <div>
+                    <p>Batch Name:{{batchName}}</p>
+                    <p>Start Date:{{startDate | date:"MM/dd/yyyy"}}</p>
+                    <p>End Date:{{endDate | date:"MM/dd/yyyy"}}</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)"><span class="glyphicon glyphicon-check"></span> Confirm</button>
+                    <button class="btn btn-danger btn-fill"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+           
+        </div>
+    </div>
 </div>
 
 

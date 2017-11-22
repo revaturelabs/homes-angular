@@ -19,7 +19,6 @@ angular.module('StartApp.managerApp')
             //console.log(maintenanceSrvc);
             maintenanceRequestsSrvc.getMaintenanceRequests().then(
                 function (success) {
-                    console.log('success', success);
                     $scope.maintenanceRequests = success.data;
                 },
                 function (error) {
@@ -115,6 +114,21 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to Delete Batch: ' + error.message;
                 });
         };
+
+        //delete Batch record
+        //$scope.deleteBatch = function(id) {
+        //    batchesFactory.deleteBatch(id)
+        //        .then(function (d) {
+        //        var batch = {
+        //            batchId: '',
+        //            name: '',
+        //            startDate: '',
+        //            endDate: ''
+        //        };
+        //        $scope.refresh();
+        //        $scope.status = 'Unable to Delete Batch: ' + error.message;
+        //    });
+        //}
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
