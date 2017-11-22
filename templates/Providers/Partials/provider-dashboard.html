@@ -6,7 +6,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="bs-component">
+                <div class="bs-component" ng-init="populate()">
                     <form class="form-inline">
                         <div class="form-group" style="float:left; margin-bottom:15px;">
                             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -48,9 +48,9 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate =" a in addrress|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                <td>{{a.address.name + " " + + " " + a.address.buildingNumber + " " + a.address.streetName + " " + a.city + " " + a.zipcode + " " + a.state + " " + a.country}}</td>
-                                <td>{{a.tenants[0]}}</td>
+                            <tr dir-paginate =" a in maintenaceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                                <td>{{a.tenant}}</td>
+                                <td></td>
                                 <td> </td>
                             </tr>
                         </tbody>
