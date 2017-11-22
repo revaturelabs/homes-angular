@@ -9,8 +9,31 @@
                 </div>
                 <div class="content">
                     <div class="row">
-
+                        <div class="col-md-6">
+                            Tenant: {{tenant.contact.firstName}} {{tenant.contact.lastName}}<br />
+                            Batch: {{tenant.batch.name}}<br />
+                            Email: {{tenant.contact.email}}<br />
+                            Phone Number: {{tenant.contact.phoneNumber}}<br />
+                            Has Key: {{tenant.hasKey}}<br />
+                            Has Moved: {{tenant.hasMoved}}
+                        </div>
+                        <div class="col-md-6">
+                            Address:<br />
+                            {{tenant.housingUnit.address.name}}<br/>
+                            {{tenant.housingUnit.address.buildingNumber}}
+                            {{tenant.housingUnit.address.streetName}}<br/>
+                            {{tenant.housingUnit.housingSignature}}<br/>
+                            {{tenant.housingUnit.address.city}}
+                            {{tenant.housingUnit.address.state}}<br/>
+                            {{tenant.housingUnit.address.country}}
+                            {{tenant.housingUnit.address.zipcode}}
+                        </div>
                     </div>
+
+
+                        
+
+                    
                 </div>
             </div>
         </div>
@@ -52,16 +75,19 @@
                                             <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                         </center>
                                     </th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
 
 
                             </thead>
                             <tbody>
-                                <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                    <td>{{user.id}}</td>
-                                    <td>{{user.first_name}}</td>
-                                    <td>{{user.last_name}}</td>
-
+                                <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="t in tenants">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><center><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-dark btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></center></td>
+                                    <td><center><p data-placement="top" title="Delete"><button class="btn btn-dark btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></center></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,6 +1,8 @@
 ﻿<center><h3>Batches</h3></center>
 <br />
+
 <div class="bs-component">
+   
     <form class="form-inline">
         <div class="form-group" style="float:left; margin-bottom:15px;">
             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -12,7 +14,7 @@
             <p data-placement="top" data-toggle="tooltip" title="Add New Batch"><button data-toggle="modal" data-target="#create" class="btn btn-success btn-fill" data-title="New Supply"><span class="glyphicon glyphicon-plus"></span> Create New Batch</button></p>
         </div>
     </div>
-
+    <div growl></div>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -90,7 +92,7 @@
                     </div>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-primary btn-fill" ng-click="postBatch()" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Create</button>
+                    <button type="button" class="btn btn-primary btn-fill" ng-click="postBatch()" onclick="demo.showAddedBatch('top','right')" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Create</button>
                     <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
                 </div>
             </div>
@@ -128,7 +130,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()"> <span class="glyphicon glyphicon-check"></span> Update</button>
+                    <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()" onclick="demo.showEditedBatch('top','right')"> <span class="glyphicon glyphicon-check"></span> Update</button>
                     <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                 </div>
             </div>
@@ -155,7 +157,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                        <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal" onclick="demo.showDeletedBatch('top','right')"><span class="glyphicon glyphicon-check"></span> Delete</button>
                         <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                     </div>
                 </div>
