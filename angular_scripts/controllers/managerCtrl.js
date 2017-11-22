@@ -2,6 +2,12 @@
 
 'use strict';
 angular.module('StartApp.managerApp')
+
+    .config(['growlProvider', function (growlProvider) {
+        growlProvider.globalTimeToLive(5000);
+        growlProvider.globalPosition('bottom-right');
+    }])
+
     .controller("DashboardController", function ($http, $scope) {
 
 
@@ -32,14 +38,51 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', function ($scope) {
+    .controller('DashHousingController', function ($scope, housingUnitFactory) {
+        getHousingsAndProviders();
+
+        function getHousingsAndProviders() {
+            housingUnitFactory.getHousingUnitsWithProviders()
+                .then(function (response) {
+                    $scope.housingsProviders = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load housings with providers: ' + error.message;
+                });
+
+        };
+
+        $scope.getHousingProviderById = function (housing) {
+            //Need to implement method that receive address id and return list of everything that have same address id
+            var singlerecord = housingUnitFactory.getHousingUnitWithProviders(housing.addressId);
+            singlerecord.then(function (d) {
+               //Need to know how to iterate through list of objects that have same addressId
+                var record = d.data;
+                $scope.addressId = record.addressId;
+                $scope.name = record.name;
+                $scope.streetName = record.streetName;
+                $scope.city = record.city;
+                $scope.zipcode = record.zipcode;
+                $scope.state = record.state;
+                $scope.country = record.country;
+                $scope.firstName = record.firstName;
+                $scope.lastName = record.lastName;
+                $scope.email = record.email;
+                $scope.phoneNumber = record.phoneNumber;
+                $scope.companyName = record.companyName;
+            },
+                function () {
+                    $scope.status = 'Unable to get Batch: ' + error.message;
+                });
+        };
+
+
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('DashBatchesController', function ($scope, batchesFactory) {
+    .controller('DashBatchesController', function ($scope, batchesFactory, growl) {
 
         getBatches();
 
@@ -57,13 +100,17 @@ angular.module('StartApp.managerApp')
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.name });
             batchesFactory.postBatch(batch);
             getBatches();
+
+            $scope.name = '';
+            $scope.startDate = '';
+            $scope.endDate = '';
         };
 
-        $scope.getBatchById = function(batch) {
- 
+        $scope.getBatchById = function (batch) {
+
             var singlerecord = batchesFactory.getBatchById(batch.batchId);
             singlerecord.then(function (d) {
- 
+
                 var record = d.data;
                 $scope.batchId = record.batchId;
                 $scope.batchName = record.name;
@@ -93,10 +140,12 @@ angular.module('StartApp.managerApp')
                 .then(function (d) {
                     $scope.batch = d.data;
                     getBatches();
+                    growl.success("Batch Deleted Successfully!");
                 }, function (error) {
-                  $scope.status = 'Unable to Delete Batch: ' + error.message;
-               }
-            );
+                    growldanger("An error has ocurred while deleting this batch");
+                    $scope.status = 'Unable to Delete Batch: ' + error.message;
+                }
+                );
         };
 
         $scope.sort = function (keyname) {
@@ -105,6 +154,7 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('SuppliesController', function ($scope, suppliesFactory) {
+
 
         getSupplies();
 
@@ -116,15 +166,53 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to load Supplies: ' + error.message;
                 });
 
-        }
+        };
 
-        $scope.postSupply = function (supplyName) {
-            suppliesFactory.postSupply(supplyName)
-                .then(function (response) {
-                    $scope.supplies = response.data;
-                }, function (error) {
-                    $scope.status = 'Unable to add Supply: ' + error.message;
+        $scope.getSupplyById = function (supply) {
+
+            var singlerecord = suppliesFactory.getSupplyById(supply.supplyId);
+            singlerecord.then(function (d) {
+
+                var record = d.data;
+                $scope.supplyId = record.supplyId;
+                $scope.supplyName = record.supplyName;
+            },
+                function () {
+                    $scope.status = 'Unable to get Batch: ' + error.message;
                 });
+        };
+
+        $scope.postSupply = function (newSupplyName) {
+            suppliesFactory.postSupply(newSupplyName);
+            //.then(function (response) {
+            //    $scope.supplies = response.data;
+            //}, function (error) {
+            //    $scope.status = 'Unable to add Supply: ' + error.message;
+            //});
+            $scope.newSupplyName = "";
+            getSupplies();
+        };
+
+        $scope.updateSupply = function () {
+            var supply = {
+                supplyId: $scope.supplyId,
+                supplyName: $scope.supplyName
+            };
+
+            suppliesFactory.putSupply(supply);
+            getSupplies();
+        };
+
+        $scope.deleteSupply = function (id) {
+            suppliesFactory.deleteSupply($scope.supplyId)
+                .then(function (d) {
+                    $scope.supply = d.data;
+                    getBatches();
+                }, function (error) {
+                    $scope.status = 'Unable to Delete Supply: ' + error.message;
+                }
+                );
+            
         };
 
         $scope.sort = function (keyname) {
@@ -294,7 +382,7 @@ angular.module('StartApp.managerApp')
             $scope.contactPhone = '';
 
         }
-   
+
     }]);
 
 
