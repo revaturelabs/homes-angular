@@ -2,6 +2,12 @@
 
 'use strict';
 angular.module('StartApp.managerApp')
+
+    .config(['growlProvider', function (growlProvider) {
+        growlProvider.globalTimeToLive(5000);
+        growlProvider.globalPosition('middle-right');
+    }])
+
     .controller("DashboardController", function ($http, $scope) {
 
 
@@ -39,7 +45,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('DashBatchesController', function ($scope, batchesFactory) {
+    .controller('DashBatchesController', function ($scope, batchesFactory, growl) {
 
         getBatches();
 
@@ -57,13 +63,17 @@ angular.module('StartApp.managerApp')
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.name });
             batchesFactory.postBatch(batch);
             getBatches();
+
+            $scope.name = '';
+            $scope.startDate = '';
+            $scope.endDate = '';
         };
 
-        $scope.getBatchById = function(batch) {
- 
+        $scope.getBatchById = function (batch) {
+
             var singlerecord = batchesFactory.getBatchById(batch.batchId);
             singlerecord.then(function (d) {
- 
+
                 var record = d.data;
                 $scope.batchId = record.batchId;
                 $scope.batchName = record.name;
@@ -94,9 +104,9 @@ angular.module('StartApp.managerApp')
                     $scope.batch = d.data;
                     getBatches();
                 }, function (error) {
-                  $scope.status = 'Unable to Delete Batch: ' + error.message;
-               }
-            );
+                    $scope.status = 'Unable to Delete Batch: ' + error.message;
+                }
+                );
         };
 
         $scope.sort = function (keyname) {
@@ -294,7 +304,7 @@ angular.module('StartApp.managerApp')
             $scope.contactPhone = '';
 
         }
-   
+
     }]);
 
 
