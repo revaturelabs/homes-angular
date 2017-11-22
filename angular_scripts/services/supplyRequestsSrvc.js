@@ -33,11 +33,11 @@ angular.module('StartApp.managerApp')
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/SupplyRequests';
         var supplyRequestsFactory = {};
 
-        supplyRequestsFactory.getSupplies = function () {
+        supplyRequestsFactory.getSupplyRequests = function () {
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: urlBase,
+                url: urlBase + '/All',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

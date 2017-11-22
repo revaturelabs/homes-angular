@@ -12,14 +12,28 @@ angular.module('StartApp.managerApp')
 
 
     })
-    .controller('DashSuppliesController', function ($scope, growl) {
+    .controller('DashSuppliesController', ['$scope', 'supplyRequestsSrvc', 'growl', function ($scope, supplyRequestsSrvc, growl) {
+        $scope.supplyRequests;
 
+        $scope.populate = function () {
+            supplyRequestsSrvc.getSupplyRequests().then(
+                function (response) {
+                    $scope.supplyRequests = response.data;
+                    console.log($scope.supplyRequests);
+                },
+                function (error) {
+
+                    console.log('error', error);
+                }
+
+            );
+        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
-    })
+    }])
     .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
         $scope.maintenanceRequests;
 
@@ -275,6 +289,10 @@ angular.module('StartApp.managerApp')
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
+    })
+    .controller("UsersPendingsController", function ($http, $scope) {
+        $scope.demo = "Pendings View"
+
     })
     .controller('UsersManagersController', function ($scope, managementsFactory, growl) {
 

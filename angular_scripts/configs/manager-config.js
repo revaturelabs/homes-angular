@@ -44,6 +44,11 @@ var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir', 'ang
                 templateUrl: 'templates/Managers/Partials/users-tab-tenants.html',
                 controller: 'UsersTenantsController'
             }).
+            state('Managers.Users.Pendings', {
+                url: '/Pendings',
+                templateUrl: 'templates/Managers/Partials/users-tab-pendings.html',
+                controller: 'UsersPendingsController'
+            }).
             state('Managers.Users.Managers', {
                 url: '/Managers',
                 templateUrl: 'templates/Managers/Partials/users-tab-managers.html',
