@@ -49,9 +49,9 @@
                         </thead>
                         <tbody>
                             <tr dir-paginate =" a in maintenaceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                <td>{{a.tenant}}</td>
-                                <td></td>
-                                <td> </td>
+                                <td>{{a.tenant.housingUnit.address.name + " " + a.tenant.housingUnit.address.buildingNumber + " " + a.tenant.housingUnit.housingSignature  + " " + a.tenant.housingUnit.address.streetName + " " + a.tenant.housingUnit.address.city + " " + a.tenant.housingUnit.address.zipcode + " " + a.tenant.housingUnit.address.state + " " + a.tenant.housingUnit.address.country }}</td>
+                                <td>{{a.message}}</td>
+                                <td>{{a.active}}</td>
                             </tr>
                         </tbody>
                     </table>
