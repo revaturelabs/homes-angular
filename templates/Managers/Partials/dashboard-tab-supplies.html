@@ -1,24 +1,5 @@
 ﻿<center><h3>Supplies Requests</h3></center>
 <br />
-<!--<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th><center>Name</center></th>
-            <th><center>Housing Address</center></th>
-            <th><center>Email</center></th>
-            <th><center>Message</center></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-            <td><center></center></td>
-        </tr>
-    </tbody>
-</table>-->
-
 <div class="bs-component" ng-init="populate()">
     <form class="form-inline">
         <div class="form-group" style="float:right; margin-bottom:15px;">
@@ -51,10 +32,9 @@
                         Supplies List
                     </center>
                 </th>
-                <th ng-click="sort('status')">
+                <th>
                     <center>
                        Status
-                        <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
             </tr>
