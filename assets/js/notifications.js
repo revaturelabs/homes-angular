@@ -130,22 +130,51 @@ demo = {
         marker.setMap(map);
     },
 
-	showNotification: function(from, align){
-    	color = Math.floor((Math.random() * 4) + 1);
+	showAddedBatch: function(from, align){
 
     	$.notify({
-        	icon: "ti-gift",
-        	message: "Welcome to <b>Paper Dashboard</b> - a beautiful freebie for every web developer."
+        	icon: "ti-thumb-up",
+            message: "<b>Batch</b> is Added successfully!"
 
         },{
-            type: type[color],
-            timer: 4000,
+            type: 'success',
+            timer: 100,
             placement: {
                 from: from,
                 align: align
             }
         });
-	},
+    },
+    showEditedBatch: function (from, align) {
+
+        $.notify({
+            icon: "ti-thumb-up",
+            message: "<b>Batch</b> Updated successfully!"
+
+        }, {
+                type: 'success',
+                timer: 100,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+    },
+    showDeletedBatch: function (from, align) {
+
+        $.notify({
+            icon: "ti-thumb-up",
+            message: "<b>Batch</b> Deleted successfully!"
+
+        }, {
+                type: 'success',
+                timer: 100,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+    },
     initDocumentationCharts: function(){
     //     	init single simple line chart
         var dataPerformance = {
