@@ -52,10 +52,85 @@
                                              boundary-links="true">
                     </dir-pagination-controls>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right ">
+                            <p data-placement="top" title="AddRequest"><button class="btn btn-dark btn-md" data-title="AddRequest" data-toggle="modal" data-target="#addrequest"><span class="glyphicon glyphicon-edit"></span>Add Request</button></p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Housing Name:</label>
+                        <input class="form-control " type="text" placeholder="Tiger Nixon">
+                    </div>
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <input class="form-control " type="text" placeholder="System Architect">
+                    </div>
+                    <div class="form-group">
+
+                        <label>Capacity:</label>
+                        <input class="form-control " type="text" placeholder="Edinburgh">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>Status:</label>
+                        <input class="form-control " type="text" placeholder="Edinburgh">
+
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="addrequest" tabindex="-1" role="dialog" aria-labelledby="addrequest" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title custom_align" id="Heading">Add Request</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Request:</label>
+                        <input class="form-control " type="text" placeholder="Tiger Nixon">
+                    </div>
+                    <div class="form-group">
+
+                        <label>Status</label>
+                        <select>
+                            <option value="1">Active</option>
+                            <option value="0">Close</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Submit</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
 
 
