@@ -80,21 +80,24 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Add a new Batch</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input name="Bname" class="form-control " type="text" placeholder="Batch Name" ng-model="name">
+                <form>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <input name="Bname" class="form-control " type="text" placeholder="Batch Name" ng-model="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="endDate" class="form-control " type="date" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
+                    <div class="modal-footer ">
+                        <button type="submit" class="btn btn-primary btn-fill" ng-click="postBatch()" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Create</button>
+                        <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
                     </div>
-                    <div class="form-group">
-                        <input name="endDate" class="form-control " type="date" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
-                    </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-primary btn-fill" ng-click="postBatch()" onclick="demo.showAddedBatch('top','right')" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Create</button>
-                    <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -130,7 +133,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()" onclick="demo.showEditedBatch('top','right')"> <span class="glyphicon glyphicon-check"></span> Update</button>
+                    <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()"> <span class="glyphicon glyphicon-check"></span> Update</button>
                     <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                 </div>
             </div>
@@ -157,7 +160,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal" onclick="demo.showDeletedBatch('top','right')"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                        <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Delete</button>
                         <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                     </div>
                 </div>
