@@ -290,6 +290,10 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
+    .controller("UsersPendingsController", function ($http, $scope) {
+        $scope.demo = "Pendings View"
+
+    })
     .controller('UsersManagersController', function ($scope, managementsFactory, growl) {
 
         $scope.status;
