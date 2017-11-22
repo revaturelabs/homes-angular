@@ -5,7 +5,7 @@ angular.module('StartApp.managerApp')
 
     .config(['growlProvider', function (growlProvider) {
         growlProvider.globalTimeToLive(5000);
-        growlProvider.globalPosition('middle-right');
+        growlProvider.globalPosition('bottom-right');
     }])
 
     .controller("DashboardController", function ($http, $scope) {
@@ -103,7 +103,9 @@ angular.module('StartApp.managerApp')
                 .then(function (d) {
                     $scope.batch = d.data;
                     getBatches();
+                    growl.success("Batch Deleted Successfully!");
                 }, function (error) {
+                    growldanger("An error has ocurred while deleting this batch");
                     $scope.status = 'Unable to Delete Batch: ' + error.message;
                 }
                 );
