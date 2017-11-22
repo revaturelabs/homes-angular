@@ -237,34 +237,37 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('UsersBatchesController', ["$scope", "batchesFactory", function ($scope, batchesFactory) {
-        //batch info
+        //batch 
         $scope.batchName;
         $scope.startDate;
         $scope.endDate;
-        //contact info
-        //$scope.contactFirstName;
-        //$scope.contactLastName;
-        //$scope.email;
-        //$scope.phone;
-        //call batch services
+        //contact
+        $scope.contactList = [];
+        $scope.contactfirstName;
+        $scope.contactlastName;
+        $scope.contactEmail;
+        $scope.contactPhone;
+
+
+
         $scope.status;
         $scope.batches;
-
+        $scope.contacts;
+        //call batch services
         $scope.getBatches = function getBatches() {
-            batchesFactory.getBatches(batch)
+            batchesFactory.getBatches()
                 .then(function (response) {
                     $scope.batches = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-        };
-
+        }
         $scope.postBatch = function postBatch() {
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
+            console.log(batch);
             batchesFactory.postBatch(batch)
                 .then(function (response) {
                     $scope.batches = response.data;
-                    $scipe.refresh();
                 }, function (error) {
                     $scope.status = 'Unable to insert Batch: ' + error.message;
                 });
@@ -274,26 +277,41 @@ angular.module('StartApp.managerApp')
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        };
+        }
         //call contact services
-        //$scope.getContacts = function getContact() {
-        //    contactFactory.getContacts(contact)
-        //        .then(function (response) {
-        //            $scope.contacts = response.data;
-        //        }, function (error) {
-        //            $scope.status = 'Unable to load Batches: ' + error.message;
-        //        });
-        //}
-        //$scope.postContacts = function postContact(contact) {
-        //    contactFactory.postContacts(contact)
-        //        .then(function (response) {
-        //            $scope.contacts = response.data;
-        //        }, function (error) {
-        //            $scope.status = 'Unable to insert Batch: ' + error.message;
-        //        });
-        //    console.log($scope.batchName);
-        //}
+        $scope.getContacts = function getContact() {
+            contactFactory.getContacts(contact)
+                .then(function (response) {
+                    $scope.contacts = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+        }
+        $scope.postContacts = function postContact() {
+            $scope.updateContactList();
+            var contact = JSON.stringify($scope.contactList);
+            console.log(contact);
+            contactFactory.postContacts(contact)
+                .then(function (response) {
+                    $scope.contacts = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to insert Batch: ' + error.message;
+                });
+            console.log($scope.batchName);
+        }
 
+        $scope.updateContactList = function updateContactList() {
+
+            console.log($scope.contactfirstName);
+            $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
+            console.log($scope.contactfirstName);
+            $scope.contactfirstName = '';
+            $scope.contactlastName = '';
+            $scope.contactEmail = '';
+            $scope.contactPhone = '';
+
+        }
+   
     }]);
 
 
