@@ -21,10 +21,19 @@ angular.module('StartApp.managerApp')
 
         };
 
-        suppliesFactory.getSupply = function (id) {
-            return $http.get(urlBase + "/" + id);
-        };
+        suppliesFactory.getSupplyById = function (id) {
 
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+        };
+     
         suppliesFactory.postSupply = function (supplyName) {
             $http({
                 method: 'POST',
@@ -45,7 +54,7 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + "/" + supply.supplyId,
-                data: { supply },
+                data: supply ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}

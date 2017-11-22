@@ -6,7 +6,7 @@ function contact_fields() {
     var divtest = document.createElement("div");
 	divtest.setAttribute("class", "form-group removeclass"+room);
 	var rdiv = 'removeclass'+room;
-    divtest.innerHTML = ; 
+    //divtest.innerHTML = ; 
 
     objTo.appendChild(divtest)
 }

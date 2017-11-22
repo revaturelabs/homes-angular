@@ -2,11 +2,30 @@ h5{
     margin-top: 0px;
 }
 
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width: inherit;
+    height: inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
 table tr th {
     background: #337ab7;
     color: white;
     text-align: left;
-    vertical-align: center;
 }
 /* STRUCTURE */
 
@@ -795,8 +814,7 @@ hr {
 .btn-xs {
   font-size: 12px;
   border-radius: 26px;
-
-}
+  padding: 2px 5px; }
   .btn-xs.btn-simple {
     padding: 4px 5px; }
 
