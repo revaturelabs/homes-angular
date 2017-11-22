@@ -8,7 +8,7 @@ angular.module('StartApp.managerApp')
     })
     .controller('DashSuppliesController', function ($scope) {
 
-       
+
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
@@ -59,9 +59,9 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('SuppliesController', function ($scope, suppliesFactory) {
-       
+
         getSupplies();
-        
+
         function getSupplies() {
             suppliesFactory.getSupplies()
                 .then(function (response) {
@@ -71,7 +71,7 @@ angular.module('StartApp.managerApp')
                 });
 
         };
-
+        
         $scope.postSupply = function (supplyName) {
             suppliesFactory.postSupply(supplyName)
                 .then(function (response) {
@@ -84,6 +84,26 @@ angular.module('StartApp.managerApp')
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        };
+
+        $scope.putSupply = function () {
+            var supply =JSON.stringify({ supply: $scope.supply});
+            suppliesFactory.putSupply(supply)
+                .then(function (response) {
+                    $scope.supplies = reponse.data;
+                }, function (error) {
+                    $scope.status = "Unable to update Supply" + error.message;
+               });
+        };
+
+        $scope.deleteSupply = function deleteSupply(id) {
+            
+            suppliesFactory.deleteSupply(id)
+                .then(function (response) {
+                    $scope.Supply = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to Delete Supply: ' + error.message;
+                });
         };
     })
     .controller('UsersController', function ($scope) {

@@ -37,20 +37,25 @@
                         </thead>
                         <tbody>
                             <tr dir-paginate="s in supplies|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                                
                                 <td>{{s.supplyName}}</td>
-                                <td><center><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-dark btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></center></td>
-                                <td><center><p data-placement="top" title="Delete"><button class="btn btn-dark btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></center></td>
+                                <td><center><p data-placement="top"  data-toggle="tooltip" title="Edit"><button class="btn btn-dark btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></center></td>
+                                <td><center><p data-placement="top" title="Delete"><button  class="btn btn-dark btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></center></td>
                             </tr>
+
                         </tbody>
                     </table>
+                    
                     <dir-pagination-controls max-size="15"
                                              direction-links="true"
                                              boundary-links="true">
                     </dir-pagination-controls>
                 </div>
                 <div class="row">
-                    <div class="pull-right">
-                        <p data-placement="top" data-toggle="tooltip" title="New Supply"><button class="btn btn-dark btn-xs" data-title="New Supply" data-toggle="modal" data-target="#newSupply"><span class="glyphicon glyphicon-pencil"></span> New Supply</button></p>
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <p data-placement="top" data-toggle="tooltip" title="New Supply"><button class="btn btn-dark btn-md" data-title="New Supply" data-toggle="modal" data-target="#newSupply"><span class="glyphicon glyphicon-pencil"></span> New Supply</button></p>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -72,21 +77,11 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Tiger Nixon">
-                </div>
-                <div class="form-group">
-
-                    <input class="form-control " type="text" placeholder="System Architect">
-                </div>
-                <div class="form-group">
-
-
-                    <input class="form-control " type="text" placeholder="Edinburgh">
-
+                    <input class="form-control " type="text"  ng-model="supply" placeholder="Tiger Nixon">
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="putSupply()"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -104,11 +99,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>New Supply: </label>
-                    <input class="form-control " type="text" placeholder="New Supply Name">
+                    <input class="form-control " type="text" placeholder="New Supply Name" ng-model="supplyName">
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Add Supply</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="postSupply(supplyName)"><span class="glyphicon glyphicon-ok-sign"></span>Add Supply</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -129,7 +124,7 @@
 
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign" "></span> Yes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
             </div>
         </div>
