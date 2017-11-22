@@ -54,7 +54,7 @@ angular.module('StartApp.managerApp')
         }
 
         $scope.postBatch = function postBatch() {
-            var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
+            var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.name });
             batchesFactory.postBatch(batch);
             getBatches();
         };
