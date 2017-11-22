@@ -91,13 +91,13 @@
                 <h4 class="modal-title custom_align" id="Heading">Select Batch</h4>
             </div>
             <div class="modal-body">
-                <select size="1" class="alert-warning form-control">
+                <select size="1" class="alert-warning form-control" ng-model="selectedID">
                     <option value="this" selected="selected"></option>
-                    <option ng-repeat="b in batches" value="{{b.name}}">{{b.name}}</option>
+                    <option ng-repeat="b in batches" value="{{b.batchId}}">{{b.name}}</option>
                 </select>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="postContacts()"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="submitContacts()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
             </div>
         </div>
         <!-- /.modal-content -->
