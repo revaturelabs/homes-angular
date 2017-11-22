@@ -21,11 +21,14 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
+        $scope.maintenanceRequests;
+
         $scope.populate = function () {
             //console.log(maintenanceSrvc);
             maintenanceRequestsSrvc.getMaintenanceRequests().then(
                 function (success) {
                     $scope.maintenanceRequests = success.data;
+                    console.log($scope.maintenanceRequests);
                 },
                 function (error) {
                     console.log('error', error);

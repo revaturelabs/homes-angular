@@ -13,7 +13,7 @@ angular.module('StartApp.managerApp')
          return $http({
              method: 'GET',
              dataType: 'json',
-             url: urlBase,
+             url: urlBase + '/All',
              headers: {
                  "Content-Type": "application/json",
                  "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
