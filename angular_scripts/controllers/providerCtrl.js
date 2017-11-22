@@ -9,7 +9,7 @@
 //    });
 
 'use strict';
-angular.module('StartApp.managerApp')
+angular.module('StartApp.managerApp') 
     .controller('ProvidersDashboardController', function ($scope, providerFactory) {
 
         $scope.status;

@@ -58,6 +58,19 @@ angular.module('StartApp.managerApp')
             });
 
         };
+        // GET: (all request to provider)
+        supplyRequestsFactory.getSuppliesByHousingUnitId = function (id) {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/ByHouseUnit/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
+        };
 
 
         supplyRequestsFactory.getSupplyById = function (id) {

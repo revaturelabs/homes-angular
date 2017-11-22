@@ -795,7 +795,8 @@ hr {
 .btn-xs {
   font-size: 12px;
   border-radius: 26px;
-  padding: 2px 5px; }
+
+}
   .btn-xs.btn-simple {
     padding: 4px 5px; }
 
