@@ -215,7 +215,7 @@ angular.module('StartApp.managerApp')
                       $scope.supplies = response.data;
                   }, function (error) {
                       $scope.status = 'Unable to delete supply:' + error.message;
-                  }
+                  });
           }
 
           
