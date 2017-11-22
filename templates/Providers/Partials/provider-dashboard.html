@@ -6,16 +6,16 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="bs-component">
+                <div class="bs-component" ng-init="populate()">
                     <form class="form-inline">
                         <div class="form-group" style="float:left; margin-bottom:15px;">
                             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
                         </div>
                     </form>
-                    <div class="row">
+                    <!--<div class="row">
                         <div style="float:right; margin-right:20px;">
                             <p data-placement="top" title="AddRequest"><button class="btn btn-success btn-fill btn-xs" data-title="AddRequest" data-toggle="modal" data-target="#addrequest"><span class="glyphicon glyphicon-edit"></span>Add Request</button></p>
-                        </div>
+                        </div>-->
                     </div>
                     <table class="table table-striped table-bordered">
                         <thead>
@@ -25,6 +25,9 @@
                                         Housing Address
                                         <span class="fa fa-sort" ng-init="sortKey=='housingAddress'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                     </center>
+
+
+
                                 <th ng-click="sort('message')">
                                     <center>
                                         Message
@@ -45,10 +48,10 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                <td>{{user.id}}</td>
-                                <td></td>
-                                <td> </td>
+                            <tr dir-paginate =" a in maintenaceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                                <td>{{a.tenant.housingUnit.address.name + " " + a.tenant.housingUnit.address.buildingNumber + " " + a.tenant.housingUnit.housingSignature  + " " + a.tenant.housingUnit.address.streetName + " " + a.tenant.housingUnit.address.city + " " + a.tenant.housingUnit.address.zipcode + " " + a.tenant.housingUnit.address.state + " " + a.tenant.housingUnit.address.country }}</td>
+                                <td>{{a.message}}</td>
+                                <td>{{a.active}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,9 +65,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 
-    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <!--<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,9 +100,9 @@
                     <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-content 
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-dialog 
     </div>
 
     <div class="modal fade" id="addrequest" tabindex="-1" role="dialog" aria-labelledby="addrequest" aria-hidden="true">
@@ -128,10 +131,10 @@
                     <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Submit</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-content 
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-dialog 
     </div>
-
+            -->
 
 

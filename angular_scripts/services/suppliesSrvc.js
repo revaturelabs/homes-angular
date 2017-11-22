@@ -35,7 +35,7 @@ angular.module('StartApp.managerApp')
         };
      
         suppliesFactory.postSupply = function (supplyName) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -44,36 +44,34 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
             });
         };
 
-        suppliesFactory.putSupply = function (supply) {
-            $http({
+        suppliesFactory.putSupply = function (supplyId, supply) {
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
-                url: urlBase + "/" + supply.supplyId,
-                data: supply ,
+                url: urlBase + "/" + supplyId,
+                data: supply,
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
-            }).then(function (response) {
-                return response;
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             });
         };
 
+
         suppliesFactory.deleteSupply = function (id) {
-            $http({
+            return $http({
                 method: 'DELETE',
                 dataType: 'json',
-                url: urlBase + "/" + id,         
+                url: urlBase + '/' + id,
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
-            }).then(function (response) {
-                return response;
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             });
+
         };
 
         return suppliesFactory;

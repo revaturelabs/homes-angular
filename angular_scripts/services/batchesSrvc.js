@@ -31,19 +31,19 @@
         };
 
         batchesFactory.postBatch = function (batch) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
                 data: batch,
-                headers: { "Content-Type": "application/json"}
-            }).then(function (response) {
-                return response;
-            });
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
+            })
         };
 
         batchesFactory.putBatch = function(batchId, batch) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + batchId,
@@ -52,9 +52,7 @@
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
         batchesFactory.deleteBatch = function (id) {
