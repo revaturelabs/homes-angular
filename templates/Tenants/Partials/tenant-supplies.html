@@ -7,16 +7,10 @@
             <div class="content">
           
                    <div class="bs-component">
-                       <table class="table table-striped table-bordered">
+                       <table class="table table-striped table-bordered" id="tenantsupply">
                            <thead>
                                <tr>
-                                   <th>
-
-                                       <center>
-                                           Choose Suppies
-
-                                       </center>
-                                   </th>
+                               
                                    <th >
 
                                        <center>
@@ -31,8 +25,9 @@
                            </thead>
                            <tbody>
                                <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" >
-                                   <td class="checkbox"><center class="checkbox"><input class="checkbox" /></center></td>
-                                   <td></td>
+
+                                   <td > <input type="checkbox" style="width: 30px; height: 30px; }" /></td>
+               
                                </tr>
                            </tbody>
                        </table>
@@ -40,6 +35,11 @@
                                                 direction-links="true"
                                                 boundary-links="true">
                        </dir-pagination-controls>
+                       <div class="row">
+                       <div style="float:left; margin-left:810px;">
+                           <button class="btn btn-success btn-fill btn-xs">Add Request</button>
+                       </div>
+                        </div>
                    </div>
             </div>
         </div>

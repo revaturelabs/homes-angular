@@ -61,11 +61,11 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
                         console.log("Sent to manager");
                     }
                     if ($scope.userInfo.profile.groups[i] === 'f143cad2-5a31-436e-b097-28010f1dddb9') {
-                        $state.go('Providers');
+                        $state.go('Providers.Dashboard');
                         console.log("Sent to provider");
                     }
                     if ($scope.userInfo.profile.groups[i] === '7c4a9ef6-6150-4e67-85c1-0cdd6209a6ec') {
-                        $state.go('Tenant');
+                        $state.go('Tenants.Dashboard');
                         console.log("Sent to tenant");
                     }
 

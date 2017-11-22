@@ -1,4 +1,4 @@
-﻿var app = angular.module('managerDir', []);
+﻿var app = angular.module('managerDir', ['ui.bootstrap']);
 
 //Manager Directives
 app.directive('managerSidebar', function () {
@@ -22,4 +22,3 @@ app.directive('managerProfile', function () {
         templateUrl: 'manager-profile.html'
     };
 });
-
