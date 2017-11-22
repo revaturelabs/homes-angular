@@ -33,11 +33,11 @@ angular.module('StartApp.managerApp')
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/SupplyRequests';
         var supplyRequestsFactory = {};
 
-        supplyRequestsFactory.getSupplies = function () {
+        supplyRequestsFactory.getSupplyRequests = function () {
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: urlBase,
+                url: urlBase + '/All',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -86,7 +86,7 @@ angular.module('StartApp.managerApp')
 
 
         supplyRequestsFactory.postSupply = function (supply) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -95,14 +95,12 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
 
         supplyRequestsFactory.putSupply = function (supply) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + supply.supplyRequestId,
@@ -111,9 +109,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
         supplyRequestsFactory.deleteSupply = function (id) {

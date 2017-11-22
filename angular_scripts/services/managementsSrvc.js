@@ -35,7 +35,7 @@ angular.module('StartApp.managerApp')
 
 
         managementsFactory.postManager = function (manager) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -44,14 +44,12 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
 
         managementsFactory.putManager = function (manager) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + manager.managerId,
@@ -60,9 +58,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
         managementsFactory.deleteManager = function (id) {

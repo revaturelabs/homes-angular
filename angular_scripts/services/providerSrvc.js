@@ -75,7 +75,7 @@ angular.module('StartApp.managerApp')
         };
 
         providerFactory.postProvider = function (item) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -87,7 +87,7 @@ angular.module('StartApp.managerApp')
             })
         };
         providerFactory.putProvider = function (id, item) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + item.providerId,

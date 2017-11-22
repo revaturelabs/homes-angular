@@ -9,16 +9,16 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th ng-click="sort('maintenanceRequestId')">
+                <th ng-click="sort('name')">
                     <center>
-                        RequestId
-                        <span class="fa fa-sort" ng-init="sortKey=='maintenanceRequestId'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        Name
+                        <span class="fa fa-sort" ng-init="sortKey=='name'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
-                <th ng-click="sort('tenantId')">
+                <th ng-click="sort('email')">
                     <center>
-                        TenantId
-                        <span class="fa fa-sort" ng-init="sortKey=='tenantId'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        Email
+                        <span class="fa fa-sort" ng-init="sortKey=='email'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
                 <th ng-click="sort('message')">
@@ -27,9 +27,15 @@
                         <span class="fa fa-sort" ng-init="sortKey=='message'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
+                <th ng-click="sort('address')">
+                    <center>
+                        Address
+                        <span class="fa fa-sort" ng-init="sortKey=='message'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>
                 <th ng-click="sort('active')">
                     <center>
-                        Status
+                        Active
                         <span class="fa fa-sort" ng-init="sortKey=='active'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
@@ -37,9 +43,10 @@
         </thead>
         <tbody>
             <tr dir-paginate="req in maintenanceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-              <td>{{req.maintenanceRequestId}}</td>
-                <td>{{req.tenantId}}</td>
+              <td>{{req.tenant.contact.firstName}} {{req.tenant.contact.lastName}}</td>
+                <td>{{req.tenant.contact.email}}</td>
                 <td>{{req.message}}</td>
+                <td>{{req.tenant.housingUnit.address.name}} {{req.tenant.housingUnit.address.streetName}} {{req.tenant.housingUnit.address.buildingNumber}} {{req.tenant.housingUnit.housingSignature}}</td>
                 <td>{{req.active}}</td>
             </tr>
         </tbody>

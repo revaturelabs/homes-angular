@@ -26,7 +26,7 @@ angular.module('StartApp.managerApp')
 
 
         tenantFactory.postTenantCar = function (tenantCar) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -35,14 +35,12 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
 
         tenantFactory.putTenantCar = function (tenantCar) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + tenantCar.tenantId,
@@ -51,9 +49,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
         tenantFactory.deleteTenantCar = function (id) {
