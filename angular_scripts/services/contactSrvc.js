@@ -8,15 +8,13 @@ angular.module('StartApp.managerApp')
             return $http.get(urlBase);
         };
         contactFactory.postContacts = function (contact) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
                 data: contact,
                 headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
         return contactFactory;

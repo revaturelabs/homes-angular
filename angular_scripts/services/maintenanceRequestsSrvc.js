@@ -82,7 +82,7 @@ angular.module('StartApp.providerApp')
      };
 
      maintenanceRequestsFactory.putMaintenanceRequest = function (item) {
-         $http({
+         return $http({
              method: 'PUT',
              dataType: 'json',
              url: urlBase + '/' + item.maintenanceRequestId,
@@ -96,7 +96,7 @@ angular.module('StartApp.providerApp')
      };
 
      maintenanceRequestsFactory.postMaintenanceRequest = function (item) {
-         $http({
+        return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -112,7 +112,7 @@ angular.module('StartApp.providerApp')
      //    return $http.delete(urlBase + '/' + id);
      //};  
      maintenanceRequestsFactory.deleteMaintenanceRequest = function (id) {
-         $http({
+        return $http({
              method: 'DELETE',
              dataType: 'json',
              url: urlBase + '/' + id,
