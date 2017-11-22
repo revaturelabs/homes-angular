@@ -13,7 +13,7 @@
 
                     <div class="row">
                         <div style="float:right; margin-right:20px;">
-                            <p data-placement="top" data-toggle="tooltip" title="New Supply"><button class="btn btn-success btn-fill btn-xs" data-title="Add" data-toggle="modal" data-target="#newSupply"><span class="glyphicon glyphicon-plus"></span> Add New Supply</button></p>
+                            <p data-placement="top" data-toggle="tooltip" title="New Supply"><button class="btn btn-success btn-fill" data-title="Add" data-toggle="modal" data-target="#newSupply"><span class="glyphicon glyphicon-plus"></span> Add New Supply</button></p>
                         </div>
                     </div>
 
@@ -32,16 +32,14 @@
                                     </center>
                                 </th>
                             </tr>
-
-
                         </thead>
                         <tbody>
                             <tr dir-paginate="s in supplies|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                                 <td><center>{{s.supplyName}}</center></td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-primary btn-fill btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                                        <button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                        <button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                        <button class="btn btn-danger btn-fill" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                                     </center>
                                 </td>
                             </tr>
@@ -60,9 +58,7 @@
     </div>
 </div>
 
-
-
-
+<!--Edit Supplies Modal-->
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -79,14 +75,13 @@
                     <input class="form-control " type="text" placeholder="System Architect">
                 </div>
                 <div class="form-group">
-
-
                     <input class="form-control " type="text" placeholder="Edinburgh">
-
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                <button type="button" class="btn btn-primary btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Confirm</button>
+                <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+
             </div>
         </div>
         <!-- /.modal-content -->
@@ -94,6 +89,7 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!--Create New Supply Modal-->
 <div class="modal fade" id="newSupply" tabindex="-1" role="dialog" aria-labelledby="newSupply" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -108,7 +104,8 @@
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign" ng-click="postSupply"></span>Add Supply</button>
+                <button type="button" class="btn btn-primary btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-check" ng-click="postSupply()"></span> Add Supply</button>
+                <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -116,6 +113,7 @@
     <!-- /.modal-dialog -->
 </div>
 
+<!--Delete Modal-->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -129,8 +127,9 @@
 
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                <button type="button" class="btn btn-primary btn-fill"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
+
             </div>
         </div>
         <!-- /.modal-content -->
