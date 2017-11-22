@@ -28,7 +28,7 @@
 //    }]);
 
 angular.module('StartApp.managerApp')
-    .factory('supplyRequestsSrvc', ['$http', function ($http) {
+    .factory('supplyRequestsFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/SupplyRequests';
         var supplyRequestsFactory = {};
@@ -45,7 +45,18 @@ angular.module('StartApp.managerApp')
             });
 
         };
+        supplyRequestsFactory.getSupplyRequestWithSuppliesByTenant = function (id) {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + "/ByTenant/" + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
 
+        };
         supplyRequestsFactory.getSuppliesByHousingUnit = function () {
             return $http({
                 method: 'GET',
