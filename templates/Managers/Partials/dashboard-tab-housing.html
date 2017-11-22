@@ -1,4 +1,4 @@
-﻿<center><h3>Available Housings</h3></center>
+﻿<center><h3>Housings</h3></center>
 <br />
 <div class="bs-component" ng-init="populate()">
     <form class="form-inline">
@@ -31,25 +31,28 @@
                 <th ng-click="sort('provider')">
                     <center>
                         Provider
+                        <span class="fa fa-sort" ng-init="sortKey=='provider'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>
+
+                <th ng-click="sort('email')">
+                    <center>
+                        Email
                         <span class="fa fa-sort" ng-init="sortKey=='email'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
 
-                <th>
-                    <center>
-                        Email
-                    </center>
-                </th>
-
-                <th>
+                <th ng-click="sort('phone')">
                     <center>
                         Phone Number
+                        <span class="fa fa-sort" ng-init="sortKey=='phone'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
 
-                <th>
+                <th ng-click="sort('options')">
                     <center>
                         Options
+                        <span class="fa fa-sort" ng-init="sortKey=='options'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
             
@@ -58,12 +61,12 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr dir-paginate="h in housingUnitsWithProviders|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td>{{h.address.name}}</td>
+                <td>{{h.address.streetName}} {{h.address.buildingNumber}} {{h.housingSignature}}</td>
+                <td>{{h.provider.companyName}}</td>
+                <td>{{h.provider.contact.email}}</td>
+                <td>{{h.provider.contact.phoneNumber}}</td>
                 <td></td>
             </tr>
         </tbody>

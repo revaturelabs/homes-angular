@@ -45,14 +45,14 @@ angular.module('StartApp.managerApp')
         //getHousingsAndProviders();
 
 
-        $scope.housingUnitsWithAddresses;
+        $scope.housingUnitsWithProviders;
 
         $scope.populate = function () {
             
-            housingUnitSrvc.getHousingUnitsWithAddresses().then(
+            housingUnitSrvc.getHousingUnitsWithProviders().then(
                 function (response) {
                     console.log('response', response);
-                    $scope.housingUnitsWithAddresses = response.data;
+                    $scope.housingUnitsWithProviders = response.data;
                 },
                 function (error) {
                     console.log('error', error);
