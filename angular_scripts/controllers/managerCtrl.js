@@ -59,7 +59,7 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('SuppliesController', function ($scope, suppliesFactory) {
-       
+        
         getSupplies();
         
         function getSupplies() {
@@ -72,8 +72,8 @@ angular.module('StartApp.managerApp')
 
         };
 
-        $scope.postSupply = function (supplyName) {
-            suppliesFactory.postSupply(supplyName)
+        $scope.postSupply = function () {
+            suppliesFactory.postSupply($supplyName)
                 .then(function (response) {
                     $scope.supplies = response.data;
                 }, function (error) {
