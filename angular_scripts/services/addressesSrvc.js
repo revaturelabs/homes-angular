@@ -67,7 +67,7 @@ angular.module('StartApp.managerApp')
 
 
         providerFactory.postAddress = function (address) {
-            $http({
+           return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
@@ -76,9 +76,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
 
 
