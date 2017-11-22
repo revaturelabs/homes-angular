@@ -9,7 +9,7 @@
 //    });
 
 'use strict';
-angular.module('StartApp.managerApp')
+angular.module('StartApp.providerApp')
     .controller('ProvidersDashboardController', function ($scope, providerFactory) {
 
         $scope.status;
@@ -18,7 +18,7 @@ angular.module('StartApp.managerApp')
         $scope.putAddress;
         $scope.deleteAddress;
 
-        getManagers();
+        getAddresses();
 
         function getAddresses() {
             providerFactory.getAddresses()

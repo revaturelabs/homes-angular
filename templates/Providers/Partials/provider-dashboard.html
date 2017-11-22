@@ -20,6 +20,9 @@
                                         Housing Address
                                         <span class="fa fa-sort" ng-init="sortKey=='housingAddress'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                     </center>
+
+
+
                                 <th ng-click="sort('message')">
                                     <center>
                                         Message
@@ -40,9 +43,9 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                <td>{{user.id}}</td>
-                                <td></td>
+                            <tr dir-paginate =" a in addrress|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                                <td>{{a.address.name + " " + + " " + a.address.buildingNumber + " " + a.address.streetName + " " + a.city + " " + a.zipcode + " " + a.state + " " + a.country}}</td>
+                                <td>{{a.tenants[0]}}</td>
                                 <td> </td>
                             </tr>
                         </tbody>
