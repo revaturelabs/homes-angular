@@ -353,18 +353,19 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('UsersBatchesController', ["$scope", "batchesFactory", function ($scope, batchesFactory, growl) {
+    .controller('UsersBatchesController', ["$scope", "batchesFactory", "contactFactory", function ($scope, batchesFactory, contactFactory) {
         //batch 
         $scope.batchName;
         $scope.startDate;
         $scope.endDate;
         //contact
         $scope.contactList = [];
+        var JsonObject = {};
         $scope.contactfirstName;
         $scope.contactlastName;
         $scope.contactEmail;
         $scope.contactPhone;
-
+        //$scope.selectedID;
 
 
         $scope.status;
@@ -378,8 +379,7 @@ angular.module('StartApp.managerApp')
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-        };
-
+        }
         $scope.postBatch = function postBatch() {
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
             console.log(batch);
@@ -395,7 +395,7 @@ angular.module('StartApp.managerApp')
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        };
+        }
         //call contact services
         $scope.getContacts = function getContact() {
             contactFactory.getContacts(contact)
@@ -404,73 +404,42 @@ angular.module('StartApp.managerApp')
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-        };
-
+        }
         $scope.postContacts = function postContact() {
-            $scope.updateContactList();
-            var contact = JSON.stringify($scope.contactList);
+            var contact = angular.toJson(JsonObject);
             console.log(contact);
-            contactFactory.postContacts(contact)
-                .then(function (response) {
-                    $scope.contacts = response.data;
-                }, function (error) {
-                    $scope.status = 'Unable to insert Batch: ' + error.message;
-                });
-            console.log($scope.batchName);
-        };
+            contactFactory.postContacts(contact);
+            console.log("runs");
+            $scope.resetContactList();
+        }
 
         $scope.updateContactList = function updateContactList() {
 
-            console.log($scope.contactfirstName);
             $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
-            console.log($scope.contactfirstName);
+            $scope.clearForms()
+
+        }
+        $scope.submitContacts = function () {
+            console.log($scope.selectedID);
+            $scope.appendBatchID();
+            $scope.postContacts();
+        }
+        $scope.appendBatchID = function () {
+            JsonObject = { "batchId": $scope.selectedID, "contacts": $scope.contactList };
+            alert("Contacts Added");
+        }
+        $scope.clearForms = function () {
             $scope.contactfirstName = '';
             $scope.contactlastName = '';
             $scope.contactEmail = '';
             $scope.contactPhone = '';
 
-        };
+        }
+        $scope.resetContactList = function () {
+            $scope.contactList = [];
+        }
 
     }]);
-
-
-    //  $scope.status;
-    //  $scope.genders;
-
-    //  postGender();
-    //  getGenders();
-    //     **** FUNCTION TO BE CALL INSIDE THE CONTROLLER ****
-    //    ***** Function that send the id of gender that wants to get *****
-    //  function getGenders(id) {
-    //    genderFactory.getGenders(id)
-    //        .then( function (response) {
-    //            $scope.genders = response.data;
-    //        }, function (error) {
-    //            $scope.status = 'Unable to load Genders: ' + error.message;
-    //        });
-    //}
-    //     **** FUNCTION TO BE CALL OUTSIDE CONTROLLER INSIDE HTML
-    //    ***** Sames as above but function make a call to receive all genders *****
-    //$scope.getGender =  function getGender() {
-    //      genderFactory.getGender()
-    //          .then(function (response) {
-    //              $scope.genders = response.data;
-    //          }, function (error) {
-    //              $scope.status = 'Unable to load Genders: ' + error.message;
-    //          });
-    //  }
-    //    ***** Function that send the new gender to post in the database *****
-    //$scope.postGender =  function postGender(gender) {
-    //      genderFactory.postGender(gender)
-    //          .then(function (response) {
-    //              $scope.genders = response.data;
-    //          }, function (error) {
-    //              $scope.status = 'Unable to insert Genders: ' + error.message;
-    //          });
-    //  }
-
-
-    //})
 
 
 
