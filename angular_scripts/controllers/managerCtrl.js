@@ -21,11 +21,14 @@ angular.module('StartApp.managerApp')
         };
     })
     .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
+        $scope.maintenanceRequests;
+
         $scope.populate = function () {
             //console.log(maintenanceSrvc);
             maintenanceRequestsSrvc.getMaintenanceRequests().then(
                 function (success) {
                     $scope.maintenanceRequests = success.data;
+                    console.log($scope.maintenanceRequests);
                 },
                 function (error) {
                     console.log('error', error);
@@ -38,11 +41,27 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', function ($scope, housingUnitFactory) {
-        getHousingsAndProviders();
+    .controller('DashHousingController', ['$scope', 'housingUnitSrvc', function ($scope, housingUnitSrvc) {
+        //getHousingsAndProviders();
 
-        function getHousingsAndProviders() {
-            housingUnitFactory.getHousingUnitsWithProviders()
+
+        $scope.housingUnitsWithAddresses;
+
+        $scope.populate = function () {
+            
+            housingUnitSrvc.getHousingUnitsWithAddresses().then(
+                function (response) {
+                    console.log('response', response);
+                    $scope.housingUnitsWithAddresses = response.data;
+                },
+                function (error) {
+                    console.log('error', error);
+                }
+            );
+        };
+
+        $scope.getHousingsAndProviders = function() {
+            housingUnitSrvc.getHousingUnitsWithProviders()
                 .then(function (response) {
                     $scope.housingsProviders = response.data;
                 }, function (error) {
@@ -53,7 +72,7 @@ angular.module('StartApp.managerApp')
 
         $scope.getHousingProviderById = function (housing) {
             //Need to implement method that receive address id and return list of everything that have same address id
-            var singlerecord = housingUnitFactory.getHousingUnitWithProviders(housing.addressId);
+            var singlerecord = housingUnitSrvc.getHousingUnitWithProviders(housing.addressId);
             singlerecord.then(function (d) {
                //Need to know how to iterate through list of objects that have same addressId
                 var record = d.data;
@@ -81,7 +100,7 @@ angular.module('StartApp.managerApp')
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
-    })
+    }])
     .controller('DashBatchesController', function ($scope, batchesFactory, growl) {
 
         getBatches();
