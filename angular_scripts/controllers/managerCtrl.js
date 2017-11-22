@@ -106,6 +106,7 @@ angular.module('StartApp.managerApp')
 
         getBatches();
 
+        //get allBatch record
         function getBatches() {
             batchesFactory.getBatches().then(function (d) {//success
                 $scope.batches = d.data;
@@ -115,6 +116,7 @@ angular.module('StartApp.managerApp')
                 });
         }
 
+        //post Batch record
         $scope.postBatch = function postBatch() {
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.name });
             batchesFactory.postBatch(batch).then(function (d) {
@@ -133,7 +135,7 @@ angular.module('StartApp.managerApp')
            
 
         };
-
+        //get one Batch record by Id
         $scope.getBatchById = function (batch) {
 
             var singlerecord = batchesFactory.getBatchById(batch.batchId);
@@ -150,6 +152,7 @@ angular.module('StartApp.managerApp')
                 });
         };
 
+        //update Batch record
         $scope.updateBatch = function () {
             var batch = {
                 batchId: $scope.batchId,
@@ -221,6 +224,8 @@ angular.module('StartApp.managerApp')
                 growl.success($scope.newSupplyName + " Added Successfully!", { title: 'Success!' });
                 getSupplies();
 
+                $scope.newSupplyName = '';
+
             },
                 function () {
                     growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
@@ -234,16 +239,22 @@ angular.module('StartApp.managerApp')
                 supplyName: $scope.supplyName
             };
 
-            suppliesFactory.putSupply($scope.supplyId, supply);
-            growl.success("Supply Updated Successfully!", { title: 'Success!' });
-            getSupplies();
+            suppliesFactory.putSupply($scope.supplyId, supply).then(function (d) {
+                var record = d.data;
+                getSupplies();
+                growl.success($scope.supplyName+ "  Updated Successfully!", { title: 'Success!' });
+            },
+                function () {
+                    growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
+                });
+
         };
 
         //delete Supply record
         $scope.deleteSupply = function (id) {
             suppliesFactory.deleteSupply($scope.supplyId)
                 .then(function (d) {
-                    growl.success("Supply Deleted Successfully!", { title: 'Success!' });
+                    growl.success($scope.supplyName+ " Deleted Successfully!", { title: 'Success!' });
                     getSupplies();
                 }, function (error) {
                     growl.error("An error has ocurred while deleting this supply.", { title: 'Error!' });

@@ -44,7 +44,7 @@ angular.module('StartApp.managerApp')
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
-            })
+            });
         };
 
         suppliesFactory.putSupply = function (supplyId, supply) {
@@ -52,11 +52,12 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + "/" + supplyId,
-                data: supply ,
+                data: supply,
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]}
-            })
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
 
 
