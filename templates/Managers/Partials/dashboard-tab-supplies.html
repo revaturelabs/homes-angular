@@ -44,11 +44,16 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
+            <tr dir-paginate="sr in supplyRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td>{{sr.tenant.contact.firstName}} {{sr.tenant.contact.lastName}}</td>
+                <td>{{sr.tenant.housingUnit.address.name}} {{sr.tenant.housingUnit.address.streetName}} {{sr.tenant.housingUnit.address.buildingNumber}} {{sr.tenant.housingUnit.housingSignature}}</td>
+                <td>{{sr.tenant.contact.email}}</td>
+
+                <td>
+                <ul ng-repeat="srm in sr.requestSuppliesMaps">
+                    <li>{{srm.supply.supplyName}}</li>
+                   </ul>
+                </td>
                  <td></td>
             </tr>
         </tbody>
