@@ -22,21 +22,21 @@ angular.module('StartApp.managerApp')
 
      };
 
-     maintenancerequestsfactory.getmaintenancerequest = function (id) {
-         return $http.get(urlbase + '/' + id);
-     };
-     maintenancerequestsfactory.getmaintenancerequest = function (id) {
-         return $http({
-             method: 'get',
-             datatype: 'json',
-             url: urlbase + '/' + id,
-             headers: {
-                 "content-type": "application/json",
-                 "authorization": 'bearer ' + sessionstorage['adal.access.token.key' + cid]
-             }
-         });
+     //maintenancerequestsfactory.getmaintenancerequest = function (id) {
+     //    return $http.get(urlbase + '/' + id);
+     //};
+     //maintenancerequestsfactory.getmaintenancerequest = function (id) {
+     //    return $http({
+     //        method: 'get',
+     //        datatype: 'json',
+     //        url: urlbase + '/' + id,
+     //        headers: {
+     //            "content-type": "application/json",
+     //            "authorization": 'bearer ' + sessionstorage['adal.access.token.key' + cid]
+     //        }
+     //    });
 
-     };
+     //};
 
      maintenanceRequestsFactory.getMaintenanceRequestsByHousingUnits = function () {
          return $http({

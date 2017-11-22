@@ -12,11 +12,11 @@ angular.module('StartApp.managerApp')
 
 
     })
-    .controller('DashSuppliesController', ['$scope', 'supplyRequestsSrvc', 'growl', function ($scope, supplyRequestsSrvc, growl) {
+    .controller('DashSuppliesController', ['$scope', 'supplyRequestsFactory', 'growl', function ($scope, supplyRequestsFactory, growl) {
         $scope.supplyRequests;
 
         $scope.populate = function () {
-            supplyRequestsSrvc.getSupplyRequests().then(
+            supplyRequestsFactory.getSupplyRequests().then(
                 function (response) {
                     $scope.supplyRequests = response.data;
                     console.log($scope.supplyRequests);
@@ -34,12 +34,12 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashMaintenanceController', ['maintenanceRequestsSrvc', '$scope', function (maintenanceRequestsSrvc, $scope) {
+    .controller('DashMaintenanceController', ['maintenanceRequestsFactory', '$scope', function (maintenanceRequestsFactory, $scope) {
         $scope.maintenanceRequests;
 
         $scope.populate = function () {
             //console.log(maintenanceSrvc);
-            maintenanceRequestsSrvc.getMaintenanceRequests().then(
+            maintenanceRequestsFactory.getMaintenanceRequests().then(
                 function (success) {
                     $scope.maintenanceRequests = success.data;
                     console.log($scope.maintenanceRequests);
@@ -55,7 +55,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', ['$scope', 'housingUnitSrvc', function ($scope, housingUnitSrvc) {
+    .controller('DashHousingController', ['$scope', 'housingUnitFactory', function ($scope, housingUnitFactory) {
         //getHousingsAndProviders();
 
 
@@ -63,7 +63,7 @@ angular.module('StartApp.managerApp')
 
         $scope.populate = function () {
             
-            housingUnitSrvc.getHousingUnitsWithProviders().then(
+            housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
                     console.log('response', response);
                     $scope.housingUnitsWithProviders = response.data;
@@ -75,7 +75,7 @@ angular.module('StartApp.managerApp')
         };
 
         $scope.getHousingsAndProviders = function () {
-            housingUnitSrvc.getHousingUnitsWithProviders()
+            housingUnitFactory.getHousingUnitsWithProviders()
                 .then(function (response) {
                     $scope.housingsProviders = response.data;
                 }, function (error) {
@@ -86,7 +86,7 @@ angular.module('StartApp.managerApp')
 
         $scope.getHousingProviderById = function (housing) {
             //Need to implement method that receive address id and return list of everything that have same address id
-            var singlerecord = housingUnitSrvc.getHousingUnitWithProviders(housing.addressId);
+            var singlerecord = housingUnitFactory.getHousingUnitWithProviders(housing.addressId);
             singlerecord.then(function (d) {
                 //Need to know how to iterate through list of objects that have same addressId
                 var record = d.data;

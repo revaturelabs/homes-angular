@@ -1,6 +1,6 @@
 ﻿//Completed - Untested 
 angular.module('StartApp.managerApp')
-    .factory('housingUnitSrvc', ['$http', function ($http) {
+    .factory('housingUnitFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits';
         var housingUnitFactory = {};
