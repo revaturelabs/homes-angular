@@ -38,8 +38,8 @@
                                 <td><center>{{s.supplyName}}</center></td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                                        <button class="btn btn-danger btn-fill" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                        <button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" ng-click="getSupplyById(s)" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                        <button class="btn btn-danger btn-fill" ng-click="getSupplyById(s)" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                                     </center>
                                 </td>
                             </tr>
@@ -68,18 +68,15 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Tiger Nixon">
+                    <input class="form-control " readonly="readonly" name="supplyId" ng-model="supplyId" type="hidden" placeholder="Supply Id" required>
                 </div>
                 <div class="form-group">
-
-                    <input class="form-control " type="text" placeholder="System Architect">
-                </div>
-                <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Edinburgh">
-                </div>
+                    <label class="text-info"> Supply Name:</label>
+                    <input class="form-control " name="supplyName" ng-model="supplyName" type="text" placeholder="Supply Name" required>
+                </div>               
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-primary btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Confirm</button>
+                <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateSupply()"><span class="glyphicon glyphicon-check"></span> Update Supply</button>
                 <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
 
             </div>
@@ -100,11 +97,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>New Supply: </label>
-                    <input class="form-control " type="text" placeholder="New Supply Name" ng-model="supplyName">
+                    <input class="form-control " type="text" placeholder="New Supply Name" ng-model="newSupplyName">
                 </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-primary btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-check" ng-click="postSupply()"></span> Add Supply</button>
+                <button type="button" class="btn btn-primary btn-fill" ng-click="postSupply(newSupplyName)" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Add Supply</button>
                 <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
             </div>
         </div>
@@ -123,11 +120,13 @@
             </div>
             <div class="modal-body">
 
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Supply?</div>
+                <div>
+                    <p>Supply Name:{{supplyName}}</p>
+                </div>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-primary btn-fill"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                <button type="button" class="btn btn-primary btn-fill" ng-click="deleteSupply(supplyId)"><span class="glyphicon glyphicon-check"></span> Delete</button>
                 <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
 
             </div>
