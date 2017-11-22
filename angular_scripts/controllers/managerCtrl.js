@@ -44,31 +44,19 @@ angular.module('StartApp.managerApp')
         getBatches();
 
         function getBatches() {
-            batchesFactory.getBatches()
-                .then(function (response) {
-                    $scope.batches = response.data;
-                }, function (error) {
+            var BatchesRecords = batchesFactory.getBatches();
+            BatchesRecords.then(function (d) {     //success
+                $scope.batches = d.data;
+            },
+                function () {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-
         }
-
-        $scope.refresh = function () {
-            getBatches()
-                .then(function (response) {
-                    $scope.batches = response.data;
-                });
-        };
 
         $scope.postBatch = function postBatch() {
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
-            batchesFactory.postBatch(batch)
-                .then(function (response) {
-                    $scope.batches = response.data;
-                    $scope.refresh();
-                }, function (error) {
-                    $scope.status = 'Unable to insert Batch: ' + error.message;
-                });
+            batchesFactory.postBatch(batch);
+            getBatches();
         };
 
         $scope.getBatchById = function(batch) {
@@ -95,40 +83,21 @@ angular.module('StartApp.managerApp')
                 endDate: $scope.endDate
             };
 
-            batchesFactory.putBatch($scope.batchId, batch)
-                .then(function (response) {
-                $scope.batch = response.data;
-                $scope.refresh();
-            },
-                function (error) {
-                    $scope.status = 'Unable to update Batch: ' + error.message;
-                });
-        };
-
-        $scope.deleteBatch = function deleteBatch(id) {
-            batchesFactory.deleteBatch(id)
-                .then(function (response) {
-                    $scope.batch = response.data;
-                    $scope.refresh();
-                }, function (error) {
-                    $scope.status = 'Unable to Delete Batch: ' + error.message;
-                });
+            batchesFactory.putBatch($scope.batchId, batch);
+            getBatches();
         };
 
         //delete Batch record
-        //$scope.deleteBatch = function(id) {
-        //    batchesFactory.deleteBatch(id)
-        //        .then(function (d) {
-        //        var batch = {
-        //            batchId: '',
-        //            name: '',
-        //            startDate: '',
-        //            endDate: ''
-        //        };
-        //        $scope.refresh();
-        //        $scope.status = 'Unable to Delete Batch: ' + error.message;
-        //    });
-        //}
+        $scope.deleteBatch = function (id) {
+            batchesFactory.deleteBatch($scope.batchId)
+                .then(function (d) {
+                    $scope.batch = d.data;
+                    getBatches();
+                }, function (error) {
+                  $scope.status = 'Unable to Delete Batch: ' + error.message;
+               }
+            );
+        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
