@@ -57,7 +57,7 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
             else {
                 for (var i = 0; i < $scope.userInfo.profile.groups.length; i++) {
                     if ($scope.userInfo.profile.groups[i] === '51ba291a-df07-44d6-a4c6-cabe1fe756f4') {
-                        $state.go('Providers.Dashboard');
+                        $state.go('Manager');
                         console.log("Sent to manager");
                     }
                     if ($scope.userInfo.profile.groups[i] === 'f143cad2-5a31-436e-b097-28010f1dddb9') {
