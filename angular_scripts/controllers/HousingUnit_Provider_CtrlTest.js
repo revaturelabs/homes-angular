@@ -183,11 +183,41 @@ angular.module('StartApp.managerApp')
           }
           //DELETE: deleteProvider
           $scope.deleteProvider = function deleteProvider(id) {
-              providerFactory.deleteProvider(id)
+              providerFactory.deleteProviders(id)
                   .then(function (response) {
                       $scope.provider = response.data;
                   }, function (error) {
-                      $scope.status = 'Unable to add Provider: ' + error.message;
+                      $scope.status = 'Unable to delete Provider: ' + error.message;
                   });
           }
+        //GET: getSupplyRequests
+          $scope.getSupplyRequests = function getSupplyRequests(id) {
+              supplyRequestsFactory.getSupplyRequests(id)
+                  .then(function (response) {
+                      $scope.supplies = response.data;
+                  }, function (error) {
+                      $scope.status = 'Unable to request supply: ' + error.message;
+                  });
+          }
+          //GET: getMaintenanceRequests
+          $scope.getMaintenanceRequests = function getMaintenanceRequests(id) {
+              supplyRequestsFactory.getMaintenanceRequests(id)
+                  .then(function (response) {
+                      $scope.maintenance = response.data;
+                  }, function (error) {
+                      $scope.status = 'Unable to request supply: ' + error.message;
+                  });
+          }
+        //DELETE: deleteSupplyRequest
+          $scope.deleteSupplyRequest = function deleteSupplyRequest(id) {
+              supplyRequestsFactory.deleteSupplyRequest(id)
+                  .then(function (response) {
+                      $scope.supplies = response.data;
+                  }, function (error) {
+                      $scope.status = 'Unable to delete supply:' + error.message;
+                  });
+          }
+
+          
+       
     })

@@ -1,32 +1,66 @@
 //COMPLETED - NEED A REVIEW
 
-angular.module('StartApp.managerApp')
+angular.module('StartApp.providerApp')
     .factory('maintenanceRequestsSrvc', ['$http', function ($http) {
 
-     var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
 
+     //maintenanceRequestsFactory.getMaintenanceRequests = function () {
+     //    return $http.get(urlBase);
+     //};
      maintenanceRequestsFactory.getMaintenanceRequests = function () {
-         return $http.get(urlBase);
-     };
-
-     maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
-         return $http.get(urlBase + '/' + id);
-     };
-
-     maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
-         return $http.get(urlBase + '/ByTenant/' + id);
-     };
-
-     maintenanceRequestsFactory.putMaintenanceRequest = function (item) {
-         $http({
-             method: 'PUT',
+         return $http({
+             method: 'GET',
              dataType: 'json',
-             url: urlBase + '/' + item.maintenanceRequestId,
-             data: { item },
+             url: urlBase + '/All',
              headers: {
-                 "Content-Type": "application/json"//,
-                 //"Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+
+     };
+
+     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
+     //    return $http.get(urlBase + '/' + id);
+     //};
+     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
+     //    return $http({
+     //        method: 'GET',
+     //        dataType: 'json',
+     //        url: urlBase + '/' + id,
+     //        headers: {
+     //            "Content-Type": "application/json",
+     //            "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+     //        }
+     //    });
+
+     //};
+
+     maintenanceRequestsFactory.getMaintenanceRequestsByHousingUnits = function () {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByHouseUnit/',
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+     };
+
+     //maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
+     //    return $http.get(urlBase + '/ByTenant/' + id);
+     //};
+     maintenanceRequestsFactory.getMaintenanceRequestByTenant = function (id) {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByTenant/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
              }
          }).then(function (response) {
              return response;
@@ -34,21 +68,60 @@ angular.module('StartApp.managerApp')
 
      };
 
+     maintenanceRequestsFactory.getMaintenanceRequestByProvider = function (id) {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByProvider/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+
+     };
+
+     maintenanceRequestsFactory.putMaintenanceRequest = function (item) {
+         return $http({
+             method: 'PUT',
+             dataType: 'json',
+             url: urlBase + '/' + item.maintenanceRequestId,
+             data: { item },
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authentication": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+
+     };
+
      maintenanceRequestsFactory.postMaintenanceRequest = function (item) {
-         $http({
+        return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
                 data: { item },
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response;
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
             });
      };
 
-     maintenanceRequestsFactory.deleteMaintainanceRequest = function (id) {
-         return $http.delete(urlBase + '/' + id);
-     };  
+     //maintenanceRequestsFactory.deleteMaintainanceRequest = function (id) {
+     //    return $http.delete(urlBase + '/' + id);
+     //};  
+     maintenanceRequestsFactory.deleteMaintenanceRequest = function (id) {
+        return $http({
+             method: 'DELETE',
+             dataType: 'json',
+             url: urlBase + '/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
+         });
+     };
 
      return maintenanceRequestsFactory;
       

@@ -12,37 +12,57 @@ angular.module('StartApp.managerApp')
 
 
         tenantFactory.getTenantCarById = function (id) {
-            return $http.get(urlBase + id);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
 
         tenantFactory.postTenantCar = function (tenantCar) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
                 data: { tenantCar },
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response;
-            });
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            })
         };
 
 
         tenantFactory.putTenantCar = function (tenantCar) {
-            $http({
+            return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + tenantCar.tenantId,
                 data: { tenantCar },
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response;
-            });
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            })
         };
 
         tenantFactory.deleteTenantCar = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            return $http({
+                method: 'DELETE',
+                dataType: 'json',
+                url: urlBase + '/' + id,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
         };
 
         return tenantFactory;

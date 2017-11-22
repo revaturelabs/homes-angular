@@ -1,5 +1,5 @@
 ﻿'use strict';
-var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
+var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir', 'angularUtils.directives.dirPagination'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Tenants/Dashboard');
@@ -12,17 +12,17 @@ var App = angular.module('StartApp.tenantApp', ['ui.router', 'tenantDir'])
             state('Tenants.Maintenance', {
                 url: '/TenantsMaintenance',
                 templateUrl: 'templates/Tenants/Partials/tenant-maintenance.html',
-                controller: 'TenantMaintenanceController'
+                controller: 'TenantsMaintenanceController'
             }).
             state('Tenants.Supplies', {
             url: '/TenantsSupplies',
             templateUrl: 'templates/Tenants/Partials/tenant-supplies.html',
-            controller: 'TenantSuppliesController'
+            controller: 'TenantsSuppliesController'
             }).
             state('Tenants.Profile', {
                 url: '/TenantsProfile',
                 templateUrl: 'templates/Tenants/Partials/tenant-profile.html',
-                controller: 'TenantProfileController'
+                controller: 'TenantsProfileController'
             });
         // use the HTML5 History API
         $locationProvider.html5Mode(true);

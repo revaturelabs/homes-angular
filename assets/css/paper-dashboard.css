@@ -2,11 +2,30 @@ h5{
     margin-top: 0px;
 }
 
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width: inherit;
+    height: inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
 table tr th {
     background: #337ab7;
     color: white;
     text-align: left;
-    vertical-align: center;
 }
 /* STRUCTURE */
 
@@ -1509,7 +1528,6 @@ textarea.form-control {
   box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
   background-color: #FFFFFF;
   color: #252422;
-  margin-top:70px;
   position: relative;
   z-index: 1; }
   .card .image {

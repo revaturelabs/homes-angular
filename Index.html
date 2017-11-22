@@ -9,16 +9,17 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/css/themify-icons.css" rel="stylesheet" />
     <!--Bootstrap CSS-->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
+    <link href="assets/css/angular-growl.min.css" rel="stylesheet" />
     <!--AngularJS Files   -->
     
     <script src="Scripts/angular.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <!--Angular UI-Router for app routing-->
     <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="assets/js/angular-growl.min.js"></script> 
+    <script data-require="ui-bootstrap@*" data-semver="0.10.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
     <!--Adding ADAL Files-->
     <script src="Scripts/adal.js"></script>
     <script src="Scripts/adal-angular.js"></script>
@@ -42,21 +43,18 @@
     <script src="angular_scripts/services/batchesSrvc.js"></script>
     <script src="angular_scripts/services/contactSrvc.js"></script>
     <script src="angular_scripts/services/housingSrvc.js"></script>
-    
+
+    <script src="angular_scripts/services/HousingUnitSrvc.js"></script>
     <script src="angular_scripts/services/maintenanceRequestsSrvc.js"></script>
     <script src="angular_scripts/services/managementsSrvc.js"></script>
     <script src="angular_scripts/services/providerSrvc.js"></script>
     <script src="angular_scripts/services/suppliesSrvc.js"></script>
-    <script src="angular_scripts/services/supplyRequestSrvc.js"></script>
+    <script src="angular_scripts/services/supplyRequestsSrvc.js"></script>
     <script src="angular_scripts/services/tenantsSrvc.js"></script>
     <!--Global Scripts-->
     <script src="Scripts/addedScripts/addGroup.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>    
     <script src="assets/js/paper-dashboard.js"></script> 
 </head>
 
@@ -64,3 +62,5 @@
       <div ui-view autoscroll="false"></div>
 </body>
 </html>
+
+

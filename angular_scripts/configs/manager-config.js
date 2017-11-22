@@ -1,5 +1,5 @@
 ﻿'use strict';
-var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir'])
+var App = angular.module('StartApp.managerApp', ['ui.router', 'managerDir', 'angularUtils.directives.dirPagination', 'angular-growl'])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $urlRouterProvider.otherwise('/Managers/Dashboard/suppliesRequests');

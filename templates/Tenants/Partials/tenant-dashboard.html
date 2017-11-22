@@ -1,15 +1,35 @@
-﻿<div class="container-fluid">
+﻿<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Housing Info</h4>
+                    <center>
+                        <h4 class="title">Housing Info</h4>
+                    </center>
                 </div>
                 <div class="content">
                     <div class="row">
-
-                    </div>
-                </div>
+                        <div class="col-md-6">
+                            Tenant: {{tenant.contact.firstName}} {{tenant.contact.lastName}}<br />
+                            Batch: {{tenant.batch.name}}<br />
+                            Email: {{tenant.contact.email}}<br />
+                            Phone Number: {{tenant.contact.phoneNumber}}<br />
+                            Has Key: {{tenant.hasKey}}<br />
+                            Has Moved: {{tenant.hasMoved}}
+                        </div>
+                        <div class="col-md-6">
+                            Address:<br />
+                            {{tenant.housingUnit.address.name}}<br/>
+                            {{tenant.housingUnit.address.buildingNumber}}
+                            {{tenant.housingUnit.address.streetName}}<br/>
+                            {{tenant.housingUnit.housingSignature}}<br/>
+                            {{tenant.housingUnit.address.city}}
+                            {{tenant.housingUnit.address.state}}<br/>
+                            {{tenant.housingUnit.address.country}}
+                            {{tenant.housingUnit.address.zipcode}}
+                        </div>
+                    </div>                   
+               </div>
             </div>
         </div>
     </div>
@@ -18,14 +38,55 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">My Requests</h4>
+                    <center>
+                        <h4 class="title">My Requests</h4>
+                    </center>
                 </div>
-                <div class="content table-responsive table-full-width">
+                
+                    <div class="bs-component">
+                        <form class="form-inline">
+                            <div class="form-group" style="float:left; margin-bottom:15px;">
+                               Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                            </div>
+                        </form>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                   
+                                    <th ng-click="sort('messageSent')">
+                                        <center>
+                                            Message Sent
+                                            <span class="fa fa-sort" ng-init="sortKey=='messageSent'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                                        </center>
+
+                                    <th ng-click="sort('status')">
+                                        <center>
+                                            Status
+                                            <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                                        </center>
+                                    </th>
+                                    
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="t in tenants">
+                                    <td></td>
+                                    <td></td>
+                            
+                                </tr>
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls max-size="15"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
 
 
                 </div>
             </div>
         </div>
     </div>
-</div>
 
