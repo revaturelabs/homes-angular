@@ -118,6 +118,7 @@ angular.module('StartApp.managerApp')
     })
     .controller('SuppliesController', function ($scope, suppliesFactory) {
 
+
         getSupplies();
 
         function getSupplies() {
@@ -128,15 +129,53 @@ angular.module('StartApp.managerApp')
                     $scope.status = 'Unable to load Supplies: ' + error.message;
                 });
 
-        }
+        };
 
-        $scope.postSupply = function (supplyName) {
-            suppliesFactory.postSupply(supplyName)
-                .then(function (response) {
-                    $scope.supplies = response.data;
-                }, function (error) {
-                    $scope.status = 'Unable to add Supply: ' + error.message;
+        $scope.getSupplyById = function (supply) {
+
+            var singlerecord = suppliesFactory.getSupplyById(supply.supplyId);
+            singlerecord.then(function (d) {
+
+                var record = d.data;
+                $scope.supplyId = record.supplyId;
+                $scope.supplyName = record.supplyName;
+            },
+                function () {
+                    $scope.status = 'Unable to get Batch: ' + error.message;
                 });
+        };
+
+        $scope.postSupply = function (newSupplyName) {
+            suppliesFactory.postSupply(newSupplyName);
+            //.then(function (response) {
+            //    $scope.supplies = response.data;
+            //}, function (error) {
+            //    $scope.status = 'Unable to add Supply: ' + error.message;
+            //});
+            $scope.newSupplyName = "";
+            getSupplies();
+        };
+
+        $scope.updateSupply = function () {
+            var supply = {
+                supplyId: $scope.supplyId,
+                supplyName: $scope.supplyName
+            };
+
+            suppliesFactory.putSupply(supply);
+            getSupplies();
+        };
+
+        $scope.deleteSupply = function (id) {
+            suppliesFactory.deleteSupply($scope.supplyId)
+                .then(function (d) {
+                    $scope.supply = d.data;
+                    getBatches();
+                }, function (error) {
+                    $scope.status = 'Unable to Delete Supply: ' + error.message;
+                }
+                );
+            
         };
 
         $scope.sort = function (keyname) {
