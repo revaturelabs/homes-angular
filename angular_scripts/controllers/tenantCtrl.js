@@ -23,8 +23,8 @@ angular.module('StartApp.tenantApp')
                 }, function (error) {
                     $scope.status = 'Unable to load Tenants: ' + error.message;
                 });
-
         };
+    
 
     })
     .controller("TenantsMaintenanceController", function ($http, $scope) {

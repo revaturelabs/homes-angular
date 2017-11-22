@@ -1,9 +1,9 @@
 //COMPLETED - NEED A REVIEW
 
-angular.module('StartApp.managerApp')
+angular.module('StartApp.providerApp')
     .factory('maintenanceRequestsSrvc', ['$http', function ($http) {
 
-     var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
 
      //maintenanceRequestsFactory.getMaintenanceRequests = function () {
@@ -13,7 +13,7 @@ angular.module('StartApp.managerApp')
          return $http({
              method: 'GET',
              dataType: 'json',
-             url: urlBase,
+             url: urlBase + '/All',
              headers: {
                  "Content-Type": "application/json",
                  "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -25,18 +25,18 @@ angular.module('StartApp.managerApp')
      //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
      //    return $http.get(urlBase + '/' + id);
      //};
-     maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
-         return $http({
-             method: 'GET',
-             dataType: 'json',
-             url: urlBase + '/' + id,
-             headers: {
-                 "Content-Type": "application/json",
-                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
-             }
-         });
+     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
+     //    return $http({
+     //        method: 'GET',
+     //        dataType: 'json',
+     //        url: urlBase + '/' + id,
+     //        headers: {
+     //            "Content-Type": "application/json",
+     //            "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+     //        }
+     //    });
 
-     };
+     //};
 
      maintenanceRequestsFactory.getMaintenanceRequestsByHousingUnits = function () {
          return $http({
@@ -64,6 +64,19 @@ angular.module('StartApp.managerApp')
              }
          }).then(function (response) {
              return response;
+         });
+
+     };
+
+     maintenanceRequestsFactory.getMaintenanceRequestByProvider = function (id) {
+         return $http({
+             method: 'GET',
+             dataType: 'json',
+             url: urlBase + '/ByProvider/' + id,
+             headers: {
+                 "Content-Type": "application/json",
+                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+             }
          });
 
      };

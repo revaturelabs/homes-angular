@@ -6,7 +6,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="bs-component">
+                <div class="bs-component" ng-init="populate()">
                     <form class="form-inline">
                         <div class="form-group" style="float:left; margin-bottom:15px;">
                             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -25,6 +25,9 @@
                                         Housing Address
                                         <span class="fa fa-sort" ng-init="sortKey=='housingAddress'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                     </center>
+
+
+
                                 <th ng-click="sort('message')">
                                     <center>
                                         Message
@@ -45,8 +48,8 @@
 
                         </thead>
                         <tbody>
-                            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                                <td>{{user.id}}</td>
+                            <tr dir-paginate =" a in maintenaceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                                <td>{{a.tenant}}</td>
                                 <td></td>
                                 <td> </td>
                             </tr>
