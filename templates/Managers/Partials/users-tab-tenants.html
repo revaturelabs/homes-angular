@@ -43,16 +43,16 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
+            <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td><center>{{t.contact.firstName}} {{t.contact.lastName}}</center></td>
+                <td><center>{{t.housingUnit.address.name}} -- {{t.housingUnit.housingSignature}} -- {{t.housingUnit.address.buildingNumber}}</center></td>
+                <td><center>{{t.contact.email}}</center></td>
+                <td><center>{{t.contact.phoneNumber}}</center></td>
                 <td>
                     
                     <center>
-                        <button class="btn btn-primary btn-fill btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                        <button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-pencil"></span> Details</button>
+                        <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                     </center>
                 </td>
                 
@@ -67,14 +67,14 @@
 
 
 
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                <h4 class="modal-title custom_align" id="Heading">Details</h4>
             </div>
-            <div class="modal-body">
+            <!--<div class="modal-body">
                 <div class="form-group">
                     <input class="form-control " type="text" placeholder="Tiger Nixon">
                 </div>
@@ -88,9 +88,29 @@
                     <input class="form-control " type="text" placeholder="Edinburgh">
 
                 </div>
+            </div>-->
+
+            <div class="modal-body">
+                <div class="form-group">
+                  Batch Name: {{batchName}} 
+                </div>
+                <div class="form-group">
+                  Gender: {{gender}}
+                </div>
+                <div class="form-group">
+                  Tenant Car: {{tenantCarRelationships}}
+                </div>
+                <div class="form-group">
+                  Move in Date: {{moveInDate}}
+                </div>
+                <div class="form-group">
+                  Has Key: {{hasKey}}
+                </div>
             </div>
+
+
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>OK</button>
             </div>
         </div>
         <!-- /.modal-content -->

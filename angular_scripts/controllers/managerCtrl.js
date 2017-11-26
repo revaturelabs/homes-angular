@@ -284,7 +284,46 @@ angular.module('StartApp.managerApp')
         $scope.demo = "This is the Users View";
 
     })
-    .controller('UsersTenantsController', function ($scope) {
+    .controller('UsersTenantsController', function ($scope, tenantsFactory, growl) {
+
+        getTenantsInfo();
+
+
+        function getTenantsInfo() {
+            tenantsFactory.getTenantsInfo().then(function (d) {//success
+                $scope.tenants = d.data;
+            },
+                function () {
+                    growl.error('Unable to upload Supplies. Please refresh your browser or close it.', { title: 'Error!' });
+                });
+        }
+
+        $scope.getTenantById = function (t) {
+            
+            var singlerecord = tenantsFactory.getTenantInfo(t.tenantId);
+            singlerecord.then(function (d) {
+
+                var record = d.data;
+                $scope.batchName = record.batch.batchId;
+                $scope.gender = record.gender.genderOption;
+                $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
+                $scope.moveInDate = record.moveInDate;
+                $scope.hasKey = record.hasKey;
+
+            },
+                function () {
+                    growl.error("An error has ocurred while getting details of tenant.", { title: 'Error!' });
+                });
+        };
+
+        //$scope.filterFn = function (t) {
+        //    if (t.housingUnit.addressId != 0) {
+        //        return true;
+        //    }
+        //    return false;
+        //};
+
+
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa

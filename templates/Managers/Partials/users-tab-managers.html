@@ -17,7 +17,7 @@
                 </th>
                 <th ng-click="sort('address')">
                     <center>
-                        Address
+                        Department
                         <span class="fa fa-sort" ng-init="sortKey=='address'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
@@ -45,11 +45,11 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
+            <tr dir-paginate="m in managers|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td><center>{{m.contact.firstName}} {{m.contact.lastName}}</center></td>
+                <td><center>{{m.departmentName}}</center></td>
+                <td><center>{{m.contact.email}}</center></td>
+                <td><center>{{m.contact.phoneNumber}}</center></td>
                 <td>
                 <td>
 
