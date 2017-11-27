@@ -43,11 +43,20 @@
         </thead>
         <tbody>
             <tr dir-paginate="req in maintenanceRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-              <td><center>{{req.tenant.contact.firstName}} {{req.tenant.contact.lastName}}</center></td>
+                <td><center>{{req.tenant.contact.firstName}} {{req.tenant.contact.lastName}}</center></td>
                 <td><center>{{req.tenant.contact.email}}</center></td>
                 <td><center>{{req.message}}</center></td>
                 <td><center>{{req.tenant.housingUnit.address.name}} {{req.tenant.housingUnit.address.streetName}} {{req.tenant.housingUnit.address.buildingNumber}} {{req.tenant.housingUnit.housingSignature}}</center></td>
-                <td><center>{{req.active}}</center></td>
+                <td>
+                    <center>
+                        <div ng-if="req.active == true">
+                            <span class="label label-warning"> Pending</span>
+                        </div>
+                        <div ng-if="req.active == false">
+                            <span class="label label-danger"> Closed</span>
+                        </div>
+                    </center>
+                </td>
             </tr>
         </tbody>
     </table>
