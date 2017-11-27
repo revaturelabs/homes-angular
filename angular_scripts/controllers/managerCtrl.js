@@ -286,7 +286,7 @@ angular.module('StartApp.managerApp')
 
         $scope.getTenantById = function (t) {
             
-            var singlerecord = tenantsFactory.getTenantInfo(t.tenantId);
+            var singlerecord = tenantsFactory.getTenantInfo(t.contact.contactId);
             singlerecord.then(function (d) {
 
                 var record = d.data;
@@ -320,7 +320,7 @@ angular.module('StartApp.managerApp')
 
 
         function getPending() {
-            tenantsFactory.getPending().then(function (d) {//success
+            tenantsFactory.getTenantsPending().then(function (d) {//success
                 $scope.tenants = d.data;
             },
                 function () {
