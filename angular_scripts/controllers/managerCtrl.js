@@ -300,7 +300,7 @@ angular.module('StartApp.managerApp')
 
         $scope.getTenantById = function (t) {
             
-            var singlerecord = tenantsFactory.getTenantInfo(t.tenantId);
+            var singlerecord = tenantsFactory.getTenantInfo(t.contact.contactId);
             singlerecord.then(function (d) {
 
                 var record = d.data;
