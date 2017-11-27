@@ -321,10 +321,19 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller("UsersPendingsController", function ($scope, tenantsFactory, growl) {
+    .controller("UsersPendingsController", function ($scope, tenantsFactory, housingUnitFactory, growl) {
         getPending();
 
-
+        //Get HousingUnits
+        $scope.getHousingUnits = function getHousingUnits() {
+            housingUnitFactory.getHousingUnits()
+                .then(function (response) {
+                    $scope.units = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+        }
+        //Get Pending
         function getPending() {
             tenantsFactory.getTenantsPending().then(function (d) {//success
                 $scope.tenants = d.data;

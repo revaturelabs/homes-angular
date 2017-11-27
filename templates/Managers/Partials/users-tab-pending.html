@@ -52,6 +52,7 @@
 
                     <center>
                         <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-pencil"></span> Details</button>
+                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getHousingUnits()" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
                         <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                     </center>
                 </td>
@@ -118,21 +119,23 @@
     <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<!--Select Batch Modal-->
+<div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <br /><br />
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align"> Delete this entry</h4>
+                <h4 class="modal-title custom_align" id="Heading">Assign Housing Unit</h4>
             </div>
             <div class="modal-body">
-
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
-
+                <select size="1" class="alert-warning form-control" ng-model="selectedID">
+                    <option value="this" selected="selected"></option>
+                    <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} {{u.housingSignature}}</option>
+                </select>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="submitContacts()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
             </div>
         </div>
         <!-- /.modal-content -->
