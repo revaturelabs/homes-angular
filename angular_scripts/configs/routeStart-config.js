@@ -50,25 +50,20 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
         //    $state.go('Managers.Dashboard.suppliesRequests');
         //};
         $scope.reroute = function () {
-            console.log("Login controller");
             if ($scope.userInfo.isAuthenticated === false) {
-                console.log("saying hi");
             }
             else {
                 for (var i = 0; i < $scope.userInfo.profile.groups.length; i++) {
                     if ($scope.userInfo.profile.groups[i] === '51ba291a-df07-44d6-a4c6-cabe1fe756f4') {
-                        $state.go('Managers.Dashboard.suppliesRequests');
-                        console.log("Sent to manager");
+                        $state.go('Managers.Dashboard.suppliesRequests', {}, { location: "replace", reload: false });
                     }
                     if ($scope.userInfo.profile.groups[i] === 'f143cad2-5a31-436e-b097-28010f1dddb9') {
-                        $state.go('Providers.Dashboard');
-                        console.log("Sent to provider");
+                        $state.go('Providers.Dashboard', {}, { location: "replace", reload: false });
                     }
                     if ($scope.userInfo.profile.groups[i] === '7c4a9ef6-6150-4e67-85c1-0cdd6209a6ec' ||
                     $scope.userInfo.profile.groups[i] === '1a77fa18-5261-464a-80c5-32556ae32d02'
                     ) {
-                        $state.go('Tenants.Dashboard');
-                        console.log("Sent to tenant");
+                        $state.go('Tenants.Dashboard', {}, { location: "replace", reload: false });
                     }
 
                     //if ($scope.userInfo.profile.name === "Manager") {
@@ -111,13 +106,14 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
             if ($scope.userInfo.isAuthenticated) {
                 adalService.logOut().then(function (success) {
                     //$state.go('Login');
-                    $location.path('/');
+                    window.location.reload();
+                    $state.go('Logout');
                 }, function (error) { });
                 
                 //$state.go('Login');
             }
             else {
-                $location.path('/');
+                $state.go('Logout');
             }
             //$state.go('Login');
             //$location.path('');
