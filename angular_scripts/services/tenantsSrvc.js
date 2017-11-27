@@ -61,6 +61,19 @@ angular.module('StartApp.managerApp')
             });
 
         };
+        //Get Pending
+        tenantsFactory.getPending = function () {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: 'http://homes-webapi.azurewebsites.net/api/pending',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
+        };
         //tenantsFactory.getTenantsInfo = function () {
         //    return $http.get(urlBase + "/Info");
         //};
