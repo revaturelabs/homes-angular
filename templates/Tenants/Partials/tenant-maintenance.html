@@ -5,13 +5,13 @@
             <div class="header">
                 <h4 class="title">Room Maintenance</h4>
             </div>
-            <div class="content">
-                <textarea class="form-control" rows="7" placeholder="Please explain the reason of the request"></textarea>
+            <div class="content" >
+                <textarea class="form-control" rows="7" placeholder="Please explain the reason of the request" ng-model="message"></textarea>
                 <br />
                 <div class="row">
                     <div style="float:right; margin-right:20px;">
                         
-                        <button class="btn btn-success btn-fill btn-xs ">Submit</button>
+                        <button class="btn btn-success btn-fill btn-md " ng-click="postMaintenanceRequest()">Submit</button>
                     </div>
                    
                </div>

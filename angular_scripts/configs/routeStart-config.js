@@ -49,10 +49,14 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
         //$scope.changeView = function () {
         //    $state.go('Managers.Dashboard.suppliesRequests');
         //};
+       
+     
         $scope.reroute = function () {
             if ($scope.userInfo.isAuthenticated === false) {
             }
             else {
+                sessionStorage['oid']= $scope.userInfo.profile.oid;
+                  
                 for (var i = 0; i < $scope.userInfo.profile.groups.length; i++) {
                     if ($scope.userInfo.profile.groups[i] === '51ba291a-df07-44d6-a4c6-cabe1fe756f4') {
                         $state.go('Managers.Dashboard.suppliesRequests', {}, { location: "replace", reload: false });
