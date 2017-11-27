@@ -1,7 +1,7 @@
 ﻿//Completed - Untested 
 angular.module('StartApp.managerApp')
     .factory('housingUnitFactory', ['$http', function ($http) {
-
+        //Work
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits/Available';
         var housingUnitFactory = {};
         housingUnitFactory.getHousingUnits = function () {
