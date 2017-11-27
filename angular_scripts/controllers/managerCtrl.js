@@ -13,21 +13,16 @@ angular.module('StartApp.managerApp')
 
     })
     .controller('DashSuppliesController', ['$scope', 'supplyRequestsFactory', 'growl', function ($scope, supplyRequestsFactory, growl) {
-        $scope.supplyRequests;
 
-        $scope.populate = function () {
             supplyRequestsFactory.getSupplyRequests().then(
                 function (response) {
                     $scope.supplyRequests = response.data;
                     console.log($scope.supplyRequests);
                 },
                 function (error) {
-
                     console.log('error', error);
                 }
-
             );
-        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -58,7 +53,6 @@ angular.module('StartApp.managerApp')
 
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
-                    console.log('response', response);
                     $scope.housingUnitsWithProviders = response.data;
                 },
                 function (error) {
@@ -96,7 +90,7 @@ angular.module('StartApp.managerApp')
                 $scope.companyName = record.companyName;
             },
                 function () {
-                    $scope.status = 'Unable to get Batch: ' + error.message;
+                    $scope.status = 'Unable to get Housing: ' + error.message;
                 });
         };
 
