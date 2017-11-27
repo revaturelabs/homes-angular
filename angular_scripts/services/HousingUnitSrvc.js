@@ -44,7 +44,7 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: urlBase + "/WithProviders",
+                url: 'https://homes-webapi.azurewebsites.net/api/HousingUnits/WithProviders',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -102,7 +102,7 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'POST',
                 dataType: 'json',
-                url: urlBase,
+                url: 'https://homes-webapi.azurewebsites.net/api/HousingUnits',
                 data: item ,
                 headers: {
                     "Content-Type": "application/json",
