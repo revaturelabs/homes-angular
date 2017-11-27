@@ -49,10 +49,9 @@
                 <td><center>{{t.contact.email}}</center></td>
                 <td><center>{{t.contact.phoneNumber}}</center></td>
                 <td>
-
                     <center>
-                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-pencil"></span> Details</button>
-                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getHousingUnits();getTenantById(t)" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
+                        <button class="btn btn-info btn-fill" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-info-sign"></span> Details</button>
+                        <button class="btn btn-warning btn-fill" data-title="details" data-toggle="modal" ng-click="getHousingUnits()" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
                         <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                     </center>
                 </td>
@@ -67,78 +66,77 @@
 </div>
 
 
-
 <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="details" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Details</h4>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title custom_align" id="Heading">Pending Tenant Details</h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <div class="form-group">
+                            <h4><b>Full Name:</b> {{firstName}} {{lastName}}</h4>
+                        </div>
+                        <div class="form-group">
+                            <b>Batch Name:</b> {{batchName}}
+                        </div>
+                        <div class="form-group">
+                            <b>Gender:</b> {{gender}}
+                        </div>
+                        <div class="form-group">
+                            <div ng-if="tenantCarRelationships == true">
+                                <b>Has Car:</b> Yes
+                            </div>
+                            <div ng-if="tenantCarRelationships == false">
+                                <b>Has Car:</b> No
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <b>Move in Date:</b> {{moveInDate | date:"MM-dd-yyyy"}}
+                        </div>
+                        <div class="form-group">
+                            <div ng-if="hasKey == true">
+                                <b>Has Housing Key:</b> Yes
+                            </div>
+                            <div ng-if="hasKey == false">
+                                <b>Has Housing Key:</b> No
+                            </div>
+                        </div>
+                    </center>
+                </div>
+
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-primary btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> OK</button>
+                </div>
             </div>
-            <!--<div class="modal-body">
-                <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Tiger Nixon">
-                </div>
-                <div class="form-group">
-
-                    <input class="form-control " type="text" placeholder="System Architect">
-                </div>
-                <div class="form-group">
-
-
-                    <input class="form-control " type="text" placeholder="Edinburgh">
-
-                </div>
-            </div>-->
-
-            <div class="modal-body">
-                <div class="form-group">
-                    Batch Name: {{batchName}}
-                </div>
-                <div class="form-group">
-                    Gender: {{gender}}
-                </div>
-                <div class="form-group">
-                    Tenant Car: {{tenantCarRelationships}}
-                </div>
-                <div class="form-group">
-                    Move in Date: {{moveInDate}}
-                </div>
-                <div class="form-group">
-                    Has Key: {{hasKey}}
-                </div>
-            </div>
-
-
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>OK</button>
-            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
 
 <!--Select Batch Modal-->
 <div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <br /><br />
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Assign Housing Unit</h4>
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title custom_align" id="Heading">Assign Housing Unit</h4>
+                </div>
+                <div class="modal-body">
+                    <select size="1" class="form-control" ng-model="selectedID">
+                        <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} {{u.housingSignature}}</option>
+                    </select>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-primary btn-fill" ng-click="submitContacts()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> Assign</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <select size="1" class="alert-warning form-control" ng-model="housingId">
-                    <option value="this" selected="selected"></option>
-                    <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} Available: {{u.occupied}}/{{u.capacity}}</option>
-                </select>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="updateTenant()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
-            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
