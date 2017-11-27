@@ -224,6 +224,7 @@ angular.module('StartApp.managerApp')
             suppliesFactory.getSupplies()
                 .then(function (response) {
                     $scope.supplies = response.data;
+                    console.log($scope.supplies);
                 }, function (error) {
                     growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
                 });
