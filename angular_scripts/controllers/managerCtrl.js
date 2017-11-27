@@ -48,9 +48,10 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, providerFactory) {
+    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, addressesFactory) {
         //getHousingsAndProviders();
         $scope.thisAddresId;
+         
 
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
@@ -95,17 +96,20 @@ angular.module('StartApp.managerApp')
                 });
         };
 
+        var thisAddresId;
         $scope.postAddress = function () {
             var address = JSON.stringify({
                 name: $scope.housingName, buildingNumber: $scope.buildingNumber,
                 streetName: $scope.streetName, city: $scope.city, zipcode: $scope.zipcode,
                 state: $scope.state, country: $scope.country
             });
-            providerFactory.postAddress(address)
+            console.log(address);
+            addressesFactory.postAddress(address)
                 .then(function (response) {
                     $scope.newAddress = response.data;
                     var a = $scope.newAddress;
-                    $scope.thisAddresId = a.addressId;
+                    thisAddresId = a.addressId;
+                    console.log(thisAddresId);
                 }, function (error) {
                     $scope.status = 'Unable to insert Address: ' + error.message;
                 });
@@ -307,7 +311,7 @@ angular.module('StartApp.managerApp')
                 $scope.tenants = d.data;
             },
                 function () {
-                    growl.error('Unable to upload Supplies. Please refresh your browser or close it.', { title: 'Error!' });
+                    growl.error('Unable to upload Tenants. Please refresh your browser or close it.', { title: 'Error!' });
                 });
         }
 
@@ -317,7 +321,9 @@ angular.module('StartApp.managerApp')
             singlerecord.then(function (d) {
 
                 var record = d.data;
-                $scope.batchName = record.batch.batchId;
+                $scope.firstName = record.contact.firstName;
+                $scope.lastName = record.contact.lastName;
+                $scope.batchName = record.batch.name;
                 $scope.gender = record.gender.genderOption;
                 $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
                 $scope.moveInDate = record.moveInDate;
@@ -328,14 +334,6 @@ angular.module('StartApp.managerApp')
                     growl.error("An error has ocurred while getting details of tenant.", { title: 'Error!' });
                 });
         };
-
-        //$scope.filterFn = function (t) {
-        //    if (t.housingUnit.addressId != 0) {
-        //        return true;
-        //    }
-        //    return false;
-        //};
-
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -370,10 +368,13 @@ angular.module('StartApp.managerApp')
             singlerecord.then(function (d) {
 
                 var record = d.data;
-                $scope.batchName = record.batch.batchId;
-                $scope.gender = record.gender.genderOption;
-                $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
+                $scope.tenantId = record.tenantId;
+                $scope.contactId = record.contactId;
+                $scope.batchId = record.batch.batchId;
+                $scope.gender = record.gender.genderId;
                 $scope.moveInDate = record.moveInDate;
+                $scope.hasKey = record.hasKey;
+                $scope.hasMoved = record.hasMoved;
                 $scope.hasKey = record.hasKey;
 
             },
@@ -382,12 +383,28 @@ angular.module('StartApp.managerApp')
                 });
         };
 
-        //$scope.filterFn = function (t) {
-        //    if (t.housingUnit.addressId != 0) {
-        //        return true;
-        //    }
-        //    return false;
-        //};
+        //update Tenant record
+        $scope.updateTenant = function () {
+            var tenant = {
+                tenantId: $scope.tenantId,
+                contactId: $scope.contactId,
+                batchId: $scope.batchId,
+                housingUnitId: $scope.housingId,
+                genderId: $scope.gender,
+                moveInDate: $scope.moveInDate,
+                hasMoved: $scope.hasMoved,
+                hasKey: $scope.hasKey
+            };
+
+            tenantsFactory.putTenant($scope.tenantId, tenant).then(function (d) {
+                $scope.tenant = d.data;
+                getPending();
+                growl.success("Tenant " + $scope.tenantName + " Updated Successfully!", { title: 'Success!' });
+            }, function (error) {
+                growl.error("An error has ocurred while updating this tenant.", { title: 'Error!' });
+            });
+
+        };
 
 
         $scope.sort = function (keyname) {

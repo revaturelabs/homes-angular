@@ -879,8 +879,7 @@ hr {
   .has-success .form-control:focus {
     background-color: #FFFFFF; }
   .has-error .form-control {
-    background-color: #FFC0A4;
-    color: #EB5E28; }
+    border-color: #FFC0A4;}
     .has-error .form-control.border-input {
       border: 1px solid #EB5E28; }
   .has-error .form-control:focus {

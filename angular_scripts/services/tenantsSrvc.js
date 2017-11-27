@@ -169,12 +169,12 @@ angular.module('StartApp.managerApp')
         //        return response;
         //    });
         //};
-        tenantsFactory.putTenant = function (tenant) {
+        tenantsFactory.putTenant = function (tenantId,tenant) {
             return $http({
                 method: 'PUT',
                 dataType: 'json',
-                url: urlBase + "/" + tenant.tenantId,
-                data: { tenant },
+                url: urlBase + "/" + tenantId,
+                data: tenant,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

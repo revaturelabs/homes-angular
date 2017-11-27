@@ -2,9 +2,9 @@
     .factory('addressesFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/Addresses';
-        var providerFactory = {};
+        var addressesFactory = {};
 
-        providerFactory.getAddresses = function () {
+        addressesFactory.getAddresses = function () {
             return $http({
                 method: 'GET',
                 dataType: 'json',
@@ -18,7 +18,7 @@
         };
 
 
-        providerFactory.getAddressById = function (id) {
+        addressesFactory.getAddressById = function (id) {
             return $http({
                 method: 'GET',
                 dataType: 'json',
@@ -32,26 +32,26 @@
         };
 
 
-        providerFactory.postAddress = function (address) {
+        addressesFactory.postAddress = function (address) {
            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { address },
+                data: address ,
                 headers: {
-                    "Content-Type": "application/json",
+                 "Content-Type": "application/json",
                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
             })
         };
 
 
-        providerFactory.putAddress = function (address) {
+        addressesFactory.putAddress = function (address) {
             return $http({
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + address.addressId,
-                data: { address },
+                data:  address ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -59,7 +59,7 @@
             })
         };
 
-        providerFactory.deleteAddress = function (id) {
+        addressesFactory.deleteAddress = function (id) {
             return $http({
                 method: 'DELETE',
                 dataType: 'json',
@@ -72,6 +72,6 @@
 
         };
 
-        return providerFactory;
+        return addressesFactory;
 
     }]);
