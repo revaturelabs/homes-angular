@@ -48,8 +48,9 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', ['$scope', 'housingUnitFactory', function ($scope, housingUnitFactory) {
+    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, providerFactory) {
         //getHousingsAndProviders();
+        $scope.thisAddresId;
 
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
@@ -94,7 +95,32 @@ angular.module('StartApp.managerApp')
                 });
         };
 
+        $scope.postAddress = function () {
+            var address = JSON.stringify({
+                name: $scope.housingName, buildingNumber: $scope.buildingNumber,
+                streetName: $scope.streetName, city: $scope.city, zipcode: $scope.zipcode,
+                state: $scope.state, country: $scope.country
+            });
+            providerFactory.postAddress(address)
+                .then(function (response) {
+                    $scope.newAddress = response.data;
+                    var a = $scope.newAddress;
+                    $scope.thisAddresId = a.addressId;
+                }, function (error) {
+                    $scope.status = 'Unable to insert Address: ' + error.message;
+                });
+        };
 
+        $scope.postHousingUnit = function () {
+            var housingUnit = JSON.stringify({ provider: 1 , addressId: thisAddresId, housingSignature: $scope.aptNumber, capacity: $scope.capacity });
+            housingUnitFactory.postHousingUnit(housingUnit)
+                .then(function (response) {
+                    $scope.newHousingUnit = response.data;
+
+                }, function (error) {
+                    $scope.status = 'Unable to insert housing unit: ' + error.message;
+                });
+        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
