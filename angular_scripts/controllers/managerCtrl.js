@@ -35,20 +35,18 @@ angular.module('StartApp.managerApp')
         };
     }])
     .controller('DashMaintenanceController', ['maintenanceRequestsFactory', '$scope', function (maintenanceRequestsFactory, $scope) {
-        $scope.maintenanceRequests;
 
-        $scope.populate = function () {
             //console.log(maintenanceSrvc);
             maintenanceRequestsFactory.getMaintenanceRequests().then(
-                function (success) {
-                    $scope.maintenanceRequests = success.data;
+                function (response) {
+                    $scope.maintenanceRequests = response.data;
                     console.log($scope.maintenanceRequests);
                 },
                 function (error) {
                     console.log('error', error);
                 }
             );
-        };
+      
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -58,11 +56,6 @@ angular.module('StartApp.managerApp')
     .controller('DashHousingController', ['$scope', 'housingUnitFactory', function ($scope, housingUnitFactory) {
         //getHousingsAndProviders();
 
-
-        $scope.housingUnitsWithProviders;
-
-        $scope.populate = function () {
-            
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
                     console.log('response', response);
@@ -72,7 +65,6 @@ angular.module('StartApp.managerApp')
                     console.log('error', error);
                 }
             );
-        };
 
         $scope.getHousingsAndProviders = function () {
             housingUnitFactory.getHousingUnitsWithProviders()
