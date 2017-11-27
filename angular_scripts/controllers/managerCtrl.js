@@ -364,11 +364,13 @@ angular.module('StartApp.managerApp')
             singlerecord.then(function (d) {
 
                 var record = d.data;
-                $scope.batchName = record.batch.name;
-                $scope.firstName = record.contact.firstName;
-                $scope.lastName = record.contact.lastName;
-                $scope.gender = record.gender.genderOption;
+                $scope.tenantId = record.tenantId;
+                $scope.contactId = record.contactId;
+                $scope.batchId = record.batch.batchId;
+                $scope.gender = record.gender.genderId;
                 $scope.moveInDate = record.moveInDate;
+                $scope.hasKey = record.hasKey;
+                $scope.hasMoved = record.hasMoved;
                 $scope.hasKey = record.hasKey;
 
             },
@@ -377,12 +379,28 @@ angular.module('StartApp.managerApp')
                 });
         };
 
-        //$scope.filterFn = function (t) {
-        //    if (t.housingUnit.addressId != 0) {
-        //        return true;
-        //    }
-        //    return false;
-        //};
+        //update Tenant record
+        $scope.updateTenant = function () {
+            var tenant = {
+                tenantId: $scope.tenantId,
+                contactId: $scope.contactId,
+                batchId: $scope.batchId,
+                housingUnitId: $scope.housingId,
+                genderId: $scope.gender,
+                moveInDate: $scope.moveInDate,
+                hasMoved: $scope.hasMoved,
+                hasKey: $scope.hasKey
+            };
+
+            tenantsFactory.putTenant($scope.tenantId, tenant).then(function (d) {
+                $scope.tenant = d.data;
+                getPending();
+                growl.success("Tenant " + $scope.tenantName + " Updated Successfully!", { title: 'Success!' });
+            }, function (error) {
+                growl.error("An error has ocurred while updating this tenant.", { title: 'Error!' });
+            });
+
+        };
 
 
         $scope.sort = function (keyname) {

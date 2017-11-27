@@ -51,7 +51,7 @@
                 <td>
                     <center>
                         <button class="btn btn-info btn-fill" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-info-sign"></span> Details</button>
-                        <button class="btn btn-warning btn-fill" data-title="details" data-toggle="modal" ng-click="getHousingUnits()" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
+                        <button class="btn btn-warning btn-fill" data-title="details" data-toggle="modal" ng-click="getHousingUnits();getTenantById(t)" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
                         <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                     </center>
                 </td>
@@ -127,12 +127,12 @@
                     <h4 class="modal-title custom_align" id="Heading">Assign Housing Unit</h4>
                 </div>
                 <div class="modal-body">
-                    <select size="1" class="form-control" ng-model="selectedID">
-                        <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} {{u.housingSignature}}</option>
+                    <select size="1" class="form-control" ng-model="housingId">
+                        <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} Available: {{u.occupied}}/{{u.capacity}}</option>
                     </select>
                 </div>
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-primary btn-fill" ng-click="submitContacts()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> Assign</button>
+                    <button type="button" class="btn btn-primary btn-fill" ng-click="updateTenant()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> Assign</button>
                 </div>
             </div>
             <!-- /.modal-content -->
