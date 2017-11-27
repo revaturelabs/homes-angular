@@ -1,5 +1,5 @@
 ﻿angular.module('StartApp.managerApp')
-    .factory('providerFactory', ['$http', function ($http) {
+    .factory('addressesFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/Addresses';
         var providerFactory = {};

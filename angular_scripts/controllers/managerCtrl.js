@@ -13,21 +13,16 @@ angular.module('StartApp.managerApp')
 
     })
     .controller('DashSuppliesController', ['$scope', 'supplyRequestsFactory', 'growl', function ($scope, supplyRequestsFactory, growl) {
-        $scope.supplyRequests;
 
-        $scope.populate = function () {
             supplyRequestsFactory.getSupplyRequests().then(
                 function (response) {
                     $scope.supplyRequests = response.data;
                     console.log($scope.supplyRequests);
                 },
                 function (error) {
-
                     console.log('error', error);
                 }
-
             );
-        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -53,12 +48,12 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', ['$scope', 'housingUnitFactory', function ($scope, housingUnitFactory) {
+    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, providerFactory) {
         //getHousingsAndProviders();
+        $scope.thisAddresId;
 
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
-                    console.log('response', response);
                     $scope.housingUnitsWithProviders = response.data;
                 },
                 function (error) {
@@ -96,11 +91,36 @@ angular.module('StartApp.managerApp')
                 $scope.companyName = record.companyName;
             },
                 function () {
-                    $scope.status = 'Unable to get Batch: ' + error.message;
+                    $scope.status = 'Unable to get Housing: ' + error.message;
                 });
         };
 
+        $scope.postAddress = function () {
+            var address = JSON.stringify({
+                name: $scope.housingName, buildingNumber: $scope.buildingNumber,
+                streetName: $scope.streetName, city: $scope.city, zipcode: $scope.zipcode,
+                state: $scope.state, country: $scope.country
+            });
+            providerFactory.postAddress(address)
+                .then(function (response) {
+                    $scope.newAddress = response.data;
+                    var a = $scope.newAddress;
+                    $scope.thisAddresId = a.addressId;
+                }, function (error) {
+                    $scope.status = 'Unable to insert Address: ' + error.message;
+                });
+        };
 
+        $scope.postHousingUnit = function () {
+            var housingUnit = JSON.stringify({ provider: 1 , addressId: thisAddresId, housingSignature: $scope.aptNumber, capacity: $scope.capacity });
+            housingUnitFactory.postHousingUnit(housingUnit)
+                .then(function (response) {
+                    $scope.newHousingUnit = response.data;
+
+                }, function (error) {
+                    $scope.status = 'Unable to insert housing unit: ' + error.message;
+                });
+        };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -321,10 +341,19 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller("UsersPendingsController", function ($scope, tenantsFactory, growl) {
+    .controller("UsersPendingsController", function ($scope, tenantsFactory, housingUnitFactory, growl) {
         getPending();
 
-
+        //Get HousingUnits
+        $scope.getHousingUnits = function getHousingUnits() {
+            housingUnitFactory.getHousingUnits()
+                .then(function (response) {
+                    $scope.units = response.data;
+                }, function (error) {
+                    $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+        }
+        //Get Pending
         function getPending() {
             tenantsFactory.getTenantsPending().then(function (d) {//success
                 $scope.tenants = d.data;
