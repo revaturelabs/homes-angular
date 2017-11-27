@@ -4,37 +4,21 @@
             <div class="header">
                 <h4 class="title">Supplies</h4>
             </div>
-            <div class="content">
+            <div class="content" ng-init="getSupplies()">
           
                    <div class="bs-component">
-                       <table class="table table-striped table-bordered" id="tenantsupply">
-                           <thead>
-                               <tr>
-                               
-                                   <th >
+                       <div class="row col-md-4"></div>
+                       <div class="col-md-4 panel-primary"  >
+                           <div ng-repeat="s in supplies" class="panel-body">
+                               <div justify="Left">
 
-                                       <center>
-                                           Supply Name
-                                           
-                                       </center>
-                                   </th>
-                                
-                               </tr>
-
-
-                           </thead>
-                           <tbody>
-                               <tr dir-paginate="|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" >
-
-                                   <td > <input type="checkbox" style="width: 30px; height: 30px; }" /></td>
-               
-                               </tr>
-                           </tbody>
-                       </table>
-                       <dir-pagination-controls max-size="15"
-                                                direction-links="true"
-                                                boundary-links="true">
-                       </dir-pagination-controls>
+                                   <div>
+                                       <input type="checkbox" style="width: 30px; height: 20px;" value={{s.supplyId}} />{{s.supplyName}}</>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row col-md-4"></div>
                        <div class="row">
                        <div style="float:left; margin-left:810px;">
                            <button class="btn btn-success btn-fill btn-md">Add Request</button>
