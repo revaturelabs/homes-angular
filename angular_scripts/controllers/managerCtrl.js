@@ -48,7 +48,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     }])
-    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, providerFactory) {
+    .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, addressesFactory) {
         //getHousingsAndProviders();
         $scope.thisAddresId;
 
@@ -101,7 +101,8 @@ angular.module('StartApp.managerApp')
                 streetName: $scope.streetName, city: $scope.city, zipcode: $scope.zipcode,
                 state: $scope.state, country: $scope.country
             });
-            providerFactory.postAddress(address)
+            console.log(address);
+            addressesFactory.postAddress(address)
                 .then(function (response) {
                     $scope.newAddress = response.data;
                     var a = $scope.newAddress;
