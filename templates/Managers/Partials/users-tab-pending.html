@@ -15,12 +15,7 @@
                         <span class="fa fa-sort" ng-init="sortKey=='fullName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
-                <th ng-click="sort('address')">
-                    <center>
-                        Address
-                        <span class="fa fa-sort" ng-init="sortKey=='address'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
-                    </center>
-                </th>
+                
                 <th ng-click="sort('email')">
                     <center>
                         Email
@@ -45,7 +40,6 @@
         <tbody>
             <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td><center>{{t.contact.firstName}} {{t.contact.lastName}}</center></td>
-                <td><center>{{t.housingUnit.address.name}} -- {{t.housingUnit.housingSignature}} -- {{t.housingUnit.address.buildingNumber}}</center></td>
                 <td><center>{{t.contact.email}}</center></td>
                 <td><center>{{t.contact.phoneNumber}}</center></td>
                 <td>

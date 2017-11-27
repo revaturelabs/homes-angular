@@ -42,7 +42,7 @@
             <div class="card">
                 <div class="header">
                     <center>
-                        <h4 class="title">My Supplies Requests</h4>
+                        <h4 class="title">My Maintenance Requests</h4>
                     </center>
                 </div>
 
@@ -55,7 +55,7 @@
                                    
                                     <th ng-click="sort('messageSent')">
                                         <center>
-                                            Supplies Requested
+                                            Message
                                             <span class="fa fa-sort" ng-init="sortKey=='messageSent'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                         </center>
 
@@ -71,7 +71,7 @@
 
                             </thead>
                             <tbody>
-                                <tr dir-paginate="s in maintenance|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="s in maintenance">
+                                <tr dir-paginate="s in maintenance|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
 
                                     <td><center>{{s.message}}</center></td>
                                     <td><center>{{s.active}}</center></td>
@@ -95,7 +95,7 @@
             <div class="card">
                 <div class="header">
                     <center>
-                        <h4 class="title">My Maintenance Requests</h4>
+                        <h4 class="title">My Supplies Requests</h4>
                     </center>
                 </div>
 
@@ -108,7 +108,7 @@
 
                                 <th ng-click="sort('messageSent')">
                                     <center>
-                                        Message
+                                        Supplies Requested
                                         <span class="fa fa-sort" ng-init="sortKey=='messageSent'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                     </center>
 

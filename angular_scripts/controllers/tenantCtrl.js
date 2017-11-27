@@ -82,13 +82,16 @@ angular.module('StartApp.tenantApp')
 
         console.log(sessionStorage.tenantid);
         $scope.message;
+        var tid = parseInt(sessionStorage.tenantid);
         $scope.postMaintenanceRequest = function () {
-            var request = JSON.stringify({ tenantId: sessionStorage.tenantid, active: true, message: $scope.message })
+            
+            var request = JSON.stringify({ tenantId: tid, active: true, message: $scope.message })
             console.log(request);
             maintenanceRequestsFactory.postMaintenanceRequest(request)
                 .then(function (response) {
                     $scope.maintenance = response.data;
                     console.log($scope.maintenance);
+                    window.location.href = "~/Tenants/TenantDashboard";
                 }, function (error) {
                     $scope.status = 'Unable to load Supplies requests: ' + error.message;
                 });
@@ -101,9 +104,19 @@ angular.module('StartApp.tenantApp')
         
 
     }])
-    .controller("TenantsSuppliesController", function ($http, $scope) {
+    .controller("TenantsSuppliesController", ['$http', '$scope', '$rootScope', 'suppliesFactory', function ($http, $scope, $rootScope, suppliesFactory) {
 
-    })
+        $scope.getSupplies= function () {
+            suppliesFactory.getSupplies()
+                .then(function (response) {
+                    $scope.supplies = response.data;      
+                }, function (error) {
+                    growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
+                });
+
+        }
+
+    }])
     .controller("TenantsProfileController", function ($http, $scope) {
 
     });
