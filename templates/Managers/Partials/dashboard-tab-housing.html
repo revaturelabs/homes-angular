@@ -137,7 +137,8 @@
                         </div>
                     </div>
                     <div class="modal-footer ">
-                        <button type="button" data-title="nextHousing" data-toggle="modal" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="postAddress()" data-target="#nextHousing"><span class="glyphicon glyphicon-ok-sign"></span>Next</button>                      
+                        <button type="button" data-title="nextHousing" data-toggle="modal" class="btn btn-success btn-fill" ng-click="postAddress()" data-target="#nextHousing"><span class="glyphicon glyphicon-arrow-right"></span> Next</button>                      
+                        <button type="button" data-toggle="modal" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button> 
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -164,8 +165,9 @@
                         <input name="capacity" class="form-control " type="text" ng-model="capacity" placeholder="6">
                     </div>                    
                 </div>
+
                 <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="postHousingUnit()"><span class="glyphicon glyphicon-ok-sign"></span>Add</button>
+                    <button type="button" class="btn btn-primary btn-fill" ng-click="postHousingUnit()"><span class="glyphicon glyphicon-ok-sign"></span> Add Housing</button>
                 </div>
             </div>
             <!-- /.modal-content -->

@@ -45,11 +45,10 @@
         <tbody>
             <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
                 <td><center>{{t.contact.firstName}} {{t.contact.lastName}}</center></td>
-                <td><center>{{t.housingUnit.address.name}} -- {{t.housingUnit.housingSignature}} -- {{t.housingUnit.address.buildingNumber}}</center></td>
+                <td><center>{{t.housingUnit.address.name}} Bldg. {{t.housingUnit.address.buildingNumber}} Apt. {{t.housingUnit.housingSignature}} </center></td>
                 <td><center>{{t.contact.email}}</center></td>
                 <td><center>{{t.contact.phoneNumber}}</center></td>
                 <td>
-
                     <center>
                         <button class="btn btn-info btn-fill" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-info-sign"></span> Details</button>
                         <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
@@ -75,7 +74,6 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title custom_align" id="Heading">Tenant Details</h4>
                 </div>
-
                 <div class="modal-body">
                     <center>
                         <div class="form-group">

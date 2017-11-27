@@ -364,9 +364,10 @@ angular.module('StartApp.managerApp')
             singlerecord.then(function (d) {
 
                 var record = d.data;
-                $scope.batchName = record.batch.batchId;
+                $scope.batchName = record.batch.name;
+                $scope.firstName = record.contact.firstName;
+                $scope.lastName = record.contact.lastName;
                 $scope.gender = record.gender.genderOption;
-                $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
                 $scope.moveInDate = record.moveInDate;
                 $scope.hasKey = record.hasKey;
 
