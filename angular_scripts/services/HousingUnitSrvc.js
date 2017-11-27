@@ -2,7 +2,7 @@
 angular.module('StartApp.managerApp')
     .factory('housingUnitFactory', ['$http', function ($http) {
 
-        var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits/Available';
         var housingUnitFactory = {};
         housingUnitFactory.getHousingUnits = function () {
             return $http({

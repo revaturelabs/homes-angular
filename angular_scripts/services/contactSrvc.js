@@ -26,7 +26,7 @@ angular.module('StartApp.managerApp')
             $http({
                 method: 'POST',
                 dataType: 'json',
-                url: urlBase + 'adtenants/addlistofusers',
+                url: 'http://homes-webapi.azurewebsites.net/api/adtenants/addlistofusers',
                 data: contact,
                 headers: {
                     "Content-Type": "application/json",

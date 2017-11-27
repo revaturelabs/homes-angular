@@ -52,7 +52,7 @@
 
                     <center>
                         <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getTenantById(t)" data-target="#details"><span class="glyphicon glyphicon-pencil"></span> Details</button>
-                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getHousingUnits()" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
+                        <button class="btn btn-primary btn-fill btn-xs" data-title="details" data-toggle="modal" ng-click="getHousingUnits();getTenantById(t)" data-target="#select"><span class="glyphicon glyphicon-home"></span> Assign</button>
                         <!--<button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                     </center>
                 </td>
@@ -129,13 +129,13 @@
                 <h4 class="modal-title custom_align" id="Heading">Assign Housing Unit</h4>
             </div>
             <div class="modal-body">
-                <select size="1" class="alert-warning form-control" ng-model="selectedID">
+                <select size="1" class="alert-warning form-control" ng-model="housingId">
                     <option value="this" selected="selected"></option>
-                    <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} {{u.housingSignature}}</option>
+                    <option ng-repeat="u in units" value="{{u.housingUnitId}}">{{u.address.streetName}} {{u.address.buildingNumber}} Available: {{u.occupied}}/{{u.capacity}}</option>
                 </select>
             </div>
             <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="submitContacts()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
+                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;" ng-click="updateTenant()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Confirm</button>
             </div>
         </div>
         <!-- /.modal-content -->
