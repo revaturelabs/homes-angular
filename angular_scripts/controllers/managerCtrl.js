@@ -51,6 +51,7 @@ angular.module('StartApp.managerApp')
     .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, addressesFactory) {
         //getHousingsAndProviders();
         $scope.thisAddresId;
+         
 
             housingUnitFactory.getHousingUnitsWithProviders().then(
                 function (response) {
@@ -95,6 +96,7 @@ angular.module('StartApp.managerApp')
                 });
         };
 
+        var thisAddresId;
         $scope.postAddress = function () {
             var address = JSON.stringify({
                 name: $scope.housingName, buildingNumber: $scope.buildingNumber,
@@ -106,7 +108,8 @@ angular.module('StartApp.managerApp')
                 .then(function (response) {
                     $scope.newAddress = response.data;
                     var a = $scope.newAddress;
-                    $scope.thisAddresId = a.addressId;
+                    thisAddresId = a.addressId;
+                    console.log(thisAddresId);
                 }, function (error) {
                     $scope.status = 'Unable to insert Address: ' + error.message;
                 });

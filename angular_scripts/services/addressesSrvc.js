@@ -37,9 +37,9 @@
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { address },
+                data: address ,
                 headers: {
-                    "Content-Type": "application/json",
+                 "Content-Type": "application/json",
                 "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
             })
@@ -51,7 +51,7 @@
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + address.addressId,
-                data: { address },
+                data:  address ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
