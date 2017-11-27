@@ -351,7 +351,7 @@ angular.module('StartApp.managerApp')
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-        }
+        };
         //Get Pending
         function getPending() {
             tenantsFactory.getTenantsPending().then(function (d) {//success
@@ -490,7 +490,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('UsersBatchesController', ["$scope", "batchesFactory", "contactFactory", function ($scope, batchesFactory, contactFactory) {
+    .controller('UsersBatchesController', function ($scope, batchesFactory, contactFactory, growl) {
         //batch 
         $scope.batchName;
         $scope.startDate;
@@ -509,74 +509,78 @@ angular.module('StartApp.managerApp')
         $scope.batches;
         $scope.contacts;
         //call batch services
-        $scope.getBatches = function getBatches() {
+        $scope.getBatches = function () {
             batchesFactory.getBatches()
                 .then(function (response) {
                     $scope.batches = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
                 });
-        }
-        $scope.postBatch = function postBatch() {
+        };
+
+        $scope.postBatch = function () {
             var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
-            console.log(batch);
             batchesFactory.postBatch(batch)
                 .then(function (response) {
                     $scope.batches = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to insert Batch: ' + error.message;
                 });
-            console.log($scope.batchName);
         };
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        }
+        };
         //call contact services
-        $scope.getContacts = function getContact() {
+        $scope.getContacts = function () {
             contactFactory.getContacts(contact)
                 .then(function (response) {
                     $scope.contacts = response.data;
                 }, function (error) {
-                    $scope.status = 'Unable to load Batches: ' + error.message;
+                    $scope.status = 'Unable to load Pending Tenants: ' + error.message;
                 });
-        }
-        $scope.postContacts = function postContact() {
+        };
+
+        $scope.postContacts = function () {
             var contact = angular.toJson(JsonObject);
-            console.log(contact);
-            contactFactory.postContacts(contact);
-            console.log("runs");
+            contactFactory.postContacts(contact).then(function (response) {
+                growl.success("Pending Tenants Added Successfully!", { title: 'Success!' });
+            }, function (error) {
+                growl.success("An error has ocurred while adding pending tenants. Please try again!", { title: 'Error!' });
+            });
             $scope.resetContactList();
-        }
+        };
 
         $scope.updateContactList = function updateContactList() {
 
             $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
-            $scope.clearForms()
+            $scope.clearForms();
 
-        }
+        };
+
         $scope.submitContacts = function () {
-            console.log($scope.selectedID);
             $scope.appendBatchID();
             $scope.postContacts();
-        }
+        };
+
         $scope.appendBatchID = function () {
             JsonObject = { "batchId": $scope.selectedID, "contacts": $scope.contactList };
-            alert("Contacts Added");
-        }
+        };
+
         $scope.clearForms = function () {
             $scope.contactfirstName = '';
             $scope.contactlastName = '';
             $scope.contactEmail = '';
             $scope.contactPhone = '';
 
-        }
+        };
+
         $scope.resetContactList = function () {
             $scope.contactList = [];
-        }
+        };
 
-    }]);
+    });
 
 
 

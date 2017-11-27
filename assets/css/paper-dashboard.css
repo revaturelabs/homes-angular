@@ -64,8 +64,13 @@ table tr th {
 }
 
 .modal-backdrop {
-    z-index: 0 !important;
-    margin:auto;
+    position:relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* z-index: auto; */
+    background-color: #000;
 }
 
 .fadeIn.first {

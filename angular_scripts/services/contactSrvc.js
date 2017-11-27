@@ -23,7 +23,7 @@ angular.module('StartApp.managerApp')
 
 
         contactFactory.postContacts = function (contact) {
-            $http({
+            return $http({
                 method: 'POST',
                 dataType: 'json',
                 url: 'http://homes-webapi.azurewebsites.net/api/adtenants/addlistofusers',
@@ -33,9 +33,7 @@ angular.module('StartApp.managerApp')
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
 
                 }
-            }).then(function (response) {
-                return response;
-            });
+            })
         };
         return contactFactory;
     }]);
