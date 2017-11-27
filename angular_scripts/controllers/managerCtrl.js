@@ -329,8 +329,49 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller("UsersPendingsController", function ($http, $scope) {
-        $scope.demo = "Pendings View"
+    .controller("UsersPendingsController", function ($scope, tenantsFactory, growl) {
+        getPending();
+
+
+        function getPending() {
+            tenantsFactory.getPending().then(function (d) {//success
+                $scope.tenants = d.data;
+            },
+                function () {
+                    growl.error('Unable to upload Pending. Please refresh your browser or close it.', { title: 'Error!' });
+                });
+        }
+
+        $scope.getTenantById = function (t) {
+
+            var singlerecord = tenantsFactory.getTenantInfo(t.contactId);
+            singlerecord.then(function (d) {
+
+                var record = d.data;
+                $scope.batchName = record.batch.batchId;
+                $scope.gender = record.gender.genderOption;
+                $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
+                $scope.moveInDate = record.moveInDate;
+                $scope.hasKey = record.hasKey;
+
+            },
+                function () {
+                    growl.error("An error has ocurred while getting details of tenant.", { title: 'Error!' });
+                });
+        };
+
+        //$scope.filterFn = function (t) {
+        //    if (t.housingUnit.addressId != 0) {
+        //        return true;
+        //    }
+        //    return false;
+        //};
+
+
+        $scope.sort = function (keyname) {
+            $scope.sortKey = keyname;   //set the sortKey to the param passed
+            $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        };
 
     })
     .controller('UsersManagersController', function ($scope, managementsFactory, growl) {
