@@ -27,7 +27,7 @@
 angular.module('StartApp.managerApp')
     .factory('tenantsFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/Tenants';
+        var urlBase = 'http://homes-webapi.azurewebsites.net/api/tenants';
 
         var tenantsFactory = {};
 
@@ -61,6 +61,19 @@ angular.module('StartApp.managerApp')
             });
 
         };
+        //Get Pending
+        tenantsFactory.getPending = function () {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: 'http://homes-webapi.azurewebsites.net/api/pending',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
+        };
         //tenantsFactory.getTenantsInfo = function () {
         //    return $http.get(urlBase + "/Info");
         //};
@@ -68,7 +81,20 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: urlBase + "/Info",
+                url: urlBase + '/confirmed',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
+
+        };
+
+        tenantsFactory.getTenantsPending = function () {
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase + '/pending',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -84,11 +110,12 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: urlBase + "/Info/" + id,
+                url: urlBase + '/Info/' + id,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
                 }
+
             });
 
         };
@@ -142,12 +169,12 @@ angular.module('StartApp.managerApp')
         //        return response;
         //    });
         //};
-        tenantsFactory.putTenant = function (tenant) {
+        tenantsFactory.putTenant = function (tenantId,tenant) {
             return $http({
                 method: 'PUT',
                 dataType: 'json',
-                url: urlBase + "/" + tenant.tenantId,
-                data: { tenant },
+                url: urlBase + "/" + tenantId,
+                data: tenant,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

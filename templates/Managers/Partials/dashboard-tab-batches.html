@@ -20,21 +20,21 @@
                 <th ng-click="sort('name')">
                     <center>
                         Batch Name
-                        <span class="fa fa-sort" ng-init="sortKey=='name'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        <span class="fa fa-sort" ng-init="sortKey=='name'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}" required></span>
                     </center>
                 </th> 
                 
                 <th ng-click="sort('startDate')">
                     <center>
                         Start Date
-                        <span class="fa fa-sort" ng-init="sortKey=='startDate'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        <span class="fa fa-sort" ng-init="sortKey=='startDate'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}" required></span>
                     </center>
                 </th> 
                 
                 <th ng-click="sort('endDate')">
                     <center>
                         End Date
-                        <span class="fa fa-sort" ng-init="sortKey=='endDate'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                        <span class="fa fa-sort" ng-init="sortKey=='endDate'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}" required></span>
                     </center>
                 </th>  
 
@@ -67,107 +67,114 @@
                              boundary-links="true">
     </dir-pagination-controls>
 </div>
+        
 
 <!--Create New Batch Modal-->
-<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Add a new Batch</h4>
+<form name="userFormCreate" ng-submit="submitForm()" novalidate>
+    <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add a new Batch</h4>
+                    </div>
+                        <div class="modal-body">
+
+                            <div class="form-group" ng-class="{ 'has-error' : userFormCreate.batchName.$invalid && !userFormCreate.batchName.$pristine }">
+                                <label class="text-info"> Batch Name:</label>
+                                <input class="form-control" name="batchName" ng-model="batchName" type="text" placeholder="Batch Name" required />
+                                <p ng-show="userFormCreate.batchName.$invalid && !userFormCreate.batchName.$pristine" class="help-block">Batch name is required.</p>
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error' : userFormCreate.startDate.$invalid && !userFormCreate.startDate.$pristine }">
+                                <label class="text-info"> Start Date:</label>
+                                <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
+                                <p ng-show="userFormCreate.startDate.$invalid && !userFormCreate.startDate.$pristine" class="help-block">Start date is required.</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> End Date:</label>
+                                <input name="endDate" class="form-control " type="date" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
+                            </div>
+                        </div>
+                        <div class="modal-footer ">
+                            <button type="submit" class="btn btn-primary btn-fill" data-dismiss="modal" ng-click="postBatch()" ng-disabled="userFormCreate.$invalid"> <span class="glyphicon glyphicon-check"></span> Create</button>
+                            <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
+                        </div>
                 </div>
-                <form>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <!--Edit Batches Modal-->
+<form name="userFormUpdate" ng-submit="submitForm()" novalidate>
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+                    </div>
                     <div class="modal-body">
+                            <div class="form-group">
+                                <input class="form-control" readonly="readonly" name="batchId" ng-model="batchId" type="hidden" placeholder="Batch Id" required />
+                            </div>
 
-                        <div class="form-group">
-                            <input name="Bname" class="form-control " type="text" placeholder="Batch Name" ng-model="name" required>
-                        </div>
-                        <div class="form-group">
-                            <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
-                        </div>
-                        <div class="form-group">
-                            <input name="endDate" class="form-control " type="date" placeholder="End Date: yyyy/mm/dd" ng-model="endDate">
-                        </div>
+                            <div class="form-group" ng-class="{ 'has-error' : userFormUpdate.batchName.$invalid && !userFormUpdate.batchName.$pristine }">
+                                <label class="text-info"> Batch Name:</label>
+                                <input class="form-control" name="batchName" ng-model="batchName" type="text" placeholder="Batch Name" required />
+                                <p ng-show="userFormUpdate.batchName.$invalid && !userFormUpdate.batchName.$pristine" class="help-block">Batch name is required.</p>
+                            </div>
+                            <div class="form-group" ng-class="{ 'has-error' : userFormUpdate.startDate.$invalid && !userFormUpdate.startDate.$pristine }">
+                                <label class="text-info"> Start Date:</label>
+                                <input class="form-control" name="startDate" ng-model="startDate" type="date" placeholder="Start Date" required />
+                                <p ng-show="userFormUpdate.startDate.$invalid && !userFormUpdate.startDate.$pristine" class="help-block">Start date is required.</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-info"> End Date:</label>
+                                <input class="form-control" name="endDate" ng-model="endDate" type="date" placeholder="End Date" />
+                            </div>
                     </div>
-                    <div class="modal-footer ">
-                        <button type="submit" class="btn btn-primary btn-fill" ng-click="postBatch()" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Create</button>
-                        <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Edit Batches Modal-->
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <input class="form-control" readonly="readonly" name="batchId" ng-model="batchId" type="hidden" placeholder="Batch Id" required />
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text-info"> Batch Name:</label>
-                            <input class="form-control" name="batchName" ng-model="batchName" type="text" placeholder="Batch Name"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> Start Date:</label>
-                            <input class="form-control" name="startDate" ng-model="startDate" type="date" placeholder="Start Date" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info"> End Date:</label>
-                            <input class="form-control" name="endDate" ng-model="endDate" type="date" placeholder="End Date" />
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()"> <span class="glyphicon glyphicon-check"></span> Update</button>
-                    <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-</div>
-
-
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title custom_align" id="Heading">Delete</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger"><center><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this batch?</center></div>
-                    <div>
-                        <p>Batch Name:{{batchName}}</p>
-                        <p>Start Date:{{startDate | date:"MM/dd/yyyy"}}</p>
-                        <p>End Date:{{endDate | date:"MM/dd/yyyy"}}</p>
-                    </div>
-
                     <div class="modal-footer">
-                        <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                        <button type="button" class="btn btn-primary btn-fill" id="btnUpdate" data-dismiss="modal" ng-click="updateBatch()" ng-disabled="userFormUpdate.$invalid"> <span class="glyphicon glyphicon-check"></span> Update</button>
                         <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
+</form>
+
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title custom_align" id="Heading">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger"><center><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this batch?</center></div>
+                        <div>
+                            <p>Batch Name:{{batchName}}</p>
+                            <p>Start Date:{{startDate | date:"MM/dd/yyyy"}}</p>
+                            <p>End Date:{{endDate | date:"MM/dd/yyyy"}}</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-fill" ng-click="deleteBatch(batchId)" data-dismiss="modal"><span class="glyphicon glyphicon-check"></span> Delete</button>
+                            <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

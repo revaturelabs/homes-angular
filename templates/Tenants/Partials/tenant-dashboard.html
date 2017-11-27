@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="container" ng-init="getContactbyoid ()">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="content">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             Tenant: {{tenant.contact.firstName}} {{tenant.contact.lastName}}<br />
                             Batch: {{tenant.batch.name}}<br />
                             Email: {{tenant.contact.email}}<br />
@@ -36,18 +36,18 @@
 
     <div class="row">
         <div class="col-md-12">
+            <div class="form-group" style="float:left; margin-bottom:15px;">
+                Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
+            </div>
             <div class="card">
                 <div class="header">
                     <center>
-                        <h4 class="title">My Requests</h4>
+                        <h4 class="title">My Supplies Requests</h4>
                     </center>
                 </div>
-                
+
                     <div class="bs-component">
                         <form class="form-inline">
-                            <div class="form-group" style="float:left; margin-bottom:15px;">
-                               Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
-                            </div>
                         </form>
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -55,13 +55,13 @@
                                    
                                     <th ng-click="sort('messageSent')">
                                         <center>
-                                            Message Sent
+                                            Supplies Requested
                                             <span class="fa fa-sort" ng-init="sortKey=='messageSent'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                         </center>
 
                                     <th ng-click="sort('status')">
                                         <center>
-                                            Status
+                                           Active
                                             <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                                         </center>
                                     </th>
@@ -71,9 +71,10 @@
 
                             </thead>
                             <tbody>
-                                <tr dir-paginate="t in tenants|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="t in tenants">
-                                    <td></td>
-                                    <td></td>
+                                <tr dir-paginate="s in maintenance|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="s in maintenance">
+
+                                    <td><center>{{s.message}}</center></td>
+                                    <td><center>{{s.active}}</center></td>
                             
                                 </tr>
                             </tbody>
@@ -88,5 +89,59 @@
                 </div>
             </div>
         </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <center>
+                        <h4 class="title">My Maintenance Requests</h4>
+                    </center>
+                </div>
+
+                <div class="bs-component">
+                    <form class="form-inline">
+                    </form>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+
+                                <th ng-click="sort('messageSent')">
+                                    <center>
+                                        Message
+                                        <span class="fa fa-sort" ng-init="sortKey=='messageSent'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                                    </center>
+
+                                <th ng-click="sort('status')">
+                                    <center>
+                                        Active
+                                        <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                                    </center>
+                                </th>
+
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="t in supply|orderBy:sortKey:reverse|filter:search|itemsPerPage:15" ng-repeat="t in supply">
+
+                                <td><div ng-repeat="m in t.requestSuppliesMaps">{{m.supply.supplyName}}</div></td>
+                                <td><center>{{t.active}}</center></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <dir-pagination-controls max-size="15"
+                                             direction-links="true"
+                                             boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
     </div>
 

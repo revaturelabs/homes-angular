@@ -17,7 +17,7 @@
                 </th>
                 <th ng-click="sort('address')">
                     <center>
-                        Address
+                        Department
                         <span class="fa fa-sort" ng-init="sortKey=='address'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
@@ -45,20 +45,19 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
-                <td>
+            <tr dir-paginate="m in managers|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td><center>{{m.contact.firstName}} {{m.contact.lastName}}</center></td>
+                <td><center>{{m.departmentName}}</center></td>
+                <td><center>{{m.contact.email}}</center></td>
+                <td><center>{{m.contact.phoneNumber}}</center></td>
                 <td>
 
                     <center>
-                        <button class="btn btn-primary btn-fill btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                        <button class="btn btn-danger btn-fill btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                        <button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                        <button class="btn btn-danger btn-fill" data-title="Delete" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span> Delete</button>
                     </center>
                 </td>
-                </td>
+               
             </tr>
         </tbody>
     </table>

@@ -1,8 +1,8 @@
 ﻿//Completed - Untested 
 angular.module('StartApp.managerApp')
-    .factory('housingUnitSrvc', ['$http', function ($http) {
+    .factory('housingUnitFactory', ['$http', function ($http) {
 
-        var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/HousingUnits/Available';
         var housingUnitFactory = {};
         housingUnitFactory.getHousingUnits = function () {
             return $http({
@@ -103,7 +103,7 @@ angular.module('StartApp.managerApp')
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { item },
+                data: item ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -115,7 +115,7 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + item.housingUnitId,
-                data: { item },
+                data: item ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

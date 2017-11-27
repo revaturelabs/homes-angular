@@ -79,7 +79,7 @@ angular.module('StartApp.managerApp')
                 method: 'POST',
                 dataType: 'json',
                 url: urlBase,
-                data: { item },
+                data:  item ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
@@ -91,7 +91,7 @@ angular.module('StartApp.managerApp')
                 method: 'PUT',
                 dataType: 'json',
                 url: urlBase + '/' + item.providerId,
-                data: { item },
+                data:  item ,
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

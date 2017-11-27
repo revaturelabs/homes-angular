@@ -10,7 +10,7 @@
 
 'use strict';
 angular.module('StartApp.providerApp')
-    .controller('ProvidersDashboardController', ['$scope', 'maintenanceRequestsSrvc', function ($scope, maintenaceRequestsSrvc) {
+    .controller('ProvidersDashboardController', ['$scope', 'maintenanceRequestsFactory', function ($scope, maintenaceRequestsFactory) {
 
         $scope.status;
         $scope.addrress;
@@ -21,7 +21,7 @@ angular.module('StartApp.providerApp')
         $scope.maintenaceRequests;
 
         $scope.populate = function () {
-            maintenaceRequestsSrvc.getMaintenanceRequestByProvider(3)
+            maintenaceRequestsFactory.getMaintenanceRequestByProvider(3)
                 .then(function (response) {
                     $scope.maintenaceRequests = response.data;
                     console.log(response.data);

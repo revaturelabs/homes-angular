@@ -49,176 +49,57 @@ var App = angular.module('StartApp', ['ui.router', 'AdalAngular', 'StartApp.mana
         //$scope.changeView = function () {
         //    $state.go('Managers.Dashboard.suppliesRequests');
         //};
+       
+     
         $scope.reroute = function () {
-            console.log("Login controller");
             if ($scope.userInfo.isAuthenticated === false) {
-                console.log("saying hi");
             }
             else {
+                sessionStorage['oid']= $scope.userInfo.profile.oid;
+                  
                 for (var i = 0; i < $scope.userInfo.profile.groups.length; i++) {
                     if ($scope.userInfo.profile.groups[i] === '51ba291a-df07-44d6-a4c6-cabe1fe756f4') {
-                        $state.go('Managers.Dashboard.suppliesRequests');
-                        console.log("Sent to manager");
+                        $state.go('Managers.Dashboard.suppliesRequests', {}, { location: "replace", reload: false });
                     }
                     if ($scope.userInfo.profile.groups[i] === 'f143cad2-5a31-436e-b097-28010f1dddb9') {
-                        $state.go('Providers.Dashboard');
-                        console.log("Sent to provider");
+                        $state.go('Providers.Dashboard', {}, { location: "replace", reload: false });
                     }
-                    if ($scope.userInfo.profile.groups[i] === '7c4a9ef6-6150-4e67-85c1-0cdd6209a6ec') {
-                        $state.go('Tenants.Dashboard');
-                        console.log("Sent to tenant");
+                    if ($scope.userInfo.profile.groups[i] === '7c4a9ef6-6150-4e67-85c1-0cdd6209a6ec' ||
+                        $scope.userInfo.profile.groups[i] === '1a77fa18-5261-464a-80c5-32556ae32d02')
+                    {
+                        $state.go('Tenants.Dashboard', {}, { location: "replace", reload: false });
                     }
-
-                    //if ($scope.userInfo.profile.name === "Manager") {
-                    //    $state.go('Managers.Dashboard.suppliesRequests');
-                    //    console.log($scope.userInfo);
-                    //}
-                    //else {
-                    //    $state.go('Tenants');
-                    //}
                 }
-                //if (useristenant) {
-                //    $state.go('Tenants');
-                //}
-                //if (userisprovider) {
-                //    $state.go('Providers');
-                //}
-                console.log($scope.userInfo.groups);
-                //sessionStorage[
             }
         };
         $scope.adallogin = function () {
             if ($scope.userInfo.isAuthenticated) {
                 adalService.logOut().then(function (success) { }, function (error) { });
             }
-            console.log("hello");
             adalService.login().then(function (success) { }, function (error) { });
         };
         $scope.adallogout = function () {
-            console.log("hello");
             adalService.logOut().then(function (success) { }, function (error) { });
-            //if ($scope.userInfo.isAuthenticated === false)
-            //$state.go('Login');
         };
 
     }])
     .controller('LogoutController', ['$scope', '$state', 'adalAuthenticationService', '$location', function ($scope, $state, adalService, $location) {
         $scope.reroute = function () {
-            console.log("Logout controller");
             
             if ($scope.userInfo.isAuthenticated) {
                 adalService.logOut().then(function (success) {
-                    //$state.go('Login');
-                    $location.path('/');
+                    window.location.reload();
+                    $state.go('Logout');
                 }, function (error) { });
-                
-                //$state.go('Login');
             }
             else {
-                $location.path('/');
+                $state.go('Logout');
             }
-            //$state.go('Login');
-            //$location.path('');
+
         };
     }])
     .controller('StartManagerController', function ($scope, $log, $window) {
 
-
-
-        //$scope.ClickMeToRedirect = function () {
-        //    var url = "http://" + $window.location.host + "/templates/Managers/Index.html";
-        //    $log.log(url);
-        //    $window.location.href = url;                                                               
-        //};
-
-
-        //$scope.login = function () {
-        //    adalService.login();
-        //};
-        //$scope.logout = function () {
-        //    adalService.logOut();
-        //};
-        //$scope.isActive = function (viewLocation) {
-        //    return viewLocation === $location.path();
-        //};
-
-
-
-
-
-        //$scope.error = "";
-        //$scope.loadingMessage = "Loading...";
-        //$scope.todoList = null;
-        //$scope.editingInProgress = false;
-        //$scope.newTodoCaption = "";
-
-
-        //$scope.editInProgressTodo = {
-        //    Description: "",
-        //    ID: 0
-        //};
-
-
-
-        //$scope.editSwitch = function (todo) {
-        //    todo.edit = !todo.edit;
-        //    if (todo.edit) {
-        //        $scope.editInProgressTodo.Description = todo.Description;
-        //        $scope.editInProgressTodo.ID = todo.ID;
-        //        $scope.editingInProgress = true;
-        //    } else {
-        //        $scope.editingInProgress = false;
-        //    }
-        //};
-
-        //$scope.populate = function () {
-        //    todoListSvc.getItems().success(function (results) {
-        //        //debugger;
-        //        $scope.todoList = results;
-
-        //        $scope.loadingMessage = "";
-        //    }).error(function (err) {
-        //        if (err.access_token) {
-        //            // Re-request the token with additional claims (supposing here the service only returns the claims parameter)
-        //            adalService.acquireTokenRedirect('/api/TodoList', null, JSON.stringify(err));
-        //        }
-        //        $scope.error = err;
-        //        $scope.loadingMessage = "";
-        //    })
-        //};
-        //$scope.delete = function (id) {
-        //    todoListSvc.deleteItem(id).success(function (results) {
-        //        $scope.loadingMessage = "";
-        //        $scope.populate();
-        //    }).error(function (err) {
-        //        $scope.error = err;
-        //        $scope.loadingMessage = "";
-        //    })
-        //};
-        //$scope.update = function (todo) {
-        //    todoListSvc.putItem($scope.editInProgressTodo).success(function (results) {
-        //        $scope.loadingMsg = "";
-        //        $scope.populate();
-        //        $scope.editSwitch(todo);
-        //    }).error(function (err) {
-        //        $scope.error = err;
-        //        $scope.loadingMessage = "";
-        //    })
-        //};
-        //$scope.add = function () {
-
-        //    todoListSvc.postItem({
-        //        'Description': $scope.newTodoCaption,
-        //        'Owner': adalService.userInfo.userName
-        //    }).success(function (results) {
-        //        $scope.loadingMsg = "";
-        //        $scope.newTodoCaption = "";
-        //        $scope.populate();
-        //    }).error(function (err) {
-        //        $scope.error = err;
-        //        $scope.loadingMsg = "";
-        //    })
-        //};
     })
     .controller('StartHousingController', function ($scope) {
         $scope.demo = "This is the Housing View";

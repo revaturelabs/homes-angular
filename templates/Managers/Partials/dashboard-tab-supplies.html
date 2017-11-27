@@ -1,6 +1,6 @@
 ﻿<center><h3>Supplies Requests</h3></center>
 <br />
-<div class="bs-component" ng-init="populate()">
+<div class="bs-component">
     <form class="form-inline">
         <div class="form-group" style="float:left; margin-bottom:15px;">
             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -35,8 +35,14 @@
                 </th>
                 <th ng-click="sort('status')">
                     <center>
-                       Status
+                        Status
                         <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>
+
+                <th>
+                    <center>
+                        Options
                     </center>
                 </th>
             </tr>
@@ -44,12 +50,27 @@
 
         </thead>
         <tbody>
-            <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{user.id}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.hobby}}</td>
-                 <td></td>
+            <tr dir-paginate="sr in supplyRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td><center>{{sr.tenant.contact.firstName}} {{sr.tenant.contact.lastName}}</center></td>
+                <td><center>{{sr.tenant.housingUnit.address.name}} {{sr.tenant.housingUnit.address.streetName}} {{sr.tenant.housingUnit.address.buildingNumber}} {{sr.tenant.housingUnit.housingSignature}}</center></td>
+                <td><center>{{sr.tenant.contact.email}}</center></td>
+
+                <td>
+                    <ul ng-repeat="srm in sr.requestSuppliesMaps">
+                        <li>{{srm.supply.supplyName}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <center>
+                        <div ng-if="sr.active == true">
+                            <span class="label label-warning"> Pending</span>
+                        </div>
+                        <div ng-if="sr.active == false">
+                            <span class="label label-danger"> Closed</span>
+                        </div>
+                    </center>
+                </td>
+                <td><center><button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button></center></td>
             </tr>
         </tbody>
     </table>
@@ -60,34 +81,36 @@
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Tiger Nixon">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
                 </div>
-                <div class="form-group">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control " type="text" placeholder="Tiger Nixon">
+                    </div>
+                    <div class="form-group">
 
-                    <input class="form-control " type="text" placeholder="System Architect">
+                        <input class="form-control " type="text" placeholder="System Architect">
+                    </div>
+                    <div class="form-group">
+
+
+                        <input class="form-control " type="text" placeholder="Edinburgh">
+
+                    </div>
                 </div>
-                <div class="form-group">
-
-
-                    <input class="form-control " type="text" placeholder="Edinburgh">
-
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
                 </div>
             </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
-            </div>
+            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
 
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

@@ -1,7 +1,7 @@
 //COMPLETED - NEED A REVIEW
 
-angular.module('StartApp.providerApp')
-    .factory('maintenanceRequestsSrvc', ['$http', function ($http) {
+angular.module('StartApp.managerApp')
+    .factory('maintenanceRequestsFactory', ['$http', function ($http) {
 
         var urlBase = 'https://homes-webapi.azurewebsites.net/api/MaintenanceRequests';
      var maintenanceRequestsFactory = {};
@@ -22,17 +22,17 @@ angular.module('StartApp.providerApp')
 
      };
 
-     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
-     //    return $http.get(urlBase + '/' + id);
+     //maintenancerequestsfactory.getmaintenancerequest = function (id) {
+     //    return $http.get(urlbase + '/' + id);
      //};
-     //maintenanceRequestsFactory.getMaintenanceRequest = function (id) {
+     //maintenancerequestsfactory.getmaintenancerequest = function (id) {
      //    return $http({
-     //        method: 'GET',
-     //        dataType: 'json',
-     //        url: urlBase + '/' + id,
+     //        method: 'get',
+     //        datatype: 'json',
+     //        url: urlbase + '/' + id,
      //        headers: {
-     //            "Content-Type": "application/json",
-     //            "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+     //            "content-type": "application/json",
+     //            "authorization": 'bearer ' + sessionstorage['adal.access.token.key' + cid]
      //        }
      //    });
 
