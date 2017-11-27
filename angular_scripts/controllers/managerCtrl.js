@@ -490,7 +490,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('UsersBatchesController', ["$scope", "batchesFactory", "contactFactory", "growl", function ($scope, batchesFactory, contactFactory, growl) {
+    .controller('UsersBatchesController', function ($scope, batchesFactory, contactFactory, growl) {
         //batch 
         $scope.batchName;
         $scope.startDate;
@@ -580,7 +580,7 @@ angular.module('StartApp.managerApp')
             $scope.contactList = [];
         };
 
-    }]);
+    });
 
 
 
