@@ -67,34 +67,10 @@
                              boundary-links="true">
     </dir-pagination-controls>
 </div>
-
-        <!-- NAME -->
-        <!--<div class="form-group" ng-class="{ 'has-error' : userFormUpdate.name.$invalid && !userFormUpdate.name.$pristine }">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" ng-model="user.name" required>
-            <p ng-show="userFormUpdate.name.$invalid && !userFormUpdate.name.$pristine" class="help-block">You name is required.</p>
-        </div>-->
-      
-        <!-- USERNAME -->
-        <!--<div class="form-group" ng-class="{ 'has-error' : userFormUpdate.username.$invalid && !userFormUpdate.username.$pristine }">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
-            <p ng-show="userFormUpdate.username.$error.minlength" class="help-block">Username is too short.</p>
-            <p ng-show="userFormUpdate.username.$error.maxlength" class="help-block">Username is too long.</p>
-        </div>-->
-        
-        <!-- EMAIL -->
-        <!--<div class="form-group" ng-class="{ 'has-error' : userFormUpdate.email.$invalid && !userFormUpdate.email.$pristine }">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" ng-model="user.email">
-            <p ng-show="userFormUpdate.email.$invalid && !userFormUpdate.email.$pristine" class="help-block">Enter a valid email.</p>
-        </div>-->
-        
-        <!--<button type="submit" class="btn btn-primary" ng-disabled="userFormUpdate.$invalid">Submit</button>-->
         
 
 <!--Create New Batch Modal-->
-<form name="userFormUpdateCreate" ng-submit="submitForm()" novalidate>
+<form name="userFormCreate" ng-submit="submitForm()" novalidate>
     <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
@@ -107,15 +83,15 @@
                     </div>
                         <div class="modal-body">
 
-                            <div class="form-group" ng-class="{ 'has-error' : userFormUpdateCreate.batchName.$invalid && !userFormUpdateCreate.batchName.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : userFormCreate.batchName.$invalid && !userFormCreate.batchName.$pristine }">
                                 <label class="text-info"> Batch Name:</label>
                                 <input class="form-control" name="batchName" ng-model="batchName" type="text" placeholder="Batch Name" required />
-                                <p ng-show="userFormUpdateCreate.batchName.$invalid && !userFormUpdateCreate.batchName.$pristine" class="help-block">Batch name is required.</p>
+                                <p ng-show="userFormCreate.batchName.$invalid && !userFormCreate.batchName.$pristine" class="help-block">Batch name is required.</p>
                             </div>
-                            <div class="form-group" ng-class="{ 'has-error' : userFormUpdateCreate.startDate.$invalid && !userFormUpdateCreate.startDate.$pristine }">
+                            <div class="form-group" ng-class="{ 'has-error' : userFormCreate.startDate.$invalid && !userFormCreate.startDate.$pristine }">
                                 <label class="text-info"> Start Date:</label>
                                 <input name="startDate" class="form-control " type="date" placeholder="Start Date: yyyy/mm/dd" ng-model="startDate" required>
-                                <p ng-show="userFormUpdateCreate.startDate.$invalid && !userFormUpdateCreate.startDate.$pristine" class="help-block">Start date is required.</p>
+                                <p ng-show="userFormCreate.startDate.$invalid && !userFormCreate.startDate.$pristine" class="help-block">Start date is required.</p>
                             </div>
                             <div class="form-group">
                                 <label class="text-info"> End Date:</label>
@@ -123,7 +99,7 @@
                             </div>
                         </div>
                         <div class="modal-footer ">
-                            <button type="submit" class="btn btn-primary btn-fill" data-dismiss="modal" ng-click="postBatch()" ng-disabled="userFormUpdateCreate.$invalid"> <span class="glyphicon glyphicon-check"></span> Create</button>
+                            <button type="submit" class="btn btn-primary btn-fill" data-dismiss="modal" ng-click="postBatch()" ng-disabled="userFormCreate.$invalid"> <span class="glyphicon glyphicon-check"></span> Create</button>
                             <button type="button" class="btn btn-danger btn-fill" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span>Cancel</button>
                         </div>
                 </div>
