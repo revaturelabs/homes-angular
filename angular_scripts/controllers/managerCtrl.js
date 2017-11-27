@@ -306,7 +306,7 @@ angular.module('StartApp.managerApp')
                 $scope.tenants = d.data;
             },
                 function () {
-                    growl.error('Unable to upload Supplies. Please refresh your browser or close it.', { title: 'Error!' });
+                    growl.error('Unable to upload Tenants. Please refresh your browser or close it.', { title: 'Error!' });
                 });
         }
 
@@ -316,7 +316,9 @@ angular.module('StartApp.managerApp')
             singlerecord.then(function (d) {
 
                 var record = d.data;
-                $scope.batchName = record.batch.batchId;
+                $scope.firstName = record.contact.firstName;
+                $scope.lastName = record.contact.lastName;
+                $scope.batchName = record.batch.name;
                 $scope.gender = record.gender.genderOption;
                 $scope.tenantCarRelationships = record.tenantCarRelationships.parkingPassStatus;
                 $scope.moveInDate = record.moveInDate;
@@ -327,14 +329,6 @@ angular.module('StartApp.managerApp')
                     growl.error("An error has ocurred while getting details of tenant.", { title: 'Error!' });
                 });
         };
-
-        //$scope.filterFn = function (t) {
-        //    if (t.housingUnit.addressId != 0) {
-        //        return true;
-        //    }
-        //    return false;
-        //};
-
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
