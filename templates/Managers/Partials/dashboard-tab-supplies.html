@@ -1,6 +1,6 @@
 ﻿<center><h3>Supplies Requests</h3></center>
 <br />
-<div class="bs-component" ng-init="populate()">
+<div class="bs-component">
     <form class="form-inline">
         <div class="form-group" style="float:left; margin-bottom:15px;">
             Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -35,8 +35,14 @@
                 </th>
                 <th ng-click="sort('status')">
                     <center>
-                       Status
+                        Status
                         <span class="fa fa-sort" ng-init="sortKey=='status'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>
+
+                <th>
+                    <center>
+                        Options
                     </center>
                 </th>
             </tr>
@@ -45,16 +51,26 @@
         </thead>
         <tbody>
             <tr dir-paginate="sr in supplyRequests|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{sr.tenant.contact.firstName}} {{sr.tenant.contact.lastName}}</td>
-                <td>{{sr.tenant.housingUnit.address.name}} {{sr.tenant.housingUnit.address.streetName}} {{sr.tenant.housingUnit.address.buildingNumber}} {{sr.tenant.housingUnit.housingSignature}}</td>
-                <td>{{sr.tenant.contact.email}}</td>
+                <td><center>{{sr.tenant.contact.firstName}} {{sr.tenant.contact.lastName}}</center></td>
+                <td><center>{{sr.tenant.housingUnit.address.name}} {{sr.tenant.housingUnit.address.streetName}} {{sr.tenant.housingUnit.address.buildingNumber}} {{sr.tenant.housingUnit.housingSignature}}</center></td>
+                <td><center>{{sr.tenant.contact.email}}</center></td>
 
                 <td>
-                <ul ng-repeat="srm in sr.requestSuppliesMaps">
-                    <li>{{srm.supply.supplyName}}</li>
-                   </ul>
+                    <ul ng-repeat="srm in sr.requestSuppliesMaps">
+                        <li>{{srm.supply.supplyName}}</li>
+                    </ul>
                 </td>
-                 <td></td>
+                <td>
+                    <center>
+                        <div ng-if="sr.active == true">
+                            <span class="label label-warning"> Pending</span>
+                        </div>
+                        <div ng-if="sr.active == false">
+                            <span class="label label-danger"> Closed</span>
+                        </div>
+                    </center>
+                </td>
+                <td><center><button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button></center></td>
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,6 @@
 ﻿<center><h3>Housings</h3></center>
 <br />
-<div class="bs-component" ng-init="populate()">
+<div class="bs-component">
     <form class="form-inline">
         <div class="form-group" style="float:left; margin-bottom:15px;">
            Search: <input type="text" ng-model="search" class="form-control" placeholder="Search">
@@ -16,7 +16,7 @@
             <tr>
                 <th ng-click="sort('fullName')">
                     <center>
-                        Housing Name
+                        Housing
                         <span class="fa fa-sort" ng-init="sortKey=='fullName'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
@@ -44,8 +44,15 @@
 
                 <th ng-click="sort('phone')">
                     <center>
-                        Phone Number
+                        Phone
                         <span class="fa fa-sort" ng-init="sortKey=='phone'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
+                    </center>
+                </th>
+
+                <th ng-click="sort('capacity')">
+                    <center>
+                        Capacity
+                        <span class="fa fa-sort" ng-init="sortKey=='capacity'" ng-class="{'fa-sort-amount-desc':reverse,'fa-sort-amount-asc':!reverse}"></span>
                     </center>
                 </th>
 
@@ -60,12 +67,18 @@
         </thead>
         <tbody>
             <tr dir-paginate="h in housingUnitsWithProviders|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
-                <td>{{h.address.name}}</td>
-                <td>{{h.address.streetName}} {{h.address.buildingNumber}} {{h.housingSignature}}</td>
-                <td>{{h.provider.companyName}}</td>
-                <td>{{h.provider.contact.email}}</td>
-                <td>{{h.provider.contact.phoneNumber}}</td>
-                <td></td>
+                <td><center>{{h.address.name}}</center></td>
+                <td><center>{{h.address.streetName}} {{h.address.buildingNumber}} {{h.housingSignature}}</center></td>
+                <td><center>{{h.provider.companyName}}</center></td>
+                <td><center>{{h.provider.contact.email}}</center></td>
+                <td><center>{{h.provider.contact.phoneNumber}}</center></td>
+                <td><center>{{h.capacity}}</center></td>
+                <td>
+                    <center>
+                        <button class="btn btn-primary btn-fill" data-title="Edit" data-toggle="modal" ng-click="getBatchById(b)" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                        <button class="btn btn-danger btn-fill" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                    </center>
+                </td>
             </tr>
         </tbody>
     </table>
