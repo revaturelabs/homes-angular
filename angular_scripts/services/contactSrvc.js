@@ -5,7 +5,15 @@ angular.module('StartApp.managerApp')
         var contactFactory = {};
 
         contactFactory.getContacts = function () {
-            return $http.get(urlBase);
+            return $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
         };
 
         contactFactory.getContactbyoid = function (id) {
