@@ -81,7 +81,17 @@
         <tr ng-repeat="c in contactList">
             <td>{{ c.firstName }}</td>
             <td>{{ c.lastName }}</td>
-            <td>{{ c.gender }}</td>
+            <td>
+                <div ng-if="c.gender == 1">
+                     Female
+                </div>
+                <div ng-if="c.gender == 2">
+                     Male
+                </div>
+                <div ng-if="c.gender == 3">
+                    Other
+                </div>
+            </td>
             <td>{{ c.email }}</td>
             <td>{{ c.phoneNumber }}</td>
         </tr>
