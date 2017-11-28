@@ -1,16 +1,21 @@
 ﻿angular.module('StartApp.managerApp')
     .factory('genderFactory', ['$http', function ($http) {
 
-        //var urlBase = 'https://localhost:44364/api/genders';
-        //var urlBase = 'https://homes-webapi.azurewebsites.net/api/genders';
-        //var genderFactory = {};
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/genders';
+        var genderFactory = {};
 
-        //genderFactory.getGenders = function (id) {
-        //    var base = urlBase + '/' + id;
-        //    console.log(base);
-        //    return $http.get(base);
+        genderFactory.getGenders = function() {
+           return  $http({
+                method: 'GET',
+                dataType: 'json',
+                url: urlBase,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]
+                }
+            });
             
-        //};
+        };
         //genderFactory.postGender = function (gender) {
         //    $http({
         //        method: 'POST',

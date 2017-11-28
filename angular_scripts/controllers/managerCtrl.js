@@ -148,7 +148,7 @@ angular.module('StartApp.managerApp')
 
         //post Batch record
         $scope.postBatch = function postBatch() {
-            var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.name });
+            var batch = JSON.stringify({ startDate: $scope.startDate, endDate: $scope.endDate, name: $scope.batchName });
             batchesFactory.postBatch(batch).then(function (d) {
                 $scope.batch = d.data;
                 getBatches();
@@ -340,18 +340,28 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller("UsersPendingsController", function ($scope, tenantsFactory, housingUnitFactory, growl) {
+    .controller("UsersPendingsController", function ($scope, tenantsFactory, housingUnitFactory, genderFactory, growl) {
         getPending();
 
         //Get HousingUnits
-        $scope.getHousingUnits = function getHousingUnits() {
+        $scope.getHousingUnits = function() {
             housingUnitFactory.getHousingUnits()
                 .then(function (response) {
                     $scope.units = response.data;
                 }, function (error) {
-                    $scope.status = 'Unable to load Batches: ' + error.message;
+                    $scope.status = 'Unable to load Housing Units: ' + error.message;
                 });
         };
+
+        $scope.getGenders = function () {
+            genderFactory.getGenders()
+                .then(function (response) {
+                    $scope.genders = response.data;
+            }, function (error) {
+
+                });
+        };
+
         //Get Pending
         function getPending() {
             tenantsFactory.getTenantsPending().then(function (d) {//success
@@ -490,7 +500,7 @@ angular.module('StartApp.managerApp')
             $scope.reverse = !$scope.reverse; //if true make it false and vice versa
         };
     })
-    .controller('UsersBatchesController', function ($scope, batchesFactory, contactFactory, growl) {
+    .controller('UsersBatchesController', function ($scope, batchesFactory, contactFactory, growl, genderFactory) {
         //batch 
         $scope.batchName;
         $scope.startDate;
@@ -502,6 +512,7 @@ angular.module('StartApp.managerApp')
         $scope.contactlastName;
         $scope.contactEmail;
         $scope.contactPhone;
+        $scope.gender;
         //$scope.selectedID;
 
 
@@ -515,6 +526,15 @@ angular.module('StartApp.managerApp')
                     $scope.batches = response.data;
                 }, function (error) {
                     $scope.status = 'Unable to load Batches: ' + error.message;
+                });
+        };
+
+        $scope.getGenders = function () {
+            genderFactory.getGenders()
+                .then(function (response) {
+                    $scope.genders = response.data;
+                }, function (error) {
+
                 });
         };
 
@@ -554,7 +574,7 @@ angular.module('StartApp.managerApp')
 
         $scope.updateContactList = function updateContactList() {
 
-            $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
+            $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, gender: $scope.gender, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
             $scope.clearForms();
 
         };
@@ -565,7 +585,7 @@ angular.module('StartApp.managerApp')
         };
 
         $scope.appendBatchID = function () {
-            JsonObject = { "batchId": $scope.selectedID, "contacts": $scope.contactList };
+            JsonObject = { "batchId": $scope.selectedID, "genderId": $scope.gender, "contacts": $scope.contactList };
         };
 
         $scope.clearForms = function () {

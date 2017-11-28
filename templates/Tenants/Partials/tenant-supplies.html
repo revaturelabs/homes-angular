@@ -1,31 +1,22 @@
-﻿<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Supplies</h4>
-            </div>
-            <div class="content" ng-init="getSupplies()">
-          
-                   <div class="bs-component">
-                       <div class="row col-md-4"></div>
-                       <div class="col-md-4 panel-primary"  >
-                           <div ng-repeat="s in supplies" class="panel-body">
-                               <div justify="Left">
+﻿<div class="card">
+    <div class="header">
+        <h4 class="title">Supplies Request</h4>
+    </div>
+    <div class="content" ng-init="getSupplies()">
+        <div class="bs-component">
+            <div class="col-md-12">
+                <div class="funkyradio">
+                    <div class="funkyradio-success" ng-repeat="s in supplies">
 
-                                   <div>
-                                       <input type="checkbox" style="width: 30px; height: 20px;" value={{s.supplyId}} />{{s.supplyName}}</>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="row col-md-4"></div>
-                       <div class="row">
-                       <div style="float:left; margin-left:810px;">
-                           <button class="btn btn-success btn-fill btn-md">Add Request</button>
-                       </div>
-                        </div>
-                   </div>
+                        <input type="checkbox" name="checkbox" value={{s.supplyId}} id="{{s.supplyId}}" />
+                        <label for="{{s.supplyId}}">{{s.supplyName}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button style="float:right; margin-right:30px;" class="btn btn-primary btn-fill"><span class="glyphicon glyphicon-check"></span> Submit</button>
             </div>
         </div>
     </div>
 </div>
+
