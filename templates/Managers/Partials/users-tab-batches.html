@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div style="float:right;">
-                <button class="btn btn-success btn-fill" type="button" ng-click="updateContactList()" ng-disabled="userFormContactBatches.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Contact</button>
+                <button class="btn btn-success btn-fill" type="button" ng-click="updateContactList()" ng-disabled="userFormContactBatches.$invalid"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Associate</button>
                 <br /><br />
             </div>
         </div>
@@ -42,7 +42,7 @@
 </form>
 <h4>Pending Contacts</h4>
 
-<table class="table table-striped table-bordered" >
+<table class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>
@@ -71,7 +71,6 @@
             <th>
                 <center>
                     Phone Number
-
                 </center>
             </th>
 
@@ -79,21 +78,25 @@
     </thead>
     <tbody>
         <tr ng-repeat="c in contactList">
-            <td>{{ c.firstName }}</td>
-            <td>{{ c.lastName }}</td>
+
+            <td><center>{{ c.firstName }}</center></td>
+            <td><center>{{ c.lastName }}</center></td>
             <td>
-                <div ng-if="c.gender == 1">
-                     Female
-                </div>
-                <div ng-if="c.gender == 2">
-                     Male
-                </div>
-                <div ng-if="c.gender == 3">
-                    Other
-                </div>
+                <center>
+                    <div ng-if="c.genderId == 1">
+                        Female
+                    </div>
+                    <div ng-if="c.genderId == 2">
+                        Male
+                    </div>
+                    <div ng-if="c.genderId == 3">
+                        Other
+                    </div>
+                </center>
             </td>
-            <td>{{ c.email }}</td>
-            <td>{{ c.phoneNumber }}</td>
+            <td><center>{{ c.email }}</center></td>
+            <td><center>{{ c.phoneNumber }}</center></td>
+
         </tr>
     </tbody>
 </table>

@@ -1,7 +1,7 @@
 angular.module('StartApp.managerApp')
     .factory('contactFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/Contacts';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/Contacts';
         var contactFactory = {};
 
         contactFactory.getContacts = function () {
@@ -34,7 +34,7 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'POST',
                 dataType: 'json',
-                url: 'http://homes-webapi.azurewebsites.net/api/adtenants/addlistofusers',
+                url: 'https://homes-webapi.azurewebsites.net/api/adtenants/addlistofusers',
                 data: contact,
                 headers: {
                     "Content-Type": "application/json",
