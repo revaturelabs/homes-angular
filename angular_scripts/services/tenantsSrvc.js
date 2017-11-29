@@ -27,7 +27,7 @@
 angular.module('StartApp.managerApp')
     .factory('tenantsFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/tenants';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/tenants';
 
         var tenantsFactory = {};
 
@@ -66,7 +66,7 @@ angular.module('StartApp.managerApp')
             return $http({
                 method: 'GET',
                 dataType: 'json',
-                url: 'http://homes-webapi.azurewebsites.net/api/pending',
+                url: 'https://homes-webapi.azurewebsites.net/api/pending',
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": 'Bearer ' + sessionStorage['adal.access.token.key' + cid]

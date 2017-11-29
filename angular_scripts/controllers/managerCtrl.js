@@ -14,15 +14,15 @@ angular.module('StartApp.managerApp')
     })
     .controller('DashSuppliesController', ['$scope', 'supplyRequestsFactory', 'growl', function ($scope, supplyRequestsFactory, growl) {
 
-            supplyRequestsFactory.getSupplyRequests().then(
-                function (response) {
-                    $scope.supplyRequests = response.data;
-                    console.log($scope.supplyRequests);
-                },
-                function (error) {
-                    console.log('error', error);
-                }
-            );
+        supplyRequestsFactory.getSupplyRequests().then(
+            function (response) {
+                $scope.supplyRequests = response.data;
+                console.log($scope.supplyRequests);
+            },
+            function (error) {
+                console.log('error', error);
+            }
+        );
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -31,17 +31,17 @@ angular.module('StartApp.managerApp')
     }])
     .controller('DashMaintenanceController', ['maintenanceRequestsFactory', '$scope', function (maintenanceRequestsFactory, $scope) {
 
-            //console.log(maintenanceSrvc);
-            maintenanceRequestsFactory.getMaintenanceRequests().then(
-                function (response) {
-                    $scope.maintenanceRequests = response.data;
-                    console.log($scope.maintenanceRequests);
-                },
-                function (error) {
-                    console.log('error', error);
-                }
-            );
-      
+        //console.log(maintenanceSrvc);
+        maintenanceRequestsFactory.getMaintenanceRequests().then(
+            function (response) {
+                $scope.maintenanceRequests = response.data;
+                console.log($scope.maintenanceRequests);
+            },
+            function (error) {
+                console.log('error', error);
+            }
+        );
+
 
         $scope.sort = function (keyname) {
             $scope.sortKey = keyname;   //set the sortKey to the param passed
@@ -51,16 +51,16 @@ angular.module('StartApp.managerApp')
     .controller('DashHousingController', ['$scope', 'housingUnitFactory', 'addressesFactory', function ($scope, housingUnitFactory, addressesFactory) {
         //getHousingsAndProviders();
         $scope.thisAddresId;
-         
 
-            housingUnitFactory.getHousingUnitsWithProviders().then(
-                function (response) {
-                    $scope.housingUnitsWithProviders = response.data;
-                },
-                function (error) {
-                    console.log('error', error);
-                }
-            );
+
+        housingUnitFactory.getHousingUnitsWithProviders().then(
+            function (response) {
+                $scope.housingUnitsWithProviders = response.data;
+            },
+            function (error) {
+                console.log('error', error);
+            }
+        );
 
         $scope.getHousingsAndProviders = function () {
             housingUnitFactory.getHousingUnitsWithProviders()
@@ -116,7 +116,7 @@ angular.module('StartApp.managerApp')
         };
 
         $scope.postHousingUnit = function () {
-            var housingUnit = JSON.stringify({ provider: 1 , addressId: thisAddresId, housingSignature: $scope.aptNumber, capacity: $scope.capacity });
+            var housingUnit = JSON.stringify({ provider: 1, addressId: thisAddresId, housingSignature: $scope.aptNumber, capacity: $scope.capacity });
             housingUnitFactory.postHousingUnit(housingUnit)
                 .then(function (response) {
                     $scope.newHousingUnit = response.data;
@@ -162,7 +162,7 @@ angular.module('StartApp.managerApp')
                 growl.error("An error has ocurred while adding this batch.", { title: 'Error!' });
             }
             );
-           
+
 
         };
         //get one Batch record by Id
@@ -194,11 +194,11 @@ angular.module('StartApp.managerApp')
             batchesFactory.putBatch($scope.batchId, batch).then(function (d) {
                 $scope.batch = d.data;
                 getBatches();
-                growl.success("Batch " + $scope.batchName + " Updated Successfully!", { title: 'Success!' });  
+                growl.success("Batch " + $scope.batchName + " Updated Successfully!", { title: 'Success!' });
             }, function (error) {
                 growl.error("An error has ocurred while updating this batch.", { title: 'Error!' });
             });
-            
+
         };
 
         //delete Batch record
@@ -207,7 +207,7 @@ angular.module('StartApp.managerApp')
                 .then(function (d) {
                     $scope.batch = d.data;
                     getBatches();
-                    growl.success("Batch " +$scope.batchName+" Deleted Successfully!", { title: 'Success!' });
+                    growl.success("Batch " + $scope.batchName + " Deleted Successfully!", { title: 'Success!' });
                 }, function (error) {
                     growl.error("An error has ocurred while deleting this batch.", { title: 'Error!' });
                 }
@@ -238,11 +238,11 @@ angular.module('StartApp.managerApp')
         $scope.getSupplyById = function (supply) {
 
             suppliesFactory.getSupplyById(supply.supplyId)
-            .then(function (d) {
-                var record = d.data;
-                $scope.supplyId = record.supplyId;
-                $scope.supplyName = record.supplyName;
-            },
+                .then(function (d) {
+                    var record = d.data;
+                    $scope.supplyId = record.supplyId;
+                    $scope.supplyName = record.supplyName;
+                },
                 function () {
                     growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
                 });
@@ -273,7 +273,7 @@ angular.module('StartApp.managerApp')
             suppliesFactory.putSupply($scope.supplyId, supply).then(function (d) {
                 var record = d.data;
                 getSupplies();
-                growl.success($scope.supplyName+ "  Updated Successfully!", { title: 'Success!' });
+                growl.success($scope.supplyName + "  Updated Successfully!", { title: 'Success!' });
             },
                 function () {
                     growl.error("Unable to upload Supplies. Please refresh your browser or close it.", { title: 'Error!' });
@@ -285,7 +285,7 @@ angular.module('StartApp.managerApp')
         $scope.deleteSupply = function (id) {
             suppliesFactory.deleteSupply($scope.supplyId)
                 .then(function (d) {
-                    growl.success($scope.supplyName+ " Deleted Successfully!", { title: 'Success!' });
+                    growl.success($scope.supplyName + " Deleted Successfully!", { title: 'Success!' });
                     getSupplies();
                 }, function (error) {
                     growl.error("An error has ocurred while deleting this supply.", { title: 'Error!' });
@@ -316,7 +316,7 @@ angular.module('StartApp.managerApp')
         }
 
         $scope.getTenantById = function (t) {
-            
+
             var singlerecord = tenantsFactory.getTenantInfo(t.contact.contactId);
             singlerecord.then(function (d) {
 
@@ -344,7 +344,7 @@ angular.module('StartApp.managerApp')
         getPending();
 
         //Get HousingUnits
-        $scope.getHousingUnits = function() {
+        $scope.getHousingUnits = function () {
             housingUnitFactory.getHousingUnits()
                 .then(function (response) {
                     $scope.units = response.data;
@@ -357,7 +357,7 @@ angular.module('StartApp.managerApp')
             genderFactory.getGenders()
                 .then(function (response) {
                     $scope.genders = response.data;
-            }, function (error) {
+                }, function (error) {
 
                 });
         };
@@ -588,7 +588,7 @@ angular.module('StartApp.managerApp')
         };
 
         $scope.appendBatchID = function () {
-            JsonObject = { "batchId": $scope.selectedID, "genderId": $scope.gender, "contacts": $scope.contactList };
+            JsonObject = { "batchId": $scope.selectedID, "contacts": $scope.contactList };
         };
 
         $scope.clearForms = function () {
