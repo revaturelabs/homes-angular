@@ -18,7 +18,7 @@
                                 <img src="assets/img/housing.png" width="190" height="190" style="margin-top:50px;" />
                                 <h5>Revature Housing</h5>
                             </div>
-                            <button class="btn btn-primary" ng-click="adallogin()">Log In </button>
+                            <input type="button" class="btn btn-primary" ng-click="adallogin()" value="Log In"/>
                             <br /><br />
                         </div>
                     </div>
@@ -46,3 +46,32 @@
         </div>
     </div>
 </footer>
+
+<style>
+    input[type=button], input[type=submit], input[type=reset] {
+        background-color: #39ace7;
+        border: none;
+        color: white;
+        padding: 15px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+        box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        margin: 5px 20px 40px 20px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+        input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+            background-color: #56baed;
+        }
+
+</style>

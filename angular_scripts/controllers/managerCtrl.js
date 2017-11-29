@@ -379,8 +379,11 @@ angular.module('StartApp.managerApp')
 
                 var record = d.data;
                 $scope.tenantId = record.tenantId;
+                $scope.firstName = record.contact.firstName;
+                $scope.lastName = record.contact.lastName;
                 $scope.contactId = record.contactId;
                 $scope.batchId = record.batch.batchId;
+                $scope.batchName = record.batch.name;
                 $scope.gender = record.gender.genderId;
                 $scope.moveInDate = record.moveInDate;
                 $scope.hasKey = record.hasKey;
@@ -574,7 +577,7 @@ angular.module('StartApp.managerApp')
 
         $scope.updateContactList = function updateContactList() {
 
-            $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, gender: $scope.gender, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
+            $scope.contactList.push({ firstName: $scope.contactfirstName, lastName: $scope.contactlastName, genderId: $scope.gender, email: $scope.contactEmail, phoneNumber: $scope.contactPhone });
             $scope.clearForms();
 
         };
