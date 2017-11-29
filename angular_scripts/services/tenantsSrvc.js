@@ -27,7 +27,7 @@
 angular.module('StartApp.managerApp')
     .factory('tenantsFactory', ['$http', function ($http) {
 
-        var urlBase = 'http://homes-webapi.azurewebsites.net/api/tenants';
+        var urlBase = 'https://homes-webapi.azurewebsites.net/api/tenants';
 
         var tenantsFactory = {};
 
